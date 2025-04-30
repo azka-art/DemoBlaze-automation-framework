@@ -28,15 +28,7 @@ jobs:
       run: ./gradlew apiTests
       continue-on-error: true
       
-    - name: Upload API Cucumber Reports
-      uses: actions/upload-artifact@v2
-      if: always()
-      with:
-        name: cucumber-api-reports
-        path: |
-          build/reports/cucumber/api/
-          build/reports/cucumber-html-reports/
-        retention-days: 7
+    # No artifact upload in this job to keep it simple
   
   web-tests:
     runs-on: ubuntu-latest
@@ -62,20 +54,8 @@ jobs:
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@latest
       
-    - name: Run Web UI tests with retry
-      uses: nick-fields/retry@v2
-      with:
-        timeout_minutes: 10
-        max_attempts: 3
-        command: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
+    - name: Run Web UI tests
+      run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
       continue-on-error: true
-        
-    - name: Upload Web Cucumber Reports
-      uses: actions/upload-artifact@v2
-      if: always()
-      with:
-        name: cucumber-web-reports
-        path: |
-          build/reports/cucumber/web/
-          build/reports/cucumber-html-reports/
-        retention-days: 7
+      
+    # No artifact upload in this job to keep it simple

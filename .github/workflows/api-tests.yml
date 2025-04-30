@@ -30,12 +30,13 @@ jobs:
       run: ./gradlew apiTests
       continue-on-error: true
       
+    - name: Create reports directory if it doesn't exist
+      run: mkdir -p build/reports/cucumber/api
+      
     - name: Upload Cucumber Reports
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2.3.1
       if: always()
       with:
         name: cucumber-api-reports
-        path: |
-          build/reports/cucumber/api/
-          build/reports/cucumber-html-reports/
-        retention-days: 7
+        path: build/reports/cucumber/api
+        retention-days: 5

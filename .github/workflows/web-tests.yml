@@ -29,20 +29,16 @@ jobs:
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@latest
       
-    - name: Run Web UI tests with retry
-      uses: nick-fields/retry@v2
-      with:
-        timeout_minutes: 10
-        max_attempts: 3
-        command: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
+    - name: Run Web UI tests
+      run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
       continue-on-error: true
-        
+      
+    - name: Create reports directory if it doesn't exist
+      run: mkdir -p build/reports/cucumber/web
+      
     - name: Upload Cucumber Reports
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v1
       if: always()
       with:
         name: cucumber-web-reports
-        path: |
-          build/reports/cucumber/web/
-          build/reports/cucumber-html-reports/
-        retention-days: 7
+        path: build/reports/cucumber/web
