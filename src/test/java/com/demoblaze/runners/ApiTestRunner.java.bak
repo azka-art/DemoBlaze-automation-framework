@@ -1,4 +1,4 @@
-package com.demoblaze.runners;
+﻿package com.demoblaze.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -6,17 +6,17 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/features/web",
-    glue = {"com.demoblaze.stepdefinitions.web"},
+    features = "src/test/resources/features/api",
+    glue = {"com.demoblaze.stepdefinitions.api"},
     plugin = {
         "pretty",
-        "html:build/reports/cucumber/web/index.html",
-        "json:build/reports/cucumber/web/cucumber.json"
+        "html:build/reports/cucumber/api/index.html",
+        "json:build/reports/cucumber/api/cucumber.json"
     },
-    tags = "@web",
+    tags = "@api",
     monochrome = true
 )
-public class WebTestRunner {
+public class ApiTestRunner {
     // This class is intentionally empty.
     // All configurations are via annotations
 }

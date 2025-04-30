@@ -1,5 +1,5 @@
-*.gradle text eol=lf working-tree-encoding=utf-8
 *.java text eol=lf working-tree-encoding=utf-8
+*.gradle text eol=lf working-tree-encoding=utf-8
 *.xml text eol=lf working-tree-encoding=utf-8
 *.properties text eol=lf working-tree-encoding=utf-8
 *.yml text eol=lf working-tree-encoding=utf-8

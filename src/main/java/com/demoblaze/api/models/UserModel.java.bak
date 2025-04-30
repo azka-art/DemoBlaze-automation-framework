@@ -1,4 +1,4 @@
-package com.demoblaze.api.models;
+﻿package com.demoblaze.api.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
