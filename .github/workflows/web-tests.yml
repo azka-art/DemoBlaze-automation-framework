@@ -1,3 +1,6 @@
+# Completely new web-tests.yml file
+# No references to upload-artifact at all
+
 name: Web UI Tests
 
 on:
@@ -33,17 +36,8 @@ jobs:
       run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
       continue-on-error: true
       
-    # Pendekatan alternatif untuk melaporkan hasil test
     - name: List report files
       if: always()
       run: |
         echo 'Available Report Files:'
-        find build/reports -type f | sort
-        
-    # Simpan log output ke file teks sebagai alternatif untuk artifact
-    - name: Save test logs
-      if: always()
-      run: |
-        mkdir -p logs
-        ./gradlew webTests -Dheadless=true -Dbrowser=chrome --debug > logs/web-tests.log 2>&1 || true
-        echo 'Log file created at logs/web-tests.log'
+        find build/reports -type f -name "*.html" | sort
