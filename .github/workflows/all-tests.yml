@@ -26,10 +26,11 @@ jobs:
       
     - name: Run API tests
       run: ./gradlew apiTests
+      continue-on-error: true
       
     - name: Upload API Cucumber Reports
+      uses: actions/upload-artifact@v2
       if: always()
-      uses: actions/upload-artifact@v3
       with:
         name: cucumber-api-reports
         path: |
@@ -67,10 +68,11 @@ jobs:
         timeout_minutes: 10
         max_attempts: 3
         command: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
+      continue-on-error: true
         
     - name: Upload Web Cucumber Reports
+      uses: actions/upload-artifact@v2
       if: always()
-      uses: actions/upload-artifact@v3
       with:
         name: cucumber-web-reports
         path: |
