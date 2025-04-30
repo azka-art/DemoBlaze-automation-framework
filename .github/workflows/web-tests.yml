@@ -33,12 +33,17 @@ jobs:
       run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
       continue-on-error: true
       
-    - name: Create reports directory if it doesn't exist
-      run: mkdir -p build/reports/cucumber/web
-      
-    - name: Upload Cucumber Reports
-      uses: actions/upload-artifact@v1
+    # Pendekatan alternatif untuk melaporkan hasil test
+    - name: List report files
       if: always()
-      with:
-        name: cucumber-web-reports
-        path: build/reports/cucumber/web
+      run: |
+        echo 'Available Report Files:'
+        find build/reports -type f | sort
+        
+    # Simpan log output ke file teks sebagai alternatif untuk artifact
+    - name: Save test logs
+      if: always()
+      run: |
+        mkdir -p logs
+        ./gradlew webTests -Dheadless=true -Dbrowser=chrome --debug > logs/web-tests.log 2>&1 || true
+        echo 'Log file created at logs/web-tests.log'
