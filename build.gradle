@@ -1,6 +1,5 @@
-﻿plugins {
+plugins {
     id 'java'
-    id 'net.masterthought.cucumber-reporting' version '5.7.5'
 }
 
 group 'com.demoblaze'
@@ -54,7 +53,6 @@ task apiTests() {
                     'src/test/resources/features/api']
         }
     }
-    finalizedBy generateCucumberReports
 }
 
 // Task untuk menjalankan test Web UI
@@ -70,20 +68,6 @@ task webTests() {
                     '--glue', 'com.demoblaze.stepdefinitions.web',
                     '--tags', '@web',
                     'src/test/resources/features/web']
-        }
-    }
-    finalizedBy generateCucumberReports
-}
-
-task generateCucumberReports() {
-    doLast {
-        javaexec {
-            main = "net.masterthought.cucumber.ReportBuilder"
-            classpath = configurations.testRuntimeClasspath
-            args = [
-                "build/reports/cucumber",
-                "build/reports/cucumber-html-reports"
-            ]
         }
     }
 }

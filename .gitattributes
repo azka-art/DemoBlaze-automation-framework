@@ -1,12 +1,8 @@
-#
-# https://help.github.com/articles/dealing-with-line-endings/
-#
-# Linux start script should use lf
-/gradlew        text eol=lf
-
-# These are Windows script files and should use crlf
-*.bat           text eol=crlf
-
-# Binary files should be left untouched
-*.jar           binary
-
+*.gradle text eol=lf working-tree-encoding=utf-8
+*.java text eol=lf working-tree-encoding=utf-8
+*.xml text eol=lf working-tree-encoding=utf-8
+*.properties text eol=lf working-tree-encoding=utf-8
+*.yml text eol=lf working-tree-encoding=utf-8
+*.yaml text eol=lf working-tree-encoding=utf-8
+*.md text eol=lf working-tree-encoding=utf-8
+*.feature text eol=lf working-tree-encoding=utf-8

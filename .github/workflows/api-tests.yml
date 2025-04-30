@@ -1,4 +1,4 @@
-﻿name: API Tests
+name: API Tests
 
 on:
   workflow_dispatch:  # Manual trigger
@@ -20,23 +20,18 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
+    - name: Detect UTF-8 BOMs
+      run: |
+        if grep -rl $'\xEF\xBB\xBF' --include="*.gradle" .; then
+          echo "BOM found - please remove"; exit 1;
+        fi
+        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build -x test
+      run: ./gradlew build -x test --warning-mode all
       
     - name: Run API tests
       run: ./gradlew apiTests
       continue-on-error: true
-      
-    - name: Create reports directory if it doesn't exist
-      run: mkdir -p build/reports/cucumber/api
-      
-    - name: Upload Cucumber Reports
-      uses: actions/upload-artifact@v2.3.1
-      if: always()
-      with:
-        name: cucumber-api-reports
-        path: build/reports/cucumber/api
-        retention-days: 5
