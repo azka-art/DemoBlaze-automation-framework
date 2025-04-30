@@ -436,3 +436,6 @@ Proyek ini dilisensikan di bawah Lisensi MIT - lihat file LICENSE untuk detail.
 ## 👨‍💻 Author
 
 Azka - [azka-art](https://github.com/azka-art)
+
+## Status Build
+[![API Tests](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/api-tests.yml/badge.svg)](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/api-tests.yml)
