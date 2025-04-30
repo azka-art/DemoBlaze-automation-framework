@@ -1,3 +1,10 @@
+# DemoBlazeAutomationFramework
+
+[![API Tests](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/api-tests.yml/badge.svg)](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/api-tests.yml)
+[![Web UI Tests](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/web-tests.yml/badge.svg)](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/web-tests.yml)
+
+Sebuah framework otomasi pengujian komprehensif untuk aplikasi web Demoblaze yang mencakup pengujian API dan Web UI menggunakan tools dan praktik terbaik modern.
+
 ## 📋 Fitur
 
 - **Pendekatan Pengujian Ganda**: Menguji layer UI dan API dalam satu framework
@@ -12,18 +19,80 @@
 
 ## 🛠️ Technology Stack
 
-- **Java 11**: Bahasa pemrograman
-- **Gradle**: Manajemen build dan dependensi
-- **Cucumber**: Framework BDD
-- **JUnit**: Test runner
-- **Selenium WebDriver**: Otomasi Web UI
-- **WebDriverManager**: Manajemen driver otomatis
-- **Rest Assured**: Pengujian API
-- **AssertJ**: Assertions yang lebih ekspresif
-- **JavaFaker**: Generasi data pengujian
-- **GitHub Actions**: Otomasi CI/CD
+```mermaid
+graph TD
+    A[DemoBlazeAutomationFramework] --> B[Java 11]
+    A --> C[Gradle]
+    A --> D[Cucumber]
+    A --> E[JUnit]
+    
+    A --> F[Web UI Testing]
+    F --> G[Selenium WebDriver]
+    F --> H[WebDriverManager]
+    F --> I[Page Object Model]
+    
+    A --> J[API Testing]
+    J --> K[Rest Assured]
+    J --> L[Schema Validation]
+    
+    A --> M[Utilities]
+    M --> N[AssertJ]
+    M --> O[JavaFaker]
+    
+    A --> P[CI/CD]
+    P --> Q[GitHub Actions]
+    P --> R[Cucumber Reports]
+```
 
 ## 🗂️ Struktur Proyek
+
+```mermaid
+graph TD
+    A[Project Root] --> B[src]
+    A --> C[gradle]
+    A --> D[.github]
+    A --> E[build.gradle]
+    A --> F[README.md]
+    
+    B --> G[main]
+    B --> H[test]
+    
+    G --> I[java]
+    G --> J[resources]
+    
+    I --> K[com.demoblaze]
+    K --> L[api]
+    K --> M[config]
+    K --> N[utils]
+    K --> O[web]
+    
+    L --> P[clients]
+    L --> Q[models]
+    L --> R[utils]
+    
+    O --> S[pages]
+    O --> T[utils]
+    
+    H --> U[java]
+    H --> V[resources]
+    
+    U --> W[com.demoblaze]
+    W --> X[runners]
+    W --> Y[stepdefinitions]
+    
+    Y --> Z[api]
+    Y --> AA[web]
+    
+    V --> AB[features]
+    V --> AC[schemas]
+    
+    AB --> AD[api]
+    AB --> AE[web]
+    
+    D --> AF[workflows]
+```
+
+Struktur direktori:
 
 ```
 src/
@@ -116,6 +185,20 @@ Setelah menjalankan pengujian, laporan dihasilkan di:
 
 ## 🔄 Continuous Integration
 
+```mermaid
+graph LR
+    A[Developer Push] --> B[GitHub Repository]
+    B --> C{GitHub Actions}
+    C -->|Pull Request| D[Run Web & API Tests]
+    C -->|Manual Trigger| E[Run All Tests]
+    
+    D --> F[Generate Reports]
+    E --> F
+    
+    F --> G[Upload Artifacts]
+    G --> H[Download & Review]
+```
+
 Framework ini mencakup tiga workflow GitHub Actions:
 
 1. **API Tests** (`api-tests.yml`): Menjalankan pengujian API pada pull request dan trigger manual
@@ -123,6 +206,29 @@ Framework ini mencakup tiga workflow GitHub Actions:
 3. **All Tests** (`all-tests.yml`): Menjalankan semua pengujian secara berurutan via trigger manual
 
 ## 🧪 Contoh Skenario Pengujian
+
+### Alur Pengujian Login
+
+```mermaid
+sequenceDiagram
+    participant User as Test Runner
+    participant Web as Browser
+    participant API as DemoBlaze API
+    
+    User->>Web: Buka halaman beranda
+    Web-->>User: Halaman dimuat
+    
+    User->>Web: Klik tombol login di navbar
+    Web-->>User: Tampilkan modal login
+    
+    User->>Web: Masukkan username & password
+    User->>Web: Klik tombol login
+    Web->>API: Kirim permintaan login
+    API-->>Web: Respon auth token
+    Web-->>User: Tampilkan pesan Welcome
+    
+    Note over User,Web: Verifikasi login berhasil
+```
 
 ### Pengujian API
 ```gherkin
@@ -148,26 +254,41 @@ Scenario: Successful login with valid credentials
 
 ## 📝 Implementasi Detail
 
-### Page Object Model (POM)
+### Page Object Pattern
 
-```java
-public class LoginPage extends BasePage {
-    @FindBy(id = "login2")
-    private WebElement loginNavLink;
-    
-    @FindBy(id = "loginusername")
-    private WebElement usernameField;
-    
-    // Metode untuk berinteraksi dengan elemen halaman
-    public void login(String username, String password) {
-        clickLoginNavLink();
-        enterUsername(username);
-        enterPassword(password);
-        clickLoginButton();
+```mermaid
+classDiagram
+    class BasePage {
+        #WebDriver driver
+        #WebDriverWait wait
+        #String baseUrl
+        +goToBaseUrl()
+        +navigateTo(String path)
+        #clickElement(WebElement element)
+        #enterText(WebElement element, String text)
+        #waitForElement(By locator)
+        #isElementDisplayed(WebElement element)
+        #getElementText(WebElement element)
     }
     
-    // ... metode lainnya
-}
+    class LoginPage {
+        -WebElement loginNavLink
+        -WebElement usernameField
+        -WebElement passwordField
+        -WebElement loginButton
+        -WebElement loggedInUser
+        -By errorAlertLocator
+        +clickLoginNavLink()
+        +enterUsername(String username)
+        +enterPassword(String password)
+        +clickLoginButton()
+        +login(String username, String password)
+        +isLoggedIn()
+        +getErrorMessage()
+        +getLoggedInText()
+    }
+    
+    BasePage <|-- LoginPage
 ```
 
 ### API Client
@@ -205,6 +326,23 @@ public void tearDown(Scenario scenario) {
 
 ## 🔍 Validasi API yang Komprehensif
 
+```mermaid
+graph TD
+    A[API Testing Flow] --> B[Prepare Request]
+    B --> C[Send Request]
+    C --> D[Validate Response]
+    
+    D --> E[Status Code Validation]
+    D --> F[Schema Validation]
+    D --> G[Content Validation]
+    D --> H[Business Logic Validation]
+    
+    E --> I[Assert Status Code]
+    F --> J[Validate Against JSON Schema]
+    G --> K[Assert Response Fields]
+    H --> L[Assert Business Rules]
+```
+
 API testing mencakup:
 - Validasi kode status
 - Validasi isi respons
@@ -230,6 +368,33 @@ public void theAPIResponseShouldContainAuthToken() {
 ```
 
 ## 💡 Praktik Terbaik yang Diimplementasikan
+
+```mermaid
+mindmap
+  root((Best Practices))
+    Architecture
+      Page Object Model
+      Clean Architecture
+      Separation of Concerns
+    BDD
+      Gherkin Format
+      Descriptive Scenarios
+      Living Documentation
+    Testing
+      API Testing
+      UI Testing
+      Data-Driven
+      Negative Testing
+    CI/CD
+      GitHub Actions
+      Automated Reports
+      Parallel Execution
+    Code Quality
+      Error Handling
+      Screenshot on Failure
+      Logging
+      Documentation
+```
 
 1. **Pemisahan Concerns**:
    - API dan Web UI testing dipisahkan secara struktur
