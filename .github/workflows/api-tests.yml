@@ -1,4 +1,4 @@
-name: API Tests
+﻿name: API Tests
 
 on:
   workflow_dispatch:  # Manual trigger
@@ -22,7 +22,7 @@ jobs:
         
     - name: Detect UTF-8 BOMs
       run: |
-        if grep -rl $'\xEF\xBB\xBF' --include="*.gradle" .; then
+        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
           echo "BOM found - please remove"; exit 1;
         fi
         
@@ -35,3 +35,9 @@ jobs:
     - name: Run API tests
       run: ./gradlew apiTests
       continue-on-error: true
+      
+    - name: List report files
+      if: always()
+      run: |
+        echo 'Available Report Files:'
+        find build/reports -type f -name "*.html" | sort
