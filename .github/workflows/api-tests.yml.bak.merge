@@ -1,4 +1,4 @@
-﻿name: API Tests
+﻿ame: API Tests
 
 on:
   workflow_dispatch:  # Manual trigger
@@ -40,4 +40,4 @@ jobs:
       if: always()
       run: |
         echo 'Available Report Files:'
-        find build/reports/cucumber/api -type f -name "*.html" | sort
+        find build/reports -type f -name "*.html" | sort

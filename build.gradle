@@ -1,4 +1,4 @@
-plugins {
+﻿lugins {
     id 'java'
 }
 

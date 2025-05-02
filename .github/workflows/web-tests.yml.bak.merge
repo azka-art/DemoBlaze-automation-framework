@@ -1,4 +1,4 @@
-﻿name: API Tests
+﻿ame: Web UI Tests
 
 on:
   workflow_dispatch:  # Manual trigger
@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:
-  api-tests:
+  web-tests:
     runs-on: ubuntu-latest
     
     steps:
@@ -32,12 +32,15 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build -x test --warning-mode all
       
-    - name: Run API tests
-      run: ./gradlew apiTests
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@latest
+      
+    - name: Run Web UI tests
+      run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
       continue-on-error: true
       
     - name: List report files
       if: always()
       run: |
         echo 'Available Report Files:'
-        find build/reports/cucumber/api -type f -name "*.html" | sort
+        find build/reports -type f -name "*.html" | sort

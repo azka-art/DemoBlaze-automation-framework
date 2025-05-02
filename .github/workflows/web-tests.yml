@@ -43,4 +43,4 @@ jobs:
       if: always()
       run: |
         echo 'Available Report Files:'
-        find build/reports -type f -name "*.html" | sort
+        find build/reports/cucumber/web -type f -name "*.html" | sort
