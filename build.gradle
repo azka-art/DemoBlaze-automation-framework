@@ -1,4 +1,4 @@
-﻿lugins {
+﻿plugins {
     id 'java'
 }
 
@@ -17,33 +17,36 @@ dependencies {
     implementation 'io.cucumber:cucumber-java:7.11.1'
     implementation 'io.cucumber:cucumber-junit:7.11.1'
     
-    // RestAssured untuk API Testing
+    // RestAssured for API Testing
     implementation 'io.rest-assured:rest-assured:5.3.0'
     implementation 'io.rest-assured:json-schema-validator:5.3.0'
     
-    // Selenium untuk Web UI Testing
+    // Selenium for Web UI Testing
     implementation 'org.seleniumhq.selenium:selenium-java:4.9.0'
-    implementation 'io.github.bonigarcia:webdrivermanager:5.3.2'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.6.0'
     
-    // Untuk pengolahan JSON
+    // For JSON processing
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
     
     // JUnit
     testImplementation 'junit:junit:4.13.2'
     
-    // Faker untuk data testing
+    // Faker for test data
     implementation 'com.github.javafaker:javafaker:1.0.2'
     
-    // AssertJ untuk Assertion yang lebih ekspresif
+    // AssertJ for more expressive assertions
     implementation 'org.assertj:assertj-core:3.24.2'
 }
 
-// Task untuk menjalankan test API
-task apiTests() {
+// Task for running API tests
+task apiTests {
     dependsOn assemble, testClasses
+    group = 'Verification'
+    description = 'Runs API tests'
+    
     doLast {
         javaexec {
-            main = "io.cucumber.core.cli.Main"
+            mainClass = "io.cucumber.core.cli.Main"
             classpath = configurations.testRuntimeClasspath + sourceSets.main.output + sourceSets.test.output
             args = ['--plugin', 'pretty',
                     '--plugin', 'html:build/reports/cucumber/api/index.html',
@@ -55,12 +58,15 @@ task apiTests() {
     }
 }
 
-// Task untuk menjalankan test Web UI
-task webTests() {
+// Task for running Web UI tests
+task webTests {
     dependsOn assemble, testClasses
+    group = 'Verification'
+    description = 'Runs Web UI tests'
+    
     doLast {
         javaexec {
-            main = "io.cucumber.core.cli.Main"
+            mainClass = "io.cucumber.core.cli.Main"
             classpath = configurations.testRuntimeClasspath + sourceSets.main.output + sourceSets.test.output
             args = ['--plugin', 'pretty',
                     '--plugin', 'html:build/reports/cucumber/web/index.html',

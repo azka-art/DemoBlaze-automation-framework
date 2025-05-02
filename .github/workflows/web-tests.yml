@@ -1,4 +1,4 @@
-﻿name: Web UI Tests
+name: Web UI Tests
 
 on:
   workflow_dispatch:  # Manual trigger
