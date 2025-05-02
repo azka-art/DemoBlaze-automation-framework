@@ -1,4 +1,4 @@
-﻿ DemoBlazeAutomationFramework
+﻿# DemoBlazeAutomationFramework
 
 [![API Tests](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/api-tests.yml/badge.svg)](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/api-tests.yml)
 [![Web UI Tests](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/web-tests.yml/badge.svg)](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/web-tests.yml)
@@ -6,7 +6,7 @@
 
 Sebuah framework otomasi pengujian komprehensif untuk aplikasi web Demoblaze yang mencakup pengujian API dan Web UI menggunakan tools dan praktik terbaik modern.
 
-## ðŸ“‹ Fitur
+## 📋 Fitur
 
 - **Pendekatan Pengujian Ganda**: Menguji layer UI dan API dalam satu framework
 - **Implementasi BDD**: Menggunakan Cucumber dengan Gherkin untuk skenario pengujian yang mudah dibaca
@@ -18,7 +18,7 @@ Sebuah framework otomasi pengujian komprehensif untuk aplikasi web Demoblaze yan
 - **Pemulihan Kesalahan yang Ditingkatkan**: Mengambil screenshot saat pengujian gagal
 - **Dukungan Eksekusi Paralel**: Pengujian dapat berjalan secara paralel untuk feedback yang lebih cepat
 
-## ðŸ› ï¸ Technology Stack
+## 🛠️ Technology Stack
 
 ```mermaid
 graph TD
@@ -45,7 +45,7 @@ graph TD
     P --> R[Cucumber Reports]
 ```
 
-## ðŸ—‚ï¸ Struktur Proyek
+## 🗂️ Struktur Proyek
 
 ```mermaid
 graph TD
@@ -97,39 +97,39 @@ Struktur direktori:
 
 ```
 src/
-â”œâ”€â”€ main/
-â”‚   â”œâ”€â”€ java/
-â”‚   â”‚   â””â”€â”€ com/
-â”‚   â”‚       â””â”€â”€ demoblaze/
-â”‚   â”‚           â”œâ”€â”€ api/                  # Komponen pengujian API
-â”‚   â”‚           â”‚   â”œâ”€â”€ clients/          # Kelas-kelas API client
-â”‚   â”‚           â”‚   â”œâ”€â”€ models/           # DTO/POJO
-â”‚   â”‚           â”‚   â””â”€â”€ utils/            # Utilitas API
-â”‚   â”‚           â”œâ”€â”€ config/               # Konfigurasi bersama
-â”‚   â”‚           â”œâ”€â”€ utils/                # Utilitas umum
-â”‚   â”‚           â””â”€â”€ web/
-â”‚   â”‚               â”œâ”€â”€ pages/            # Page Objects
-â”‚   â”‚               â””â”€â”€ utils/            # Utilitas Web UI
-â”‚   â””â”€â”€ resources/
-â”‚       â””â”€â”€ config.properties             # Properties konfigurasi
-â””â”€â”€ test/
-    â”œâ”€â”€ java/
-    â”‚   â””â”€â”€ com/
-    â”‚       â””â”€â”€ demoblaze/
-    â”‚           â”œâ”€â”€ runners/              # Test runners
-    â”‚           â”‚   â”œâ”€â”€ ApiTestRunner.java
-    â”‚           â”‚   â””â”€â”€ WebTestRunner.java
-    â”‚           â””â”€â”€ stepdefinitions/      # Step definitions
-    â”‚               â”œâ”€â”€ api/              # Step definitions API
-    â”‚               â””â”€â”€ web/              # Step definitions Web UI
-    â””â”€â”€ resources/
-        â”œâ”€â”€ features/                    # File-file feature
-        â”‚   â”œâ”€â”€ api/                     # File feature API
-        â”‚   â””â”€â”€ web/                     # File feature Web UI
-        â””â”€â”€ schemas/                     # JSON schemas untuk validasi
+├── main/
+│   ├── java/
+│   │   └── com/
+│   │       └── demoblaze/
+│   │           ├── api/                  # Komponen pengujian API
+│   │           │   ├── clients/          # Kelas-kelas API client
+│   │           │   ├── models/           # DTO/POJO
+│   │           │   └── utils/            # Utilitas API
+│   │           ├── config/               # Konfigurasi bersama
+│   │           ├── utils/                # Utilitas umum
+│   │           └── web/
+│   │               ├── pages/            # Page Objects
+│   │               └── utils/            # Utilitas Web UI
+│   └── resources/
+│       └── config.properties             # Properties konfigurasi
+└── test/
+    ├── java/
+    │   └── com/
+    │       └── demoblaze/
+    │           ├── runners/              # Test runners
+    │           │   ├── ApiTestRunner.java
+    │           │   └── WebTestRunner.java
+    │           └── stepdefinitions/      # Step definitions
+    │               ├── api/              # Step definitions API
+    │               └── web/              # Step definitions Web UI
+    └── resources/
+        ├── features/                    # File-file feature
+        │   ├── api/                     # File feature API
+        │   └── web/                     # File feature Web UI
+        └── schemas/                     # JSON schemas untuk validasi
 ```
 
-## ðŸš€ Memulai
+## 🚀 Memulai
 
 ### Prasyarat
 
@@ -177,14 +177,14 @@ src/
 ./gradlew webTests -Dheadless=true
 ```
 
-## ðŸ“Š Laporan
+## 📊 Laporan
 
 Setelah menjalankan pengujian, laporan dihasilkan di:
 - Laporan HTML: `build/reports/cucumber/api/index.html` atau `build/reports/cucumber/web/index.html`
 - Laporan JSON: `build/reports/cucumber/api/cucumber.json` atau `build/reports/cucumber/web/cucumber.json`
 - Laporan Gabungan: `build/reports/cucumber-html-reports/overview-features.html`
 
-## ðŸ”„ Continuous Integration
+## 🔄 Continuous Integration
 
 ```mermaid
 graph LR
@@ -244,15 +244,27 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
+    - name: Detect UTF-8 BOMs
+      run: |
+        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
+          echo "BOM found - please remove"; exit 1;
+        fi
+        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build -x test
+      run: ./gradlew build -x test --warning-mode all
       
     - name: Run API tests
       run: ./gradlew apiTests
       continue-on-error: true
+      
+    - name: List report files
+      if: always()
+      run: |
+        echo 'Available Report Files:'
+        find build/reports/cucumber/api -type f -name "*.html" | sort
 ```
 
 #### web-tests.yml
@@ -279,11 +291,17 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
+    - name: Detect UTF-8 BOMs
+      run: |
+        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
+          echo "BOM found - please remove"; exit 1;
+        fi
+        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build -x test
+      run: ./gradlew build -x test --warning-mode all
       
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@latest
@@ -296,7 +314,7 @@ jobs:
       if: always()
       run: |
         echo 'Available Report Files:'
-        find build/reports -type f -name "*.html" | sort
+        find build/reports/cucumber/web -type f -name "*.html" | sort
 ```
 
 #### all-tests.yml
@@ -307,7 +325,7 @@ on:
   workflow_dispatch:  # Manual trigger only
 
 jobs:
-  all-tests:
+  api-tests:
     runs-on: ubuntu-latest
     
     steps:
@@ -321,23 +339,70 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
+    - name: Detect UTF-8 BOMs
+      run: |
+        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
+          echo "BOM found - please remove"; exit 1;
+        fi
+        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build -x test
+      run: ./gradlew build -x test --warning-mode all
+      
+    - name: Run API tests
+      run: ./gradlew apiTests
+      continue-on-error: true
+      
+    - name: List API report files
+      if: always()
+      run: |
+        echo 'Available API Report Files:'
+        find build/reports/cucumber/api -type f -name "*.html" | sort
+  
+  web-tests:
+    runs-on: ubuntu-latest
+    needs: api-tests  # Run after API tests complete
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+        
+    - name: Detect UTF-8 BOMs
+      run: |
+        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
+          echo "BOM found - please remove"; exit 1;
+        fi
+        
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Build with Gradle
+      run: ./gradlew build -x test --warning-mode all
       
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@latest
       
-    - name: Run all tests
-      run: |
-        ./gradlew apiTests -Dheadless=true
-        ./gradlew webTests -Dheadless=true -Dbrowser=chrome
+    - name: Run Web UI tests
+      run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
       continue-on-error: true
+      
+    - name: List Web report files
+      if: always()
+      run: |
+        echo 'Available Web Report Files:'
+        find build/reports/cucumber/web -type f -name "*.html" | sort
 ```
 
-## ðŸ§ª Contoh Skenario Pengujian
+## 🧪 Contoh Skenario Pengujian
 
 ### Alur Pengujian Login
 
@@ -384,7 +449,7 @@ Scenario: Successful login with valid credentials
   And I should see "Welcome testuser" message
 ```
 
-## ðŸ“ Implementasi Detail
+## 📝 Implementasi Detail
 
 ### Page Object Pattern
 
@@ -439,7 +504,7 @@ public class ApiClient {
 }
 ```
 
-## ðŸ“¸ Screenshot Failure Capture
+## 📸 Screenshot Failure Capture
 
 Framework ini secara otomatis mengambil screenshot ketika pengujian UI gagal, membantu analisis dan debugging. Screenshot disimpan sebagai lampiran dalam laporan Cucumber.
 
@@ -456,7 +521,7 @@ public void tearDown(Scenario scenario) {
 }
 ```
 
-## ðŸ” Validasi API yang Komprehensif
+## 🔍 Validasi API yang Komprehensif
 
 ```mermaid
 graph TD
@@ -499,7 +564,7 @@ public void theAPIResponseShouldContainAuthToken() {
 }
 ```
 
-## ðŸ’¡ Praktik Terbaik yang Diimplementasikan
+## 💡 Praktik Terbaik yang Diimplementasikan
 
 ```mermaid
 mindmap
@@ -545,7 +610,7 @@ mindmap
    - Dokumentasi yang lengkap
    - Pemisahan tanggung jawab yang jelas
 
-## ðŸ¤ Kontribusi
+## 🤝 Kontribusi
 
 1. Fork repository
 2. Buat branch fitur (`git checkout -b feature/fitur-keren`)
@@ -553,7 +618,7 @@ mindmap
 4. Push ke branch (`git push origin feature/fitur-keren`)
 5. Buka Pull Request
 
-## ðŸ“Œ Poin Penting yang Diimplementasikan
+## 📌 Poin Penting yang Diimplementasikan
 
 - Semua persyaratan tugas akhir terpenuhi
 - Struktur kode yang mengikuti prinsip SOLID
@@ -576,10 +641,20 @@ Untuk menghindari masalah ini, pastikan semua file disimpan sebagai UTF-8 tanpa 
 - `.gitattributes`: Mengatur encoding file untuk Git
 - `.editorconfig`: Mengatur encoding dan style kode untuk editor
 
-## ðŸ“ Lisensi
+Dalam GitHub Actions, langkah pemeriksaan BOM telah ditambahkan untuk mendeteksi masalah ini secara otomatis:
+
+```yaml
+- name: Detect UTF-8 BOMs
+  run: |
+    if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
+      echo "BOM found - please remove"; exit 1;
+    fi
+```
+
+## 📝 Lisensi
 
 Proyek ini dilisensikan di bawah Lisensi MIT - lihat file LICENSE untuk detail.
 
-## ðŸ‘¨â€ðŸ’» Author
+## 👨‍💻 Author
 
 Azka - [azka-art](https://github.com/azka-art)
