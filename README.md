@@ -2,6 +2,7 @@
 
 [![API Tests](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/api-tests.yml/badge.svg)](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/api-tests.yml)
 [![Web UI Tests](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/web-tests.yml/badge.svg)](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/web-tests.yml)
+[![All Tests](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/all-tests.yml/badge.svg)](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/all-tests.yml)
 
 Sebuah framework otomasi pengujian komprehensif untuk aplikasi web Demoblaze yang mencakup pengujian API dan Web UI menggunakan tools dan praktik terbaik modern.
 
@@ -195,15 +196,146 @@ graph LR
     D --> F[Generate Reports]
     E --> F
     
-    F --> G[Upload Artifacts]
-    G --> H[Download & Review]
+    F --> G[View Test Results]
 ```
 
-Framework ini mencakup tiga workflow GitHub Actions:
+### GitHub Actions Workflows
 
-1. **API Tests** (`api-tests.yml`): Menjalankan pengujian API pada pull request dan trigger manual
-2. **Web UI Tests** (`web-tests.yml`): Menjalankan pengujian Web UI pada pull request dan trigger manual
-3. **All Tests** (`all-tests.yml`): Menjalankan semua pengujian secara berurutan via trigger manual
+Framework ini mencakup tiga workflow GitHub Actions yang telah dioptimalkan untuk performa dan stabilitas:
+
+1. **API Tests** (`api-tests.yml`): 
+   - Menjalankan pengujian API
+   - Trigger: Pull request & manual
+   - Status: ✅ Running
+
+2. **Web UI Tests** (`web-tests.yml`): 
+   - Menjalankan pengujian Web UI dengan Selenium
+   - Trigger: Pull request & manual
+   - Status: ✅ Running
+
+3. **All Tests** (`all-tests.yml`): 
+   - Menjalankan semua pengujian secara berurutan
+   - Trigger: Manual
+   - Status: ✅ Running
+
+Berikut adalah contoh file workflow yang digunakan:
+
+#### api-tests.yml
+```yaml
+name: API Tests
+
+on:
+  workflow_dispatch:  # Manual trigger
+  pull_request:       # Run on pull requests
+    branches: [ main ]
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+        
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Build with Gradle
+      run: ./gradlew build -x test
+      
+    - name: Run API tests
+      run: ./gradlew apiTests
+      continue-on-error: true
+```
+
+#### web-tests.yml
+```yaml
+name: Web UI Tests
+
+on:
+  workflow_dispatch:  # Manual trigger
+  pull_request:       # Run on pull requests
+    branches: [ main ]
+
+jobs:
+  web-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+        
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Build with Gradle
+      run: ./gradlew build -x test
+      
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@latest
+      
+    - name: Run Web UI tests
+      run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
+      continue-on-error: true
+      
+    - name: List report files
+      if: always()
+      run: |
+        echo 'Available Report Files:'
+        find build/reports -type f -name "*.html" | sort
+```
+
+#### all-tests.yml
+```yaml
+name: Run All Tests
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  all-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+        
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Build with Gradle
+      run: ./gradlew build -x test
+      
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@latest
+      
+    - name: Run all tests
+      run: |
+        ./gradlew apiTests -Dheadless=true
+        ./gradlew webTests -Dheadless=true -Dbrowser=chrome
+      continue-on-error: true
+```
 
 ## ðŸ§ª Contoh Skenario Pengujian
 
@@ -429,6 +561,21 @@ mindmap
 - Strategi reporting yang komprehensif
 - Integrasi CI/CD dengan GitHub Actions
 
+## 🛠️ Pemecahan Masalah
+
+### Mengatasi Masalah BOM (Byte Order Mark)
+
+Framework ini telah mengatasi masalah umum terkait BOM (Byte Order Mark) di file Java dan Gradle. BOM dapat menyebabkan error kompilasi dengan pesan:
+
+```
+illegal character: '\ufeff'
+```
+
+Untuk menghindari masalah ini, pastikan semua file disimpan sebagai UTF-8 tanpa BOM. File konfigurasi berikut membantu memastikan konsistensi:
+
+- `.gitattributes`: Mengatur encoding file untuk Git
+- `.editorconfig`: Mengatur encoding dan style kode untuk editor
+
 ## ðŸ“ Lisensi
 
 Proyek ini dilisensikan di bawah Lisensi MIT - lihat file LICENSE untuk detail.
@@ -436,6 +583,3 @@ Proyek ini dilisensikan di bawah Lisensi MIT - lihat file LICENSE untuk detail.
 ## ðŸ‘¨â€ðŸ’» Author
 
 Azka - [azka-art](https://github.com/azka-art)
-
-## Status Build
-[![API Tests](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/api-tests.yml/badge.svg)](https://github.com/azka-art/DemoBlaze-automation-framework/actions/workflows/api-tests.yml)
