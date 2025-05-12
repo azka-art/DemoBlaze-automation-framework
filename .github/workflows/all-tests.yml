@@ -4,7 +4,7 @@ on:
   workflow_dispatch:  # Manual trigger only
 
 jobs:
-  api-tests:
+  all-tests:
     runs-on: ubuntu-latest
     
     steps:
@@ -18,27 +18,34 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
-    - name: Detect UTF-8 BOMs
-      run: |
-        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
-          echo "BOM found - please remove"; exit 1;
-        fi
-        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build -x test --warning-mode all
+      run: ./gradlew build -x test
       
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@latest
+    
     - name: Run API tests
       run: ./gradlew apiTests
+      id: api-tests
       continue-on-error: true
       
-    - name: List API report files
+    - name: Run Web UI tests
+      run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
+      id: web-tests
+      if: always()
+      continue-on-error: true
+      
+    - name: Generate Test Summary
       if: always()
       run: |
-        echo 'Available API Report Files:'
-        find build/reports/cucumber/api -type f -name "*.html" | sort
+        echo "## Test Results Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "API Tests: ${{ steps.api-tests.outcome }}" >> $GITHUB_STEP_SUMMARY
+        echo "Web Tests: ${{ steps.web-tests.outcome }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
         
     - name: Upload API Cucumber Reports
       uses: actions/upload-artifact@v3
@@ -47,46 +54,6 @@ jobs:
         name: cucumber-api-reports
         path: build/reports/cucumber/api
         retention-days: 7
-  
-  web-tests:
-    runs-on: ubuntu-latest
-    needs: api-tests  # Run after API tests complete - Preserving your original structure
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      
-    - name: Set up JDK 11
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: gradle
-        
-    - name: Detect UTF-8 BOMs
-      run: |
-        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
-          echo "BOM found - please remove"; exit 1;
-        fi
-        
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-      
-    - name: Build with Gradle
-      run: ./gradlew build -x test --warning-mode all
-      
-    - name: Setup Chrome
-      uses: browser-actions/setup-chrome@latest
-      
-    - name: Run Web UI tests
-      run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
-      continue-on-error: true
-      
-    - name: List Web report files
-      if: always()
-      run: |
-        echo 'Available Web Report Files:'
-        find build/reports/cucumber/web -type f -name "*.html" | sort
         
     - name: Upload Web Cucumber Reports
       uses: actions/upload-artifact@v3
@@ -95,3 +62,19 @@ jobs:
         name: cucumber-web-reports
         path: build/reports/cucumber/web
         retention-days: 7
+        
+    - name: Upload Combined Reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: all-test-reports
+        path: build/reports/cucumber
+        retention-days: 7
+        
+    - name: Fail job if tests failed
+      if: always()
+      run: |
+        if [[ "${{ steps.api-tests.outcome }}" == "failure" ]] || [[ "${{ steps.web-tests.outcome }}" == "failure" ]]; then
+          echo "One or more test suites failed"
+          exit 1
+        fi

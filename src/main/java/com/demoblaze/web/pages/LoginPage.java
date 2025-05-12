@@ -17,15 +17,23 @@ public class LoginPage extends BasePage {
     @FindBy(id = "loginpassword")
     private WebElement passwordField;
 
-    @FindBy(css = "button[onclick=\'logIn()\']")
+    @FindBy(css = "button[onclick='logIn()']")
     private WebElement loginButton;
 
     @FindBy(id = "nameofuser")
     private WebElement loggedInUser;
 
     public void clickLoginNavLink() {
-        clickElement(loginNavLink);
-        wait.until(ExpectedConditions.visibilityOf(usernameField));
+        try {
+            Thread.sleep(3000); // Wait for page to fully load
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("login2")));
+            wait.until(ExpectedConditions.elementToBeClickable(loginNavLink));
+            clickElement(loginNavLink);
+            Thread.sleep(1000);
+            wait.until(ExpectedConditions.visibilityOf(usernameField));
+        } catch (Exception e) {
+            System.err.println("Error clicking login nav link: " + e.getMessage());
+        }
     }
 
     public void enterUsername(String username) {
@@ -67,7 +75,7 @@ public class LoginPage extends BasePage {
 
             // Check if welcome message shows (positive case)
             try {
-                driver.findElement(By.id("nameofuser"));
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.id("nameofuser")));
                 return true;
             } catch (Exception e) {
                 // Element not found

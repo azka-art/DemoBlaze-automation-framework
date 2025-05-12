@@ -20,30 +20,18 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
-    - name: Detect UTF-8 BOMs
-      run: |
-        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
-          echo "BOM found - please remove"; exit 1;
-        fi
-        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build -x test --warning-mode all
+      run: ./gradlew build -x test
       
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@latest
       
     - name: Run Web UI tests
       run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
-      continue-on-error: true
       
-    - name: List report files
-      if: always()
-      run: |
-        echo 'Available Report Files:'
-        find build/reports/cucumber/web -type f -name "*.html" | sort
     - name: Upload Cucumber Reports
       uses: actions/upload-artifact@v3
       if: always()

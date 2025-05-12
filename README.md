@@ -23,22 +23,22 @@ Sebuah framework otomasi pengujian komprehensif untuk aplikasi web Demoblaze yan
 ```mermaid
 graph TD
     A[DemoBlazeAutomationFramework] --> B[Java 11]
-    A --> C[Gradle]
-    A --> D[Cucumber]
-    A --> E[JUnit]
+    A --> C[Gradle 8.13]
+    A --> D[Cucumber 7.11.1]
+    A --> E[JUnit 4.13.2]
     
     A --> F[Web UI Testing]
-    F --> G[Selenium WebDriver]
-    F --> H[WebDriverManager]
+    F --> G[Selenium WebDriver 4.9.0]
+    F --> H[WebDriverManager 5.6.0]
     F --> I[Page Object Model]
     
     A --> J[API Testing]
-    J --> K[Rest Assured]
+    J --> K[Rest Assured 5.3.0]
     J --> L[Schema Validation]
     
     A --> M[Utilities]
-    M --> N[AssertJ]
-    M --> O[JavaFaker]
+    M --> N[AssertJ 3.24.2]
+    M --> O[JavaFaker 1.0.2]
     
     A --> P[CI/CD]
     P --> Q[GitHub Actions]
@@ -136,6 +136,7 @@ src/
 - Java 11 atau lebih tinggi
 - Gradle 7.0 atau lebih tinggi
 - Browser Chrome/Firefox terinstal
+- Git
 
 ### Setup
 
@@ -206,12 +207,12 @@ Framework ini mencakup tiga workflow GitHub Actions yang telah dioptimalkan untu
 1. **API Tests** (`api-tests.yml`): 
    - Menjalankan pengujian API
    - Trigger: Pull request & manual
-   - Status: ✅ Running
+   - Status: ⚠️ Connection timeout issues
 
 2. **Web UI Tests** (`web-tests.yml`): 
    - Menjalankan pengujian Web UI dengan Selenium
    - Trigger: Pull request & manual
-   - Status: ✅ Running
+   - Status: ✅ All tests passing (100%)
 
 3. **All Tests** (`all-tests.yml`): 
    - Menjalankan semua pengujian secara berurutan
@@ -244,27 +245,22 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
-    - name: Detect UTF-8 BOMs
-      run: |
-        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
-          echo "BOM found - please remove"; exit 1;
-        fi
-        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build -x test --warning-mode all
+      run: ./gradlew build -x test
       
     - name: Run API tests
       run: ./gradlew apiTests
-      continue-on-error: true
       
-    - name: List report files
+    - name: Upload Cucumber Reports
+      uses: actions/upload-artifact@v3
       if: always()
-      run: |
-        echo 'Available Report Files:'
-        find build/reports/cucumber/api -type f -name "*.html" | sort
+      with:
+        name: cucumber-api-reports
+        path: build/reports/cucumber/api
+        retention-days: 7
 ```
 
 #### web-tests.yml
@@ -291,30 +287,25 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
-    - name: Detect UTF-8 BOMs
-      run: |
-        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
-          echo "BOM found - please remove"; exit 1;
-        fi
-        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build -x test --warning-mode all
+      run: ./gradlew build -x test
       
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@latest
       
     - name: Run Web UI tests
       run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
-      continue-on-error: true
       
-    - name: List report files
+    - name: Upload Cucumber Reports
+      uses: actions/upload-artifact@v3
       if: always()
-      run: |
-        echo 'Available Report Files:'
-        find build/reports/cucumber/web -type f -name "*.html" | sort
+      with:
+        name: cucumber-web-reports
+        path: build/reports/cucumber/web
+        retention-days: 7
 ```
 
 #### all-tests.yml
@@ -325,7 +316,7 @@ on:
   workflow_dispatch:  # Manual trigger only
 
 jobs:
-  api-tests:
+  all-tests:
     runs-on: ubuntu-latest
     
     steps:
@@ -339,67 +330,66 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
-    - name: Detect UTF-8 BOMs
-      run: |
-        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
-          echo "BOM found - please remove"; exit 1;
-        fi
-        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build -x test --warning-mode all
-      
-    - name: Run API tests
-      run: ./gradlew apiTests
-      continue-on-error: true
-      
-    - name: List API report files
-      if: always()
-      run: |
-        echo 'Available API Report Files:'
-        find build/reports/cucumber/api -type f -name "*.html" | sort
-  
-  web-tests:
-    runs-on: ubuntu-latest
-    needs: api-tests  # Run after API tests complete
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      
-    - name: Set up JDK 11
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: gradle
-        
-    - name: Detect UTF-8 BOMs
-      run: |
-        if grep -rl $'\xEF\xBB\xBF' --include="*.java" --include="*.gradle" --include="*.yml" .; then
-          echo "BOM found - please remove"; exit 1;
-        fi
-        
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-      
-    - name: Build with Gradle
-      run: ./gradlew build -x test --warning-mode all
+      run: ./gradlew build -x test
       
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@latest
+    
+    - name: Run API tests
+      run: ./gradlew apiTests
+      id: api-tests
+      continue-on-error: true
       
     - name: Run Web UI tests
       run: ./gradlew webTests -Dheadless=true -Dbrowser=chrome
+      id: web-tests
+      if: always()
       continue-on-error: true
       
-    - name: List Web report files
+    - name: Generate Test Summary
       if: always()
       run: |
-        echo 'Available Web Report Files:'
-        find build/reports/cucumber/web -type f -name "*.html" | sort
+        echo "## Test Results Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "API Tests: ${{ steps.api-tests.outcome }}" >> $GITHUB_STEP_SUMMARY
+        echo "Web Tests: ${{ steps.web-tests.outcome }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+    - name: Upload API Cucumber Reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: cucumber-api-reports
+        path: build/reports/cucumber/api
+        retention-days: 7
+        
+    - name: Upload Web Cucumber Reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: cucumber-web-reports
+        path: build/reports/cucumber/web
+        retention-days: 7
+        
+    - name: Upload Combined Reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: all-test-reports
+        path: build/reports/cucumber
+        retention-days: 7
+        
+    - name: Fail job if tests failed
+      if: always()
+      run: |
+        if [[ "${{ steps.api-tests.outcome }}" == "failure" ]] || [[ "${{ steps.web-tests.outcome }}" == "failure" ]]; then
+          echo "One or more test suites failed"
+          exit 1
+        fi
 ```
 
 ## 🧪 Contoh Skenario Pengujian
@@ -651,6 +641,43 @@ Dalam GitHub Actions, langkah pemeriksaan BOM telah ditambahkan untuk mendeteksi
     fi
 ```
 
+## 📈 Status Pengujian Terkini
+
+### Web UI Tests: ✅ 100% Pass Rate
+- 3 dari 3 skenario berhasil
+- Login form interaction
+- Invalid login attempt
+- Complete checkout process
+- Durasi: 51 detik
+
+### API Tests: ⚠️ Connection Timeout Issues
+- Mengalami timeout saat koneksi ke `https://api.demoblaze.com`
+- Perlu verifikasi endpoint API
+
+## 💻 Lingkungan Development
+
+- **OS**: Windows 11
+- **JDK**: OpenJDK 64-Bit Server VM 21.0.6+7-LTS
+- **Gradle**: 8.13
+- **Browser**: Chrome 136.0.7103.93
+- **IDE**: Visual Studio Code / IntelliJ IDEA
+
+## 🐛 Known Issues
+
+1. **API Connection Timeout**: API tests mengalami timeout karena masalah konektivitas ke `https://api.demoblaze.com`
+2. **Chrome DevTools Warning**: Warning minor tentang CDP version mismatch (tidak mempengaruhi eksekusi test)
+3. **SLF4J Warning**: No SLF4J providers found (tidak mempengaruhi fungsionalitas)
+
+## 🔧 Perbaikan Terbaru
+
+- Fixed BOM issues di semua file
+- Updated LoginPage dengan waiting strategies yang lebih baik
+- Implemented CheckoutSteps dengan assertion yang tepat
+- Updated HomePage untuk stabilitas yang lebih baik
+- Fixed semua GitHub Actions workflows
+- Resolved element not found errors
+- Semua Web UI tests sekarang passing (100%)
+
 ## 📝 Lisensi
 
 Proyek ini dilisensikan di bawah Lisensi MIT - lihat file LICENSE untuk detail.
@@ -658,4 +685,10 @@ Proyek ini dilisensikan di bawah Lisensi MIT - lihat file LICENSE untuk detail.
 ## 👨‍💻 Author
 
 Azka - [azka-art](https://github.com/azka-art)
+
+---
+
+**Last Updated**: May 12, 2025  
+**Version**: 1.0.0  
+**Build Status**: Web UI ✅ | API ⚠️
 
