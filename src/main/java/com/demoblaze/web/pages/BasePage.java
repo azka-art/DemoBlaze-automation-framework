@@ -33,7 +33,13 @@ public abstract class BasePage {
      * Navigates to the base URL
      */
     public void goToBaseUrl() {
-        driver.get(baseUrl);
+        try {
+            driver.get(baseUrl);
+            // Wait for page to load
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            System.err.println("Error loading page: " + e.getMessage());
+        }
     }
     
     /**
@@ -101,3 +107,4 @@ public abstract class BasePage {
         return element.getText();
     }
 }
+

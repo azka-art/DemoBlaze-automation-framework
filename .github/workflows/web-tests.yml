@@ -44,3 +44,10 @@ jobs:
       run: |
         echo 'Available Report Files:'
         find build/reports/cucumber/web -type f -name "*.html" | sort
+    - name: Upload Cucumber Reports
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: cucumber-web-reports
+        path: build/reports/cucumber/web
+        retention-days: 7

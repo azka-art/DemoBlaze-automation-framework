@@ -51,20 +51,25 @@ public class DriverManager {
                 break;
             case "chrome":
             default:
-                WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().clearDriverCache().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--remote-allow-origins=*");
                 if (headless) {
                     chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--headless=new");
                 }
                 chromeOptions.addArguments("--no-sandbox");
                 chromeOptions.addArguments("--disable-dev-shm-usage");
+                chromeOptions.addArguments("--disable-gpu");
+                chromeOptions.addArguments("--window-size=1920,1080");
                 webDriver = new ChromeDriver(chromeOptions);
                 break;
         }
         
         int timeout = Integer.parseInt(ConfigManager.get("timeout"));
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(timeout));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));
         webDriver.manage().window().maximize();
         
         driver.set(webDriver);
@@ -80,3 +85,7 @@ public class DriverManager {
         }
     }
 }
+
+
+
+

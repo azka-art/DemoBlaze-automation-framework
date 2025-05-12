@@ -39,43 +39,35 @@ dependencies {
 }
 
 // Task for running API tests
-task apiTests {
+tasks.register('apiTests', JavaExec) {
     dependsOn assemble, testClasses
     group = 'Verification'
     description = 'Runs API tests'
     
-    doLast {
-        javaexec {
-            mainClass = "io.cucumber.core.cli.Main"
-            classpath = configurations.testRuntimeClasspath + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty',
-                    '--plugin', 'html:build/reports/cucumber/api/index.html',
-                    '--plugin', 'json:build/reports/cucumber/api/cucumber.json',
-                    '--glue', 'com.demoblaze.stepdefinitions.api',
-                    '--tags', '@api',
-                    'src/test/resources/features/api']
-        }
-    }
+    mainClass = "io.cucumber.core.cli.Main"
+    classpath = configurations.testRuntimeClasspath + sourceSets.main.output + sourceSets.test.output
+    args = ['--plugin', 'pretty',
+            '--plugin', 'html:build/reports/cucumber/api/index.html',
+            '--plugin', 'json:build/reports/cucumber/api/cucumber.json',
+            '--glue', 'com.demoblaze.stepdefinitions.api',
+            '--tags', '@api',
+            'src/test/resources/features/api']
 }
 
 // Task for running Web UI tests
-task webTests {
+tasks.register('webTests', JavaExec) {
     dependsOn assemble, testClasses
     group = 'Verification'
     description = 'Runs Web UI tests'
     
-    doLast {
-        javaexec {
-            mainClass = "io.cucumber.core.cli.Main"
-            classpath = configurations.testRuntimeClasspath + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty',
-                    '--plugin', 'html:build/reports/cucumber/web/index.html',
-                    '--plugin', 'json:build/reports/cucumber/web/cucumber.json',
-                    '--glue', 'com.demoblaze.stepdefinitions.web',
-                    '--tags', '@web',
-                    'src/test/resources/features/web']
-        }
-    }
+    mainClass = "io.cucumber.core.cli.Main"
+    classpath = configurations.testRuntimeClasspath + sourceSets.main.output + sourceSets.test.output
+    args = ['--plugin', 'pretty',
+            '--plugin', 'html:build/reports/cucumber/web/index.html',
+            '--plugin', 'json:build/reports/cucumber/web/cucumber.json',
+            '--glue', 'com.demoblaze.stepdefinitions.web',
+            '--tags', '@web',
+            'src/test/resources/features/web']
 }
 
 test {
