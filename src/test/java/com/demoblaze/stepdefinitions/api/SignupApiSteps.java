@@ -6,7 +6,6 @@ import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.response.Response;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -53,36 +52,10 @@ public class SignupApiSteps extends BaseApiSteps {
     
     @Then("the API response should contain success message")
     public void theAPIResponseShouldContainSuccessMessage() {
-        String responseBody = response.getBody().asString();
-        
         // The actual response from signup is empty string on success
         // So we just check the status code is 200
         assertThat(response.getStatusCode())
             .as("Signup success")
             .isEqualTo(200);
-    }
-    
-    @Then("the API response should contain error message {string}")
-    public void theAPIResponseShouldContainErrorMessage(String expectedError) {
-        String errorMsg = response.getBody().asString();
-        assertThat(errorMsg)
-            .as("Error message in response")
-            .contains(expectedError);
-    }
-    
-    @Then("the API response should contain error message")
-    public void theAPIResponseShouldContainErrorMessage() {
-        // For 500 errors, we should adjust expectation
-        if (response.getStatusCode() == 500) {
-            assertThat(response.getStatusCode())
-                .as("Server error occurred")
-                .isEqualTo(500);
-        } else {
-            String errorMsg = response.getBody().asString();
-            assertThat(errorMsg)
-                .as("Error message in response")
-                .isNotNull()
-                .isNotEmpty();
-        }
     }
 }

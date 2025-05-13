@@ -1,3 +1,4 @@
+@api
 Feature: Demoblaze Login API
 
   Background:
