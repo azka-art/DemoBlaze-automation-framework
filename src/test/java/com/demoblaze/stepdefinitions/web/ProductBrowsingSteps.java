@@ -13,6 +13,10 @@ public class ProductBrowsingSteps {
     private ProductDetailPage productDetailPage;
     private CartPage cartPage;
     
+    public ProductBrowsingSteps() {
+        this.homePage = new HomePage();
+    }
+    
     @When("I click on {string} category")
     public void iClickOnCategory(String category) {
         if (homePage == null) {
@@ -138,20 +142,5 @@ public class ProductBrowsingSteps {
         assertThat(isInCart)
             .as(productName + " should be in cart")
             .isTrue();
-    }
-    
-    @Then("I should see products filtered by Phones category")
-    public void iShouldSeeProductsFilteredByPhonesCategory() {
-        iShouldSeeProductsFilteredByCategory("Phones");
-    }
-    
-    @Then("I should see products filtered by Laptops category")
-    public void iShouldSeeProductsFilteredByLaptopsCategory() {
-        iShouldSeeProductsFilteredByCategory("Laptops");
-    }
-    
-    @Then("I should see products filtered by Monitors category")
-    public void iShouldSeeProductsFilteredByMonitorsCategory() {
-        iShouldSeeProductsFilteredByCategory("Monitors");
     }
 }

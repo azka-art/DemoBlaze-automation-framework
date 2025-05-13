@@ -10,10 +10,9 @@ import io.restassured.response.Response;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SignupApiSteps {
+public class SignupApiSteps extends BaseApiSteps {
     private final ApiClient apiClient = new ApiClient();
     private UserModel signupCredentials;
-    private Response response; // Own response variable
     private static final Faker faker = new Faker();
     
     @Given("I have new user signup credentials")
@@ -50,13 +49,6 @@ public class SignupApiSteps {
             .post("/signup");
         
         response.then().log().all();
-    }
-    
-    @Then("the API response status code should be {int}")
-    public void theAPIResponseStatusCodeShouldBe(int expectedStatusCode) {
-        assertThat(response.getStatusCode())
-            .as("API response status code")
-            .isEqualTo(expectedStatusCode);
     }
     
     @Then("the API response should contain success message")

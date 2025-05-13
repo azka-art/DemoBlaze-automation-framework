@@ -10,10 +10,9 @@ import io.restassured.response.Response;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LoginApiSteps {
+public class LoginApiSteps extends BaseApiSteps {
     private final ApiClient apiClient = new ApiClient();
     private UserModel userCredentials;
-    private Response response;
     private static final Faker faker = new Faker();
     
     @Given("the API base URL is configured")
@@ -56,13 +55,6 @@ public class LoginApiSteps {
             .post("/login");
         
         response.then().log().all();
-    }
-    
-    @Then("the API response status code should be {int}")
-    public void theAPIResponseStatusCodeShouldBe(int expectedStatusCode) {
-        assertThat(response.getStatusCode())
-            .as("API response status code")
-            .isEqualTo(expectedStatusCode);
     }
     
     @Then("the API response should contain auth token")
