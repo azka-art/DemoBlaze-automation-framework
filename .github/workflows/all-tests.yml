@@ -1,22 +1,37 @@
-ame: Run All Tests
+name: Test Automation Pipeline
 
 on:
-  workflow_dispatch:  # Manual trigger only
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # Daily run
 
 jobs:
-  all-tests:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chrome, firefox]
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      
+    - uses: actions/checkout@v3
+    
     - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
         java-version: '11'
         distribution: 'temurin'
-        cache: gradle
+    
+    - name: Cache Gradle packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
         
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
@@ -24,91 +39,28 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build -x test
       
-    - name: Setup Chrome
-      uses: browser-actions/setup-chrome@latest
-    
     - name: Run API tests
-      run: |
-        echo "Running API tests..."
-        ./gradlew apiTests || echo "API tests completed with issues"
-      id: api-tests
+      run: ./gradlew apiTests -Dbrowser=${{ matrix.browser }}
       continue-on-error: true
       
-    - name: Run Web UI tests
-      run: |
-        echo "Running Web UI tests..."
-        ./gradlew webTests -Dheadless=true -Dbrowser=chrome
-      id: web-tests
-      if: always()
+    - name: Run Web tests
+      run: ./gradlew webTests -Dheadless=true -Dbrowser=${{ matrix.browser }}
       continue-on-error: true
       
-    - name: Generate Test Summary
+    - name: Generate Allure Report
       if: always()
-      run: |
-        echo "## Test Results Summary" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "API Tests: ${{ steps.api-tests.outcome }}" >> $GITHUB_STEP_SUMMARY
-        echo "Web Tests: ${{ steps.web-tests.outcome }}" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        
-        # Check if reports exist
-        if [ -f "build/reports/cucumber/api/index.html" ]; then
-          echo "✅ API test report generated" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "❌ API test report not found" >> $GITHUB_STEP_SUMMARY
-        fi
-        
-        if [ -f "build/reports/cucumber/web/index.html" ]; then
-          echo "✅ Web test report generated" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "❌ Web test report not found" >> $GITHUB_STEP_SUMMARY
-        fi
-        
-    - name: Upload API Cucumber Reports
+      run: ./gradlew allureReport
+      
+    - name: Upload Allure Results
       uses: actions/upload-artifact@v3
       if: always()
       with:
-        name: cucumber-api-reports
-        path: |
-          build/reports/cucumber/api/
-          build/test-results/
-        retention-days: 30
+        name: allure-results-${{ matrix.browser }}
+        path: build/allure-results
         
-    - name: Upload Web Cucumber Reports
+    - name: Upload Allure Report
       uses: actions/upload-artifact@v3
       if: always()
       with:
-        name: cucumber-web-reports
-        path: |
-          build/reports/cucumber/web/
-          build/test-results/
-        retention-days: 30
-        
-    - name: Upload Combined Reports
-      uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: all-test-reports
-        path: build/reports/
-        retention-days: 30
-        
-    - name: Archive test results
-      uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: test-results
-        path: |
-          build/reports/cucumber/
-          build/test-results/
-        retention-days: 30
-        
-    - name: Set job status
-      if: always()
-      run: |
-        if [[ "${{ steps.api-tests.outcome }}" == "failure" ]] || [[ "${{ steps.web-tests.outcome }}" == "failure" ]]; then
-          echo "One or more test suites failed"
-          echo "STATUS=failed" >> $GITHUB_ENV
-        else
-          echo "All tests passed"
-          echo "STATUS=passed" >> $GITHUB_ENV
-        fi
+        name: allure-report-${{ matrix.browser }}
+        path: build/reports/allure-report

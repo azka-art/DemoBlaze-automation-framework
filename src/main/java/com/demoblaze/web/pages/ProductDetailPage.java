@@ -18,29 +18,52 @@ public class ProductDetailPage extends BasePage {
     @FindBy(css = ".price-container")
     private WebElement productPrice;
     
-    public void clickAddToCart() {
+        public void clickAddToCart() {
         try {
             Thread.sleep(3000);
             
-            // Try multiple methods to click the button
-            try {
-                wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
-                addToCartButton.click();
-            } catch (Exception e) {
-                // Try JavaScript click
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartButton);
+            // Try different selectors
+            By[] selectors = {
+                By.xpath("//a[contains(text(),'Add to cart')]"),
+                By.xpath("//a[contains(@onclick,'addToCart')]"),
+                By.cssSelector("a.btn.btn-success.btn-lg"),
+                By.linkText("Add to cart")
+            };
+            
+            WebElement button = null;
+            for (By selector : selectors) {
+                try {
+                    wait.until(ExpectedConditions.presenceOfElementLocated(selector));
+                    button = driver.findElement(selector);
+                    if (button != null && button.isDisplayed()) {
+                        break;
+                    }
+                } catch (Exception e) {
+                    // Try next selector
+                }
             }
             
-            Thread.sleep(1000);
+            if (button != null) {
+                // Scroll to element
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
+                Thread.sleep(1000);
+                
+                // Try normal click first
+                try {
+                    wait.until(ExpectedConditions.elementToBeClickable(button));
+                    button.click();
+                } catch (Exception e) {
+                    // Fallback to JS click
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", button);
+                }
+                Thread.sleep(1000);
+            } else {
+                throw new RuntimeException("Add to cart button not found");
+            }
+            
         } catch (Exception e) {
             System.err.println("Error clicking add to cart: " + e.getMessage());
-            // Try to find button by different selector
-            try {
-                WebElement button = driver.findElement(By.cssSelector("a.btn.btn-success"));
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", button);
-            } catch (Exception ex) {
-                throw new RuntimeException("Could not click add to cart button", ex);
-            }
+            throw new RuntimeException("Could not click add to cart button", e);
         }
     }
     

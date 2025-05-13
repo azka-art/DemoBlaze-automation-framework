@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'idea'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 group 'com.demoblaze'
@@ -22,6 +23,21 @@ configurations.all {
     }
 }
 
+allure {
+    version = '2.22.0'
+    adapter {
+        allureJavaVersion = '2.22.0'
+        aspectjVersion = '1.9.19'
+        aspectjweaver = true
+        
+        frameworks {
+            junit4 {
+                adapterVersion = '2.22.0'
+            }
+        }
+    }
+}
+
 dependencies {
     // Cucumber
     implementation 'io.cucumber:cucumber-java:7.11.1'
@@ -37,6 +53,10 @@ dependencies {
         exclude group: 'org.slf4j'
     }
     
+    // Allure reporting
+    implementation 'io.qameta.allure:allure-cucumber7-jvm:2.22.0'
+    implementation 'io.qameta.allure:allure-junit4:2.22.0'
+    
     // For JSON processing
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.0'
@@ -50,6 +70,9 @@ dependencies {
     
     // AssertJ for more expressive assertions
     implementation 'org.assertj:assertj-core:3.24.2'
+    
+    // Commons IO for file operations
+    implementation 'commons-io:commons-io:2.11.0'
     
     // Fix missing dependencies
     implementation 'ch.randelshofer:fastdoubleparser:0.8.0'
@@ -76,6 +99,7 @@ tasks.register('apiTests', JavaExec) {
     args = ['--plugin', 'pretty',
             '--plugin', 'html:build/reports/cucumber/api/index.html',
             '--plugin', 'json:build/reports/cucumber/api/cucumber.json',
+            '--plugin', 'io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm',
             '--glue', 'com.demoblaze.stepdefinitions.api',
             '--tags', '@api',
             'src/test/resources/features/api']
@@ -91,6 +115,7 @@ tasks.register('webTests', JavaExec) {
     args = ['--plugin', 'pretty',
             '--plugin', 'html:build/reports/cucumber/web/index.html',
             '--plugin', 'json:build/reports/cucumber/web/cucumber.json',
+            '--plugin', 'io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm',
             '--glue', 'com.demoblaze.stepdefinitions.web',
             '--tags', '@web',
             'src/test/resources/features/web']
@@ -101,4 +126,9 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.deprecation = true
 }

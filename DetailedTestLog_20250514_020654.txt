@@ -1,0 +1,106 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20250514020654
+Username: DESKTOP-EE4NV9N\ASUS
+RunAs User: DESKTOP-EE4NV9N\ASUS
+Configuration Name: 
+Machine: DESKTOP-EE4NV9N (Microsoft Windows NT 10.0.22621.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "c:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+Process ID: 24332
+PSVersion: 5.1.22621.4249
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.4249
+BuildVersion: 10.0.22621.4249
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\ASUS\DemoBlaze-automation-framework\DetailedTestLog_20250514_020654.txt
+========================================
+TEST AUTOMATION REPORT
+========================================
+Generated: 2025-05-14 02:06:54
+Project: DemoBlaze Automation Framework
+Environment: default
+Test Type: all
+Browser: chrome
+Headless: False
+========================================
+
+Collecting System Information...
+SYSTEM INFORMATION
+==================
+OS: Windows_NT
+Computer Name: DESKTOP-EE4NV9N
+PowerShell Version: 5.1.22621.4249
+Java Version: openjdk version "21.0.6" 2025-01-21 LTS
+Gradle Version: Gradle 8.7
+Current Directory: C:\Users\ASUS\DemoBlaze-automation-framework
+
+Checking Project Structure...
+PROJECT STRUCTURE
+=================API Test Features:  - login.feature
+  - signup.feature
+
+Web Test Features:  - checkout_process.feature
+  - login_web.feature
+  - product_browsing.feature
+
+Test Classes:  - C:\Users\ASUS\DemoBlaze-automation-framework\src\test\java\com\demoblaze\runners\ApiTestRunner.java
+  - C:\Users\ASUS\DemoBlaze-automation-framework\src\test\java\com\demoblaze\runners\WebTestRunner.java
+  - C:\Users\ASUS\DemoBlaze-automation-framework\src\test\java\com\demoblaze\stepdefinitions\api\BaseApiSteps.java
+  - C:\Users\ASUS\DemoBlaze-automation-framework\src\test\java\com\demoblaze\stepdefinitions\api\CommonApiSteps.java
+  - C:\Users\ASUS\DemoBlaze-automation-framework\src\test\java\com\demoblaze\stepdefinitions\api\LoginApiSteps.java
+  - C:\Users\ASUS\DemoBlaze-automation-framework\src\test\java\com\demoblaze\stepdefinitions\api\SetupSteps.java
+  - C:\Users\ASUS\DemoBlaze-automation-framework\src\test\java\com\demoblaze\stepdefinitions\api\SignupApiSteps.java
+  - C:\Users\ASUS\DemoBlaze-automation-framework\src\test\java\com\demoblaze\stepdefinitions\web\CheckoutSteps.java
+  - C:\Users\ASUS\DemoBlaze-automation-framework\src\test\java\com\demoblaze\stepdefinitions\web\LoginWebSteps.java
+  - C:\Users\ASUS\DemoBlaze-automation-framework\src\test\java\com\demoblaze\stepdefinitions\web\ProductBrowsingSteps.java
+
+Cleaning and Building Project...
+Running: ./gradlew clean
+Running: ./gradlew compileJava compileTestJava
+
+Running Tests...
+Executing All Tests...
+
+Parsing Test Results...
+
+Collecting Failure Information...
+Cannot overwrite variable Error because it is read-only or constant.
+At line:238 char:14
++     foreach ($error in $errors) {
++              ~~~~~~
+    + CategoryInfo          : WriteError: (Error:String) [], SessionStateUnauthorizedAccessException
+    + FullyQualifiedErrorId : VariableNotWritable
+Cannot overwrite variable Error because it is read-only or constant.
+At line:238 char:14
++     foreach ($error in $errors) {
++              ~~~~~~
+    + CategoryInfo          : WriteError: (Error:String) [], SessionStateUnauthorizedAccessException
+    + FullyQualifiedErrorId : VariableNotWritable
+
+
+Generating Test Coverage Summary...
+
+Calculating Performance Metrics...
+
+Generating Recommendations...
+
+Checking File Status...
+
+========================================
+REPORT SUMMARY
+========================================
+Total Tests Run: 21
+Passed: 10
+Failed: 1
+Report Generated: 2025-05-14 02:13:04
+Report File: C:\Users\ASUS\DemoBlaze-automation-framework\TestReport_all_default_20250514_020654.txt
+Detailed Log: C:\Users\ASUS\DemoBlaze-automation-framework\DetailedTestLog_20250514_020654.txt
+========================================
+**********************
+Windows PowerShell transcript end
+End time: 20250514021304
+**********************

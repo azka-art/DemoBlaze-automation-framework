@@ -4,12 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-/**
- * Manages configuration properties for the automation framework
- */
 public class ConfigManager {
     private static final Properties properties = new Properties();
     private static ConfigManager instance;
+    private static final String DEFAULT_ENV = "default";
 
     private ConfigManager() {
         loadProperties();
@@ -23,13 +21,19 @@ public class ConfigManager {
     }
 
     private void loadProperties() {
-        try (InputStream input = getClass().getClassLoader()
-                .getResourceAsStream("config.properties")) {
+        String env = System.getProperty("test.env", DEFAULT_ENV);
+        String configFile = env.equals(DEFAULT_ENV) ? "config.properties" : "config-" + env + ".properties";
+        
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream(configFile)) {
             if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
-                return;
+                System.out.println("Using default config.properties as " + configFile + " not found");
+                try (InputStream defaultInput = getClass().getClassLoader().getResourceAsStream("config.properties")) {
+                    properties.load(defaultInput);
+                }
+            } else {
+                properties.load(input);
+                System.out.println("Loaded configuration from " + configFile);
             }
-            properties.load(input);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -40,7 +44,6 @@ public class ConfigManager {
         return systemProperty != null ? systemProperty : properties.getProperty(key);
     }
     
-    // Static helper to get property directly
     public static String get(String key) {
         return getInstance().getProperty(key);
     }
