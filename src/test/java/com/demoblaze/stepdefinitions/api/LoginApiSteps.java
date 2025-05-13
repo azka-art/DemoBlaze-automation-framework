@@ -16,10 +16,19 @@ public class LoginApiSteps {
     private Response response;
     private static final Faker faker = new Faker();
     
-    @Given("I have user credentials")
-    public void iHaveUserCredentials() {
-        // Using test credentials
-        userCredentials = new UserModel("test", "test");
+    @Given("the API base URL is configured")
+    public void theAPIBaseURLIsConfigured() {
+        // Base URL is configured in ApiClient constructor
+    }
+    
+    @Given("I have valid user credentials")
+    public void iHaveValidUserCredentials() {
+        userCredentials = new UserModel("testuser2025", "testpassword2025");
+    }
+    
+    @Given("I have user credentials with wrong password")
+    public void iHaveUserCredentialsWithWrongPassword() {
+        userCredentials = new UserModel("testuser2025", "wrongpassword");
     }
     
     @Given("I have non-existent user credentials")
@@ -28,6 +37,16 @@ public class LoginApiSteps {
             faker.name().username() + System.currentTimeMillis(),
             faker.internet().password()
         );
+    }
+    
+    @Given("I have empty user credentials")
+    public void iHaveEmptyUserCredentials() {
+        userCredentials = new UserModel("", "");
+    }
+    
+    @Given("I have user credentials with special characters")
+    public void iHaveUserCredentialsWithSpecialCharacters() {
+        userCredentials = new UserModel("user@#$%", "pass!@#");
     }
     
     @When("I send a login request to the API")
@@ -46,17 +65,13 @@ public class LoginApiSteps {
             .isEqualTo(expectedStatusCode);
     }
     
-    @Then("the API response should contain expected content")
-    public void theAPIResponseShouldContainExpectedContent() {
-        String responseBody = response.getBody().asString();
-        assertThat(responseBody)
-            .as("Response should have content")
+    @Then("the API response should contain auth token")
+    public void theAPIResponseShouldContainAuthToken() {
+        String token = response.jsonPath().getString("Auth_token");
+        assertThat(token)
+            .as("Auth token in response")
             .isNotNull()
             .isNotEmpty();
-            
-        // Just verify we got some response - could be auth token or error
-        assertThat(responseBody)
-            .containsAnyOf("Auth_token", "errorMessage", "Wrong password");
     }
     
     @Then("the API response should contain error message")
@@ -65,7 +80,14 @@ public class LoginApiSteps {
         assertThat(errorMsg)
             .as("Error message in response")
             .isNotNull()
-            .isNotEmpty()
-            .containsIgnoringCase("error");
+            .isNotEmpty();
+    }
+    
+    @Then("the API response should contain error message {string}")
+    public void theAPIResponseShouldContainErrorMessage(String expectedError) {
+        String errorMsg = response.getBody().asString();
+        assertThat(errorMsg)
+            .as("Error message in response")
+            .contains(expectedError);
     }
 }
