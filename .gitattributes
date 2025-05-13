@@ -1,8 +1,26 @@
-*.java text eol=lf working-tree-encoding=utf-8
-*.gradle text eol=lf working-tree-encoding=utf-8
-*.xml text eol=lf working-tree-encoding=utf-8
-*.properties text eol=lf working-tree-encoding=utf-8
-*.yml text eol=lf working-tree-encoding=utf-8
-*.yaml text eol=lf working-tree-encoding=utf-8
-*.md text eol=lf working-tree-encoding=utf-8
-*.feature text eol=lf working-tree-encoding=utf-8
+﻿# Auto detect text files and perform LF normalization
+* text=auto
+
+# Force the following filetypes to have unix (LF) line endings
+*.java text eol=lf
+*.gradle text eol=lf
+*.xml text eol=lf
+*.properties text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.feature text eol=lf
+*.json text eol=lf
+
+# Force batch scripts to have windows (CRLF) line endings
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files
+*.jar binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary

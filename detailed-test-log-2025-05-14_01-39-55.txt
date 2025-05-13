@@ -1,0 +1,834 @@
+﻿> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :jar
+> Task :assemble
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources
+> Task :testClasses
+
+> Task :apiTests
+
+@api @api @smoke
+Scenario: Successful login with valid credentials [90m# src/test/resources/features/api/login.feature:8[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m            [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747161600420",
+    "password": "testpass123"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: ffc2f4604e37ec063f12f64c7e6c8cb6
+date: Tue, 13 May 2025 18:40:02 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+  [32mGiven [0m[32mI have valid user credentials[0m             [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iHaveValidUserCredentials()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747161600420",
+    "password": "testpass123"
+}
+HTTP/1.1 200 OK
+Content-Type: application/json
+Vary: Accept-Encoding
+Content-Encoding: gzip
+X-Cloud-Trace-Context: 6eb70812f5d820f87adefbff751e8d16
+Date: Tue, 13 May 2025 18:40:02 GMT
+Server: Google Frontend
+Transfer-Encoding: chunked
+
+"Auth_token: dGVzdHVzZXJfMTc0NzE2MTYwMDQyMDE3NDc3NjE="
+HTTP/1.1 200 OK
+Content-Type: application/json
+Vary: Accept-Encoding
+Content-Encoding: gzip
+X-Cloud-Trace-Context: 6eb70812f5d820f87adefbff751e8d16
+Date: Tue, 13 May 2025 18:40:02 GMT
+Server: Google Frontend
+Transfer-Encoding: chunked
+
+"Auth_token: dGVzdHVzZXJfMTc0NzE2MTYwMDQyMDE3NDc3NjE="
+  [32mWhen [0m[32mI send a login request to the API[0m          [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iSendLoginRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+Response body: "Auth_token: dGVzdHVzZXJfMTc0NzE2MTYwMDQyMDE3NDc3NjE="
+
+  [32mAnd [0m[32mthe API response should contain auth token[0m  [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIResponseShouldContainAuthToken()[0m
+
+@api @api @negative
+Scenario: Login with invalid password                                [90m# src/test/resources/features/api/login.feature:15[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                               [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have user credentials with wrong password[0m                  [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iHaveUserCredentialsWithWrongPassword()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "anyuser",
+    "password": "wrongpassword"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 84f44388aa5853917207059c9b0346a7
+date: Tue, 13 May 2025 18:40:03 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "Wrong password."
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 84f44388aa5853917207059c9b0346a7
+date: Tue, 13 May 2025 18:40:03 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "Wrong password."
+}
+  [32mWhen [0m[32mI send a login request to the API[0m                             [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iSendLoginRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m                    [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain error message [0m[32m[1m"Wrong password"[0m [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIResponseShouldContainErrorMessage(java.lang.String)[0m
+
+@api @api @negative
+Scenario: Login with non-existent user                                    [90m# src/test/resources/features/api/login.feature:22[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                                    [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have non-existent user credentials[0m                              [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iHaveNonExistentUserCredentials()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "miguel.gibson1747161603297",
+    "password": "btp0qfiqsgo"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 9d2a263034ca5ee140ac0af56e92316f
+date: Tue, 13 May 2025 18:40:03 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "User does not exist."
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 9d2a263034ca5ee140ac0af56e92316f
+date: Tue, 13 May 2025 18:40:03 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "User does not exist."
+}
+  [32mWhen [0m[32mI send a login request to the API[0m                                  [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iSendLoginRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m                         [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain error message [0m[32m[1m"User does not exist"[0m [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIResponseShouldContainErrorMessage(java.lang.String)[0m
+
+@api @api @negative
+Scenario: Login with empty credentials              [90m# src/test/resources/features/api/login.feature:29[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m              [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have empty user credentials[0m               [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iHaveEmptyUserCredentials()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "",
+    "password": ""
+}
+HTTP/1.1 500 Internal Server Error
+content-type: text/html
+x-cloud-trace-context: 0a7b6e5e83210d6d272e427eb4f255ff
+date: Tue, 13 May 2025 18:40:04 GMT
+server: Google Frontend
+Content-Length: 290
+
+<html>
+  <head>
+    <title>500 Internal Server Error</title>
+  </head>
+  <body>
+    <h1>Internal Server Error</h1>
+    <p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+  </body>
+</html>
+HTTP/1.1 500 Internal Server Error
+content-type: text/html
+x-cloud-trace-context: 0a7b6e5e83210d6d272e427eb4f255ff
+date: Tue, 13 May 2025 18:40:04 GMT
+server: Google Frontend
+Content-Length: 290
+
+<html>
+  <head>
+    <title>500 Internal Server Error</title>
+  </head>
+  <body>
+    <h1>Internal Server Error</h1>
+    <p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+  </body>
+</html>
+  [32mWhen [0m[32mI send a login request to the API[0m            [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iSendLoginRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m500[0m   [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain error message[0m [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseShouldContainErrorMessage()[0m
+
+@api @api @boundary
+Scenario: Login with special characters in username     [90m# src/test/resources/features/api/login.feature:36[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                  [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have user credentials with special characters[0m [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iHaveUserCredentialsWithSpecialCharacters()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "user@#$%",
+    "password": "pass!@#"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 57b8accc3ce4ea2453ae1ca676765afb
+date: Tue, 13 May 2025 18:40:04 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "User does not exist."
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 57b8accc3ce4ea2453ae1ca676765afb
+date: Tue, 13 May 2025 18:40:04 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "User does not exist."
+}
+  [32mWhen [0m[32mI send a login request to the API[0m                [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iSendLoginRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m       [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+
+@api @api @smoke
+Scenario: Successful signup with new user             [90m# src/test/resources/features/api/signup.feature:8[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have new user signup credentials[0m            [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iHaveNewUserSignupCredentials()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "emile.weissnat1747161604634",
+    "password": "ndx7uag8g78ka"
+}
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Cloud-Trace-Context: 14e36df6f2996971435fcc9eb4971e4a
+Date: Tue, 13 May 2025 18:40:05 GMT
+Server: Google Frontend
+Content-Length: 3
+
+""
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Cloud-Trace-Context: 14e36df6f2996971435fcc9eb4971e4a
+Date: Tue, 13 May 2025 18:40:05 GMT
+Server: Google Frontend
+Content-Length: 3
+
+""
+  [32mWhen [0m[32mI send a signup request to the API[0m             [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iSendSignupRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m     [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain success message[0m [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.theAPIResponseShouldContainSuccessMessage()[0m
+
+@api @api @negative
+Scenario: Signup with existing username                                        [90m# src/test/resources/features/api/signup.feature:15[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                                         [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have existing user credentials for signup[0m                            [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iHaveExistingUserCredentialsForSignup()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser2025",
+    "password": "testpassword2025"
+}
+HTTP/1.1 200 OK
+Content-Type: application/json
+Vary: Accept-Encoding
+Content-Encoding: gzip
+X-Cloud-Trace-Context: 1a50a0221a765328ac1456ea4b14b4b7
+Date: Tue, 13 May 2025 18:40:05 GMT
+Server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "This user already exist."
+}
+HTTP/1.1 200 OK
+Content-Type: application/json
+Vary: Accept-Encoding
+Content-Encoding: gzip
+X-Cloud-Trace-Context: 1a50a0221a765328ac1456ea4b14b4b7
+Date: Tue, 13 May 2025 18:40:05 GMT
+Server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "This user already exist."
+}
+  [32mWhen [0m[32mI send a signup request to the API[0m                                      [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iSendSignupRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m                              [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain error message [0m[32m[1m"This user already exist."[0m [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIResponseShouldContainErrorMessage(java.lang.String)[0m
+
+@api @api @negative
+Scenario: Signup with empty username                  [90m# src/test/resources/features/api/signup.feature:22[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have signup credentials with empty username[0m [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iHaveSignupCredentialsWithEmptyUsername()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "",
+    "password": "yogq40rf8k"
+}
+HTTP/1.1 500 Internal Server Error
+content-type: text/html
+x-cloud-trace-context: 053acebbd3cc1ddff7c368db0403d13f
+date: Tue, 13 May 2025 18:40:05 GMT
+server: Google Frontend
+Content-Length: 290
+
+<html>
+  <head>
+    <title>500 Internal Server Error</title>
+  </head>
+  <body>
+    <h1>Internal Server Error</h1>
+    <p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+  </body>
+</html>
+HTTP/1.1 500 Internal Server Error
+content-type: text/html
+x-cloud-trace-context: 053acebbd3cc1ddff7c368db0403d13f
+date: Tue, 13 May 2025 18:40:05 GMT
+server: Google Frontend
+Content-Length: 290
+
+<html>
+  <head>
+    <title>500 Internal Server Error</title>
+  </head>
+  <body>
+    <h1>Internal Server Error</h1>
+    <p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+  </body>
+</html>
+  [32mWhen [0m[32mI send a signup request to the API[0m             [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iSendSignupRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m500[0m     [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain error message[0m   [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseShouldContainErrorMessage()[0m
+
+@api @api @negative
+Scenario: Signup with empty password                  [90m# src/test/resources/features/api/signup.feature:29[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have signup credentials with empty password[0m [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iHaveSignupCredentialsWithEmptyPassword()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "ray.emard",
+    "password": ""
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: 4d1fa395d7b35b2c3e79e1719c0f96b8
+date: Tue, 13 May 2025 18:40:06 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: 4d1fa395d7b35b2c3e79e1719c0f96b8
+date: Tue, 13 May 2025 18:40:06 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+  [32mWhen [0m[32mI send a signup request to the API[0m             [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iSendSignupRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m     [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain success message[0m [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.theAPIResponseShouldContainSuccessMessage()[0m
+
+@api @api @boundary
+Scenario: Signup with very long username             [90m# src/test/resources/features/api/signup.feature:36[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m               [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have signup credentials with long username[0m [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iHaveSignupCredentialsWithLongUsername()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "821bi51yl1krrb9r46wsa2khqb4mo7x68xgq6bac7f74iipnxp219y95hzg5s6qz3ub7llkexfd9aif4r9kvibtnb9j0ip2mx4rv",
+    "password": "vjd8yj1vszj2n"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: 62e88c39de12223b35a6dbb93c43e51c
+date: Tue, 13 May 2025 18:40:06 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: 62e88c39de12223b35a6dbb93c43e51c
+date: Tue, 13 May 2025 18:40:06 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+  [32mWhen [0m[32mI send a signup request to the API[0m            [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iSendSignupRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m    [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+
+10 Scenarios ([32m10 passed[0m)
+48 Steps ([32m48 passed[0m)
+0m6.617s
+
+
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.7/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 8s
+6 actionable tasks: 3 executed, 3 up-to-date
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :jar UP-TO-DATE
+> Task :assemble UP-TO-DATE
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses UP-TO-DATE
+
+> Task :webTests
+
+@web @e2e
+Scenario: Complete checkout process                                   [90m# src/test/resources/features/web/checkout_process.feature:4[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser2025",
+    "password": "testpassword2025"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 87341d9576f489baa7fbcc77f4b65ffb
+date: Tue, 13 May 2025 18:40:12 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "This user already exist."
+}
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                                [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI log in with valid credentials[0m                                [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iLogInWithValidCredentials()[0m
+  [32mAnd [0m[32mI click on a product named [0m[32m[1m"Samsung galaxy s6"[0m                  [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_on_a_product_named(java.lang.String)[0m
+Clicking button: Add to cart
+  [31mAnd [0m[31mI click the [0m[31m[1m"Add to cart"[0m[31m button[0m                                [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+      [31mjava.lang.RuntimeException: Could not click add to cart button
+	at com.demoblaze.web.pages.ProductDetailPage.clickAddToCart(ProductDetailPage.java:42)
+	at com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(CheckoutSteps.java:36)
+	at ?.I click the "Add to cart" button(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/checkout_process.feature:8)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"a.btn.btn-success"}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [224fc66185f3cd8961c67406acf24a24, findElement {using=css selector, value=a.btn.btn-success}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\ASUS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59479}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59479/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 224fc66185f3cd8961c67406acf24a24
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:193)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:183)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at com.demoblaze.web.pages.ProductDetailPage.clickAddToCart(ProductDetailPage.java:39)
+	at com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(CheckoutSteps.java:36)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$6(Runtime.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$7(Runtime.java:132)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.cucumber.core.runtime.Runtime$SameThreadExecutorService.execute(Runtime.java:253)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+	at io.cucumber.core.runtime.Runtime.lambda$runFeatures$3(Runtime.java:114)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.SliceOps$1$1.accept(SliceOps.java:200)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1685)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at io.cucumber.core.runtime.Runtime.runFeatures(Runtime.java:115)
+	at io.cucumber.core.runtime.Runtime.lambda$run$0(Runtime.java:84)
+	at io.cucumber.core.runtime.Runtime.execute(Runtime.java:99)
+	at io.cucumber.core.runtime.Runtime.run(Runtime.java:82)
+	at io.cucumber.core.cli.Main.run(Main.java:87)
+	at io.cucumber.core.cli.Main.main(Main.java:30)
+[0m
+  [36mAnd [0m[36mI accept the product added popup[0m                                [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_accept_the_product_added_popup()[0m
+  [36mAnd [0m[36mI navigate to the cart page[0m                                     [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_navigate_to_the_cart_page()[0m
+  [36mThen [0m[36mI should see the product in the cart[0m                           [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_should_see_the_product_in_the_cart()[0m
+  [36mWhen [0m[36mI click the [0m[36m[1m"Place Order"[0m[36m button[0m                               [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+  [36mAnd [0m[36mI fill in the order form with valid details[0m                     [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_fill_in_the_order_form_with_valid_details()[0m
+  [36mAnd [0m[36mI click the [0m[36m[1m"Purchase"[0m[36m button[0m                                   [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+  [36mThen [0m[36mI should see the purchase confirmation[0m                         [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_should_see_the_purchase_confirmation()[0m
+  [36mAnd [0m[36mI should see the success message [0m[36m[1m"Thank you for your purchase!"[0m [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_should_see_the_success_message(java.lang.String)[0m
+  [36mWhen [0m[36mI click the [0m[36m[1m"OK"[0m[36m button[0m                                        [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+  [36mThen [0m[36mI should return to the homepage[0m                                [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_should_return_to_the_homepage()[0m
+
+    Embedding failure-screenshot [image/png 280650 bytes]
+
+
+@web @smoke
+Scenario: Successful login with valid credentials                     [90m# src/test/resources/features/web/login_web.feature:4[0m
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                                [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on the login button in the navigation bar[0m              [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickOnLoginButtonInNav()[0m
+  [32mAnd [0m[32mI enter username [0m[32m[1m"testuser2025"[0m[32m and password [0m[32m[1m"testpassword2025"[0m [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iEnterCredentials(java.lang.String,java.lang.String)[0m
+  [32mAnd [0m[32mI click the login button[0m                                        [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickLoginButton()[0m
+  [32mThen [0m[32mI should be logged in successfully[0m                             [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iShouldBeLoggedInSuccessfully()[0m
+  [32mAnd [0m[32mI should see [0m[32m[1m"Welcome testuser2025"[0m[32m message[0m                     [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iShouldSeeMessage(java.lang.String)[0m
+
+@web @negative
+Scenario: Login with invalid password                              [90m# src/test/resources/features/web/login_web.feature:13[0m
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                             [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on the login button in the navigation bar[0m           [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickOnLoginButtonInNav()[0m
+  [32mAnd [0m[32mI enter username [0m[32m[1m"testuser2025"[0m[32m and password [0m[32m[1m"wrongpassword"[0m [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iEnterCredentials(java.lang.String,java.lang.String)[0m
+  [32mAnd [0m[32mI click the login button[0m                                     [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickLoginButton()[0m
+  [32mThen [0m[32mI should see error message [0m[32m[1m"Wrong password."[0m                [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iShouldSeeErrorMessage(java.lang.String)[0m
+
+@web @negative
+Scenario: Login with non-existent user                              [90m# src/test/resources/features/web/login_web.feature:21[0m
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                              [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on the login button in the navigation bar[0m            [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickOnLoginButtonInNav()[0m
+  [32mAnd [0m[32mI enter username [0m[32m[1m"nonexistentuser"[0m[32m and password [0m[32m[1m"password123"[0m [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iEnterCredentials(java.lang.String,java.lang.String)[0m
+  [32mAnd [0m[32mI click the login button[0m                                      [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickLoginButton()[0m
+  [32mThen [0m[32mI should see error message [0m[32m[1m"User does not exist."[0m            [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iShouldSeeErrorMessage(java.lang.String)[0m
+
+@web @negative
+Scenario: Login with empty credentials                                     [90m# src/test/resources/features/web/login_web.feature:29[0m
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                                     [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on the login button in the navigation bar[0m                   [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickOnLoginButtonInNav()[0m
+  [32mAnd [0m[32mI click the login button without entering credentials[0m                [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickLoginButtonWithoutEnteringCredentials()[0m
+  [32mThen [0m[32mI should see error message [0m[32m[1m"Please fill out Username and Password."[0m [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iShouldSeeErrorMessage(java.lang.String)[0m
+
+@web @boundary
+Scenario: Login with special characters                    [90m# src/test/resources/features/web/login_web.feature:36[0m
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                     [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on the login button in the navigation bar[0m   [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickOnLoginButtonInNav()[0m
+  [32mAnd [0m[32mI enter username [0m[32m[1m"user@#$%"[0m[32m and password [0m[32m[1m"pass!@#"[0m   [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iEnterCredentials(java.lang.String,java.lang.String)[0m
+  [32mAnd [0m[32mI click the login button[0m                             [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickLoginButton()[0m
+Alert text: User does not exist.
+  [32mThen [0m[32mlogin should be processed with appropriate response[0m [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.loginShouldBeProcessedWithAppropriateResponse()[0m
+
+@web @smoke
+Scenario: Browse products by categories                    [90m# src/test/resources/features/web/product_browsing.feature:4[0m
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                     [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on [0m[32m[1m"Phones"[0m[32m category[0m                        [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnCategory(java.lang.String)[0m
+  [32mThen [0m[32mI should see products filtered by [0m[32m[1mPhones[0m[32m category[0m   [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeProductsFilteredByCategory(java.lang.String)[0m
+  [32mWhen [0m[32mI click on [0m[32m[1m"Laptops"[0m[32m category[0m                       [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnCategory(java.lang.String)[0m
+  [32mThen [0m[32mI should see products filtered by [0m[32m[1mLaptops[0m[32m category[0m  [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeProductsFilteredByCategory(java.lang.String)[0m
+  [32mWhen [0m[32mI click on [0m[32m[1m"Monitors"[0m[32m category[0m                      [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnCategory(java.lang.String)[0m
+  [32mThen [0m[32mI should see products filtered by [0m[32m[1mMonitors[0m[32m category[0m [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeProductsFilteredByCategory(java.lang.String)[0m
+
+@web @functional
+Scenario: View product details                      [90m# src/test/resources/features/web/product_browsing.feature:14[0m
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m              [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on [0m[32m[1m"Phones"[0m[32m category[0m                 [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnCategory(java.lang.String)[0m
+  [32mAnd [0m[32mI click on product [0m[32m[1m"Samsung galaxy s6"[0m        [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnProduct(java.lang.String)[0m
+  [32mThen [0m[32mI should see the product details page[0m        [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeTheProductDetailsPage()[0m
+  [32mAnd [0m[32mI should see product name [0m[32m[1m"Samsung galaxy s6"[0m [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeProductName(java.lang.String)[0m
+  [32mAnd [0m[32mI should see product price[0m                    [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeProductPrice()[0m
+
+@web @functional
+Scenario: Navigate between pages            [90m# src/test/resources/features/web/product_browsing.feature:23[0m
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m      [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+Clicking button: Next
+  [32mWhen [0m[32mI click the [0m[32m[1m"Next"[0m[32m button[0m            [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+  [32mThen [0m[32mI should see different products[0m      [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeDifferentProducts()[0m
+Clicking button: Previous
+  [32mWhen [0m[32mI click the [0m[32m[1m"Previous"[0m[32m button[0m        [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+  [32mThen [0m[32mI should see the first page products[0m [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeTheFirstPageProducts()[0m
+
+@web @functional
+Scenario: Search for non-existent product            [90m# src/test/resources/features/web/product_browsing.feature:31[0m
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m               [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI try to find product [0m[32m[1m"NonExistentProduct123"[0m [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iTryToFindProduct(java.lang.String)[0m
+  [32mThen [0m[32mI should not find any matching products[0m       [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldNotFindAnyMatchingProducts()[0m
+
+@web @e2e
+Scenario: Add product to cart                     [90m# src/test/resources/features/web/product_browsing.feature:37[0m
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m            [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on product [0m[32m[1m"Nokia lumia 1520"[0m      [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnProduct(java.lang.String)[0m
+  [32mAnd [0m[32mI click [0m[32m[1m"Add to cart"[0m[32m button[0m                [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickButton(java.lang.String)[0m
+Alert message: Product added
+  [32mAnd [0m[32mI accept the product added confirmation[0m     [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iAcceptTheProductAddedConfirmation()[0m
+  [32mAnd [0m[32mI navigate to cart[0m                          [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iNavigateToCart()[0m
+  [32mThen [0m[32mI should see [0m[32m[1m"Nokia lumia 1520"[0m[32m in my cart[0m [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeInMyCart(java.lang.String)[0m
+
+[31mFailed scenarios:[0m
+file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/checkout_process.feature:4 # Complete checkout process
+
+11 Scenarios ([31m1 failed[0m, [32m10 passed[0m)
+66 Steps ([31m1 failed[0m, [36m10 skipped[0m, [32m55 passed[0m)
+5m41.463s
+
+
+java.lang.RuntimeException: Could not click add to cart button
+	at com.demoblaze.web.pages.ProductDetailPage.clickAddToCart(ProductDetailPage.java:42)
+	at com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(CheckoutSteps.java:36)
+	at ?.I click the "Add to cart" button(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/checkout_process.feature:8)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"a.btn.btn-success"}
+  (Session info: chrome=136.0.7103.93)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [224fc66185f3cd8961c67406acf24a24, findElement {using=css selector, value=a.btn.btn-success}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\ASUS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59479}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59479/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 224fc66185f3cd8961c67406acf24a24
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:193)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:183)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at com.demoblaze.web.pages.ProductDetailPage.clickAddToCart(ProductDetailPage.java:39)
+	at com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(CheckoutSteps.java:36)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$6(Runtime.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$7(Runtime.java:132)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.cucumber.core.runtime.Runtime$SameThreadExecutorService.execute(Runtime.java:253)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+	at io.cucumber.core.runtime.Runtime.lambda$runFeatures$3(Runtime.java:114)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.SliceOps$1$1.accept(SliceOps.java:200)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1685)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at io.cucumber.core.runtime.Runtime.runFeatures(Runtime.java:115)
+	at io.cucumber.core.runtime.Runtime.lambda$run$0(Runtime.java:84)
+	at io.cucumber.core.runtime.Runtime.execute(Runtime.java:99)
+	at io.cucumber.core.runtime.Runtime.run(Runtime.java:82)
+	at io.cucumber.core.cli.Main.run(Main.java:87)
+	at io.cucumber.core.cli.Main.main(Main.java:30)
+
+
+
+> Task :webTests FAILED
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.7/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+6 actionable tasks: 1 executed, 5 up-to-date
