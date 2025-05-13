@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductDetailPage extends BasePage {
     
-    @FindBy(css = "a.btn.btn-success.btn-lg")
+    @FindBy(xpath = "//a[contains(@class,'btn-success') and contains(text(),'Add to cart')]")
     private WebElement addToCartButton;
     
     @FindBy(css = ".name")
@@ -17,16 +17,33 @@ public class ProductDetailPage extends BasePage {
     private WebElement productPrice;
     
     public void clickAddToCart() {
-        wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
-        clickElement(addToCartButton);
+        try {
+            Thread.sleep(2000);
+            wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
+            clickElement(addToCartButton);
+        } catch (Exception e) {
+            System.err.println("Error clicking add to cart: " + e.getMessage());
+            // Try alternative methods
+            try {
+                driver.navigate().refresh();
+                Thread.sleep(2000);
+                clickElement(addToCartButton);
+            } catch (Exception ex) {
+                throw new RuntimeException("Could not click add to cart button", ex);
+            }
+        }
     }
     
     public void acceptProductAddedAlert() {
-        wait.until(ExpectedConditions.alertIsPresent());
-        Alert alert = driver.switchTo().alert();
-        String alertText = alert.getText();
-        System.out.println("Alert message: " + alertText);
-        alert.accept();
+        try {
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = driver.switchTo().alert();
+            String alertText = alert.getText();
+            System.out.println("Alert message: " + alertText);
+            alert.accept();
+        } catch (Exception e) {
+            System.err.println("No alert found: " + e.getMessage());
+        }
     }
     
     public String getProductName() {

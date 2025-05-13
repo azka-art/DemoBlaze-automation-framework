@@ -1,4 +1,13 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.import.gradle.enabled": true,
+    "java.import.gradle.wrapper.enabled": true,
+    "java.import.gradle.offline.enabled": false,
+    "java.server.launchMode": "Standard",
+    "java.configuration.runtimes": [],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "${userHome}/.gradle/caches/modules-2/files-2.1/**/*.jar"
+    ]
 }

@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'eclipse'
+    id 'idea'
 }
 
 group 'com.demoblaze'
@@ -12,6 +14,14 @@ repositories {
 sourceCompatibility = 11
 targetCompatibility = 11
 
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        if (details.requested.group == 'commons-logging') {
+            details.useTarget 'org.slf4j:jcl-over-slf4j:1.7.36'
+        }
+    }
+}
+
 dependencies {
     // Cucumber
     implementation 'io.cucumber:cucumber-java:7.11.1'
@@ -23,10 +33,14 @@ dependencies {
     
     // Selenium for Web UI Testing
     implementation 'org.seleniumhq.selenium:selenium-java:4.9.0'
-    implementation 'io.github.bonigarcia:webdrivermanager:5.6.0'
+    implementation('io.github.bonigarcia:webdrivermanager:5.9.2') {
+        exclude group: 'org.slf4j'
+    }
     
     // For JSON processing
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.0'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.0'
     
     // JUnit
     testImplementation 'junit:junit:4.13.2'
@@ -36,9 +50,22 @@ dependencies {
     
     // AssertJ for more expressive assertions
     implementation 'org.assertj:assertj-core:3.24.2'
+    
+    // Fix missing dependencies
+    implementation 'ch.randelshofer:fastdoubleparser:0.8.0'
+    implementation 'com.beust:jcommander:1.82'
+    
+    // Logging
+    implementation 'org.slf4j:slf4j-simple:2.0.9'
 }
 
-// Task for running API tests
+eclipse {
+    classpath {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
 tasks.register('apiTests', JavaExec) {
     dependsOn assemble, testClasses
     group = 'Verification'
@@ -54,7 +81,6 @@ tasks.register('apiTests', JavaExec) {
             'src/test/resources/features/api']
 }
 
-// Task for running Web UI tests
 tasks.register('webTests', JavaExec) {
     dependsOn assemble, testClasses
     group = 'Verification'

@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="output" path="bin/default"/>
+	<classpathentry output="bin/main" kind="src" path="src/main/java">
+		<attributes>
+			<attribute name="gradle_scope" value="main"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry output="bin/main" kind="src" path="src/main/resources">
+		<attributes>
+			<attribute name="gradle_scope" value="main"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry output="bin/test" kind="src" path="src/test/java">
+		<attributes>
+			<attribute name="gradle_scope" value="test"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry output="bin/test" kind="src" path="src/test/resources">
+		<attributes>
+			<attribute name="gradle_scope" value="test"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11/"/>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-java/7.11.1/b938c3e6e754ef80bcd7e848fd45a668a4f75ac/cucumber-java-7.11.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-java/7.11.1/acf6c0d800e5dbda68b1bb4ee74c20f0d9bec4c1/cucumber-java-7.11.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-java/7.11.1/203bcc67e1997b77df7de9a641250803fc9490a5/cucumber-java-7.11.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-junit/7.11.1/f4c0e1dbb6ee938669c74128792269fd80bea301/cucumber-junit-7.11.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-junit/7.11.1/c438a7dcae5b3d2742a7b093ce9d2718f2f66ea8/cucumber-junit-7.11.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-junit/7.11.1/32674692b8623fc545a443f22399ec9292917d16/cucumber-junit-7.11.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/rest-assured/5.3.0/1f5a6fc38903ce1c6107ffb41cc7faadb2f35877/rest-assured-5.3.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/rest-assured/5.3.0/8d59681728713ee2f029d1d30781ec4f181b1687/rest-assured-5.3.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/rest-assured/5.3.0/81a36067ff36f6dff00ffbf493cbefce0e9f5643/rest-assured-5.3.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/json-schema-validator/5.3.0/7860ce68769f1bbdae95829620caff20fc9076a3/json-schema-validator-5.3.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/json-schema-validator/5.3.0/ca8768360ffb7d28cb36eb1cb47c096dfb137126/json-schema-validator-5.3.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/json-schema-validator/5.3.0/6d203832fdd76f48e47538a1652f5a407b5d082d/json-schema-validator-5.3.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-java/4.9.0/1ecb37e0b737a743a5e8860df99f402f508fd2f6/selenium-java-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-java/4.9.0/18cef0adbc08d152da07b234a04f6e8240ce215f/selenium-java-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-java/4.9.0/b04f3ee8f5e43fa3b162981b50bb72fe1acabb33/selenium-java-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.github.bonigarcia/webdrivermanager/5.9.2/d2f834a0051d7da3e89d0ad1c40fc4d5d7e40ef0/webdrivermanager-5.9.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.github.bonigarcia/webdrivermanager/5.9.2/61d2d9413ab230f401d2e9aac3bca0baf02b143c/webdrivermanager-5.9.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.github.bonigarcia/webdrivermanager/5.9.2/4856f0bc4ff4c9c03d6af453088e5358c220f64b/webdrivermanager-5.9.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java/3.4.0/cfcb7e934eaa62f1993680753ca51d99cc8e7fec/docker-java-3.4.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java/3.4.0/74afcd1d3ca458e8adfc9fa910cd8467187230d5/docker-java-3.4.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java/3.4.0/66d77459f798249c93c50a73225022961ba1de84/docker-java-3.4.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-core/3.4.0/6e5bc3515a5bf6903e2b408577b1357205886865/docker-java-core-3.4.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-core/3.4.0/520ce1892e4f9a38ed51fedfc8682ea073af1df/docker-java-core-3.4.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-core/3.4.0/5c224d967738d68a5488e9c6e7700afd94c5c956/docker-java-core-3.4.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-api/3.4.0/2bf341e36511f7dedab46a30b328676e7d0718ea/docker-java-api-3.4.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-api/3.4.0/9ef23dcc93693f15e69b64632be096c38e31bc44/docker-java-api-3.4.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-api/3.4.0/ea1e44d01c7e1a5f7799c1861f6e1e96aa1dbca4/docker-java-api-3.4.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.15.0/3df2195dd756f05fbce5bd74cdf63882f80c5fa3/jackson-annotations-2.15.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.15.0/89b0fd554928425a776a6e97ed010034312af21d/jackson-annotations-2.15.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.15.0/2990e92969fa7f037c39348b0e574d76026573f4/jackson-annotations-2.15.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.15.0/bdb32ee01a398cc68dd3cfa5db8d204e29c17422/jackson-core-2.15.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.15.0/12f334a1dc9c6d2854c43ae314024dde8b3ad572/jackson-core-2.15.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.15.0/7886613a48bcedcca36430e8cda267a6aaa83369/jackson-core-2.15.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/json-schema-validator/2.2.14/6d85613975d15d37f8c23a11d82803548733a794/json-schema-validator-2.2.14-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/json-schema-validator/2.2.14/10c42918adc1fd4454e83bb21365f30df497a076/json-schema-validator-2.2.14.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/json-schema-validator/2.2.14/e1de4da33fc052fa697de67a442085410df5cd52/json-schema-validator-2.2.14-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/json-schema-core/1.2.14/2507ab21cd1879f1089cf829442540348ec54867/json-schema-core-1.2.14-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/json-schema-core/1.2.14/39d4efcf7e538684200fea15e08d47d0198c19fb/json-schema-core-1.2.14.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/json-schema-core/1.2.14/5b57c5b69cc5b0360c0112946604989e363ef965/json-schema-core-1.2.14-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.15.0/4c8ccbba5d75af5539fcb2fd580864f04015c53f/jackson-databind-2.15.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.15.0/d41caa3a4e9f85382702a059a65c512f85ac230/jackson-databind-2.15.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.15.0/5685c60b09e889ea4bf48846af5621a0257eb67f/jackson-databind-2.15.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.javafaker/javafaker/1.0.2/2256a91208763d62c516601857022be16523552c/javafaker-1.0.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.javafaker/javafaker/1.0.2/be0ff271b1208416822db4438864df47f90af92f/javafaker-1.0.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.javafaker/javafaker/1.0.2/6dc50f991c7c8d8f4215d0a2cc4ff728255fc597/javafaker-1.0.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.assertj/assertj-core/3.24.2/76c425ccc878f91e347fa3cb0d686772679b66e2/assertj-core-3.24.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.assertj/assertj-core/3.24.2/ebbf338e33f893139459ce5df023115971c2786f/assertj-core-3.24.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.assertj/assertj-core/3.24.2/98860d94c7e88be87828292d36f26e8986ce5fd4/assertj-core-3.24.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/ch.randelshofer/fastdoubleparser/0.8.0/802a4f14c86e74e0dea7eea175be800046bd7f12/fastdoubleparser-0.8.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/ch.randelshofer/fastdoubleparser/0.8.0/85c25540369921659556ead85e02c99ef0d24280/fastdoubleparser-0.8.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/ch.randelshofer/fastdoubleparser/0.8.0/f92aa73cb0dc139cf28cc35a9a8f00e7711be361/fastdoubleparser-0.8.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chrome-driver/4.9.0/c3a9d8c3e01e6314fc1519dfc0bf3427c59a12f4/selenium-chrome-driver-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chrome-driver/4.9.0/7754d644b681293fabf8d25418000916445cc739/selenium-chrome-driver-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chrome-driver/4.9.0/f7e950b84730575e6432e3df63ac1f69cf16c0b2/selenium-chrome-driver-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v110/4.9.0/1f818a93826c522dcf679a3e9da076f7727f4f67/selenium-devtools-v110-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v110/4.9.0/dcc96d09b6cf97c6f7b320a2f539051ea1c76ced/selenium-devtools-v110-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v110/4.9.0/bd80514ffc4f7f52827d22bb63db50b569b12cbc/selenium-devtools-v110-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v111/4.9.0/206274b5cd954c200b4bab0ba4226712171c01cf/selenium-devtools-v111-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v111/4.9.0/72efc750b06677b46961f48aa2f0ed9bf7f4032/selenium-devtools-v111-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v111/4.9.0/1a8ffaf89b34a11eaeab9377d986bcbc5b4307d3/selenium-devtools-v111-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v112/4.9.0/470692f2faf33e981a3f40d31827af7ab2b9ca4a/selenium-devtools-v112-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v112/4.9.0/3004ae62c2040b302e01bbbd91e9fed5fe23595b/selenium-devtools-v112-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v112/4.9.0/deb0f9874c47c9ef4d610c2117cf9fb3dcbf5e36/selenium-devtools-v112-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/4.9.0/6f25d17024f0c4644862238eb10fe757d01d3465/selenium-firefox-driver-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/4.9.0/9fef8f1dc7deb0f444c7605b6380d76b1001860/selenium-firefox-driver-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/4.9.0/1a641d13dda8d309d162d60d62181d5a3ebdbfb4/selenium-firefox-driver-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v85/4.9.0/bd44b37a036395aa9414be246c6f7a5f0be4ab72/selenium-devtools-v85-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v85/4.9.0/a41a71aa1552394447c23f5a11f67f57a4c6504/selenium-devtools-v85-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v85/4.9.0/c1ba0997ef2aca2144229451241a8ab710842bc8/selenium-devtools-v85-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-edge-driver/4.9.0/66d13df438d08d73e1813a83d665df1e20441deb/selenium-edge-driver-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-edge-driver/4.9.0/f1f96c4ac937f21bc77e01cd1b87a61865bcaf1f/selenium-edge-driver-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-edge-driver/4.9.0/6e62f2f6b6466e4ba88f2c7afe9bef6d1ef7c448/selenium-edge-driver-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-ie-driver/4.9.0/6a3436ce19d093794435b77f42446682ca57fcf/selenium-ie-driver-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-ie-driver/4.9.0/408920d4cb9aaa776f99fb1f785ae06d8a234be8/selenium-ie-driver-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-ie-driver/4.9.0/941f0471b54eaaef26f2e9edd22871d5a678db64/selenium-ie-driver-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-safari-driver/4.9.0/c25ba26ba748231c1f4440fa9d889d8a6de2ff10/selenium-safari-driver-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-safari-driver/4.9.0/4a660ae443c116e5e89510abd1fbccbf8bae3d41/selenium-safari-driver-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-safari-driver/4.9.0/2ea15cfe5f5b2a1409da7561653a7340c0ce1037/selenium-safari-driver-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/4.9.0/2b27924b0a9d36767361b368026f666687069f04/selenium-support-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/4.9.0/688536d9964aed35cbae90baf55a243e12f2ebeb/selenium-support-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/4.9.0/173cf1354a20fdd531a36036703cf9b6f6a6959a/selenium-support-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chromium-driver/4.9.0/4ddc6659279b366271e295cff83cfa37de35bbb3/selenium-chromium-driver-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chromium-driver/4.9.0/f0ff2932d0ffdc49388eafa0c379f03d23496a29/selenium-chromium-driver-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chromium-driver/4.9.0/8a05479f8bf39c99cd4cdda188262a3c9b92a7d8/selenium-chromium-driver-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/4.9.0/2ee292364e7183db87658f6cd0ea5a2d40d283e1/selenium-remote-driver-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/4.9.0/7353be691642e6990adb8ea56579e3d8bb3e6639/selenium-remote-driver-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/4.9.0/65bf737336b049d313f71c2ea88b867b59bf8158/selenium-remote-driver-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.82/5cf95a2e18d79d404fd81263db36862287e736cc/jcommander-1.82-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.82/a7c5fef184d238065de38f81bbc6ee50cca2e21/jcommander-1.82.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.82/c4deb5b41ea41fcc0280da3e0ba5ec951d4e048c/jcommander-1.82-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-simple/2.0.9/eba36760ca52f759cbfacfb11e702f0be48b1a0d/slf4j-simple-2.0.9-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-simple/2.0.9/6367825de95d8885aae056afa793f25a76a84b7d/slf4j-simple-2.0.9.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-simple/2.0.9/7bafaa9cb8cd3c0c38258061dc914da63208b575/slf4j-simple-2.0.9-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-core/7.11.1/55eff8e14ceaaf929f0b6864b2cdd2b3b27cd162/cucumber-core-7.11.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-core/7.11.1/4e47e96eef84b29f55c08ca302a0df626922252a/cucumber-core-7.11.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-core/7.11.1/bca5a70d7377ed61593ddea5ed4e9766777feec8/cucumber-core-7.11.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-expressions/16.1.2/d946eab4f83c5c07e47935b3b10ff08725fe6ae0/cucumber-expressions-16.1.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-expressions/16.1.2/3a6478498624c462c149efd46e4fb2d467712ae4/cucumber-expressions-16.1.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-expressions/16.1.2/f96cb027d048e80cc7fa2ce105e4e8edd5ebda1d/cucumber-expressions-16.1.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/datatable/7.11.1/c6096f4a78fb32f2838b1b59a22fb41ba0431e2b/datatable-7.11.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/datatable/7.11.1/2d0f814df266f96c00094a326f3ddbf5ab1f4dc/datatable-7.11.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/datatable/7.11.1/402846119b98c1520da3554d92575da30eb7629b/datatable-7.11.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-gherkin-messages/7.11.1/c5b2b90995c535a7c087a6150f446d6de4156863/cucumber-gherkin-messages-7.11.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-gherkin-messages/7.11.1/2cf233fcb61bb11d741f26d4924bebba0e838e3f/cucumber-gherkin-messages-7.11.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-gherkin-messages/7.11.1/67e0c865f58d4ffe79ecb63f1ee7ca5e01a1a25c/cucumber-gherkin-messages-7.11.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-gherkin/7.11.1/bc2359a63a9ee578c7c4ff96ee9814abe5624417/cucumber-gherkin-7.11.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-gherkin/7.11.1/2ba713d2cdc295eadd8dbb1684265151b9ddde2f/cucumber-gherkin-7.11.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-gherkin/7.11.1/3e74600ba94d9689e1780cea663077d11254e47/cucumber-gherkin-7.11.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-plugin/7.11.1/7372cdb363224fcd8b53a2efd51d414357bf0053/cucumber-plugin-7.11.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-plugin/7.11.1/3daa3421695b4f9027fc56b8bb18fc4c0e5e4848/cucumber-plugin-7.11.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-plugin/7.11.1/8d7df5ca6361df425fdd3cbc72de49f17971726b/cucumber-plugin-7.11.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/docstring/7.11.1/a77a598034f8b897bf9d3199a72cff27dcc4533/docstring-7.11.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/docstring/7.11.1/5d5afb5ce074bf00c214056cfcb7a8bfe4f3ce84/docstring-7.11.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/docstring/7.11.1/11394b69fa5be4ca30783c9f2e1b62f479cf3d06/docstring-7.11.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.1.2/e0787a997746ac32639e0bf3cb27af8dce8a3428/apiguardian-api-1.1.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.1.2/a231e0d844d2721b0fa1b238006d15c6ded6842a/apiguardian-api-1.1.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.1.2/e3839c92bcb2ac079b30eb7becbe3c98e082fa22/apiguardian-api-1.1.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/junit/junit/4.13.2/33987872a811fe4d4001ed494b07854822257f42/junit-4.13.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/junit/junit/4.13.2/8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12/junit-4.13.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/junit/junit/4.13.2/f2f3f384dacd2ade2ddf7aa7e0f4360dfee38672/junit-4.13.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/xml-path/5.3.0/ded38ad8fa12dfd9f073004e4865ed755a6f4a1f/xml-path-5.3.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/xml-path/5.3.0/8a9672fbd0bb2528d1a0d9e00bf4e41de6b20151/xml-path-5.3.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/xml-path/5.3.0/73a6f2458d7f5b375f1d45ebf89700592484ef51/xml-path-5.3.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/json-path/5.3.0/f2fbd40e7d6d4a7007f6d29e5989b4f6456082f5/json-path-5.3.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/json-path/5.3.0/f389c8bad3550779013822687ac3138b9594efc/json-path-5.3.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/json-path/5.3.0/e329e59585a092ae1c39a88c07889c15e60aaec3/json-path-5.3.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.groovy/groovy-json/4.0.6/1b73497a8c9435ebbfd861dd45566759867bc7c3/groovy-json-4.0.6-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.groovy/groovy-json/4.0.6/14fa2997f9164cf5171cc0d8ef82f59ec82039fa/groovy-json-4.0.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.groovy/groovy-json/4.0.6/d6b71e4fe8ff26ff686fc2264f9209bdf18bf904/groovy-json-4.0.6-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.groovy/groovy-xml/4.0.6/d7f742c97164a3aace85ef3cc42eab8c5c99d044/groovy-xml-4.0.6-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.groovy/groovy-xml/4.0.6/a05e4f0e902b43764ff1161797f5079d3608143/groovy-xml-4.0.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.groovy/groovy-xml/4.0.6/8ee21d90da35d7f34ccddffbc3d1175d8226a336/groovy-xml-4.0.6-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/rest-assured-common/5.3.0/55e608a4142319f72ae81bdd15faf3633d4ce7f5/rest-assured-common-5.3.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/rest-assured-common/5.3.0/5de8e4da01e54b57f19373889429b99b1f741416/rest-assured-common-5.3.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.rest-assured/rest-assured-common/5.3.0/1a750aee2c647dd93ff4934406b038aa45769e1b/rest-assured-common-5.3.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.groovy/groovy/4.0.6/5ed7dd1532f9008679a187381291d6bfabeace18/groovy-4.0.6-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.groovy/groovy/4.0.6/559fc0d1ea7f82f0974712dfe33a16fd84fc71de/groovy-4.0.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.groovy/groovy/4.0.6/b56b87388bba1082dd732e9e81fd0943b42ed44e/groovy-4.0.6-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5.13/f4f989a08a1ec3c84ad0aa110cb55590ccf2525/httpmime-4.5.13-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5.13/efc110bad4a0d45cda7858e6beee1d8a8313da5a/httpmime-4.5.13.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5.13/17af686ea9953ec61792864898c5891501cdfb4e/httpmime-4.5.13-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.13/9654e91a61d7662c36be6710ef8e720c0e3f9807/httpclient-4.5.13-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.13/e5f6cae5ca7ecaac1ec2827a9e2d65ae2869cada/httpclient-4.5.13.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.13/60e8e309548f93ea55ace6c614966cd0e1c7e6b4/httpclient-4.5.13-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest/2.1/aa6763235632b77fd9245c850b6a7dc09382314c/hamcrest-2.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest/2.1/9420ba32c29217b54eebd26ff7f9234d31c3fbb2/hamcrest-2.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest/2.1/ea4cd5042a237766ce809f96420f80f8d153bdb5/hamcrest-2.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.ccil.cowan.tagsoup/tagsoup/1.2.1/31cbf81bece906e382034d2b04e2e5c47e864c17/tagsoup-1.2.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.ccil.cowan.tagsoup/tagsoup/1.2.1/5584627487e984c03456266d3f8802eb85a9ce97/tagsoup-1.2.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.ccil.cowan.tagsoup/tagsoup/1.2.1/3218791a1731510e12650d46d884097ecb3abbe4/tagsoup-1.2.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-manager/4.9.0/5c901885dbb79e38c0e1574f374de4c74a3b6cee/selenium-manager-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-manager/4.9.0/9e9986020be1c86da5b0e1437d256eb8bc55fddb/selenium-manager-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-manager/4.9.0/72e8938c84dc4a4f5a06cae8304cfd9b0e1596d4/selenium-manager-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-http/4.9.0/bdc8a4083e3bb102e182e2980c345706240eb53b/selenium-http-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-http/4.9.0/a9b2708729cc3ef959dea9858b6b8bb1559f1ebf/selenium-http-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-http/4.9.0/f3336e9720425c1fb575e4dc7916b02a7869ec3d/selenium-http-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-json/4.9.0/afb3ab78d178b541c5f640be32cecd57aa3d6164/selenium-json-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-json/4.9.0/93e49c4b7bb7f0c732a9363f79c836c4f3eb9182/selenium-json-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-json/4.9.0/9c14f855bee720e8b06b115599eb305321159dd8/selenium-json-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/4.9.0/bd3e61a928808126707a199cd678d8cb885059b4/selenium-api-4.9.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/4.9.0/10cb9f3c76aa91ae5da8e46e066c8d4bcf45979c/selenium-api-4.9.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/4.9.0/a2a9df5605e0c5ff9f74d1172f61b3f876d9575c/selenium-api-4.9.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.11.0/bbd772a8634d3d6fea7ffea693535a4bd1c773c0/gson-2.11.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.11.0/527175ca6d81050b53bdd4c457a6d6e017626b0e/gson-2.11.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.11.0/e4100ecc7ba4e0e6525259280784d3bb7702e9fe/gson-2.11.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport-httpclient5/3.4.0/77d9d3f4e1a61facf2e1ccbe18ea057ab7837749/docker-java-transport-httpclient5-3.4.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport-httpclient5/3.4.0/1de4515029dee34e0bf04eb2db2073107862c173/docker-java-transport-httpclient5-3.4.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport-httpclient5/3.4.0/b245f91ae4b41c2cbc5d7cf1143a33edf2013600/docker-java-transport-httpclient5-3.4.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.brotli/dec/0.1.2/c04c22a0f5a84e985bd04d2129638e590c1e5edc/dec-0.1.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.brotli/dec/0.1.2/c26a897ae0d524809eef1c786cc6183b4ddcc3b/dec-0.1.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.brotli/dec/0.1.2/6909ec84853945f446eb272ebff9cfa71ac76655/dec-0.1.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-compress/1.26.2/bc2be24a34aa0ddb822381227bebc03bedddf10f/commons-compress-1.26.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-compress/1.26.2/eb1f823447af685208e684fce84783b43517960c/commons-compress-1.26.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-compress/1.26.2/72757ecd9898035533bb945345a14ca4eb152613/commons-compress-1.26.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.15.0/636af5bee1fce148e8995cdc9d57f534e876b523/commons-lang3-3.15.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.15.0/21581109b4be710ea4b195d5760392ec284f9f11/commons-lang3-3.15.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.15.0/b8f1c08da409f799918afc82f7069bb78c0e5bbe/commons-lang3-3.15.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.client5/httpclient5/5.2.1/6f7ee311b403e9ff5d04e9128ea6a0fca4eb0a43/httpclient5-5.2.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.client5/httpclient5/5.2.1/c900514d3446d9ce5d9dbd90c21192048125440/httpclient5-5.2.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.client5/httpclient5/5.2.1/1c24dfe8c7e1b101ace913bdf204a7d43e9607e6/httpclient5-5.2.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.23/1186bcf89d33080275bab74a0b0f495af5c812ef/snakeyaml-1.23-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.23/e8520d52edca3d8dc0f366cff520fb4498ec8a5f/snakeyaml-1.23-android.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.23/7baa10c6d4ec2f3e72ac36164f1f801c302da21b/snakeyaml-1.23-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.mifmif/generex/1.0.2/d1f52c4efe0b20154faf35f8df5c08a234dc41db/generex-1.0.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.mifmif/generex/1.0.2/b378f873b4e8d7616c3d920e2132cb1c87679600/generex-1.0.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.mifmif/generex/1.0.2/212b8fadd2b1062bf02902eb00c11f59320b05d5/generex-1.0.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.14.4/94651fa92930ce2d26e3d5e4a7af5631f2f6cb2c/byte-buddy-1.14.4-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.14.4/20498aaec9b00a5cfdb831e7bf68feafa833ce4b/byte-buddy-1.14.4.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.14.4/6fd4e1aa97b93b48f52feb8a5a1a2ac583b6f7d1/byte-buddy-1.14.4-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.36/91b21b162173dfc6bb676bc7f4865cdd268eac68/jcl-over-slf4j-1.7.36-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.36/d877e195a05aca4a2f1ad2ff14bfec1393af4b5e/jcl-over-slf4j-1.7.36.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.36/cd5445a12ecf2a6709b0e4ecb0cd9cd202f59844/jcl-over-slf4j-1.7.36-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client/2.12.3/4c66b91161f9f66499509ca4aa3631da17e2f4a6/async-http-client-2.12.3-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client/2.12.3/6dfc91814cc8b3bc3327246d0e5df36911b9a623/async-http-client-2.12.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client/2.12.3/6aae0c3d119a2af663feb98734c227b99d6f3d54/async-http-client-2.12.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client-netty-utils/2.12.3/62b1d8d814d5286a807fe4528b0cb7fd09640594/async-http-client-netty-utils-2.12.3-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client-netty-utils/2.12.3/ad99d8622931ed31367d0fef7fa17eb62e033fb3/async-http-client-netty-utils-2.12.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client-netty-utils/2.12.3/538b1c15744c43a670b24eb9d3077f4d43f8b1ee/async-http-client-netty-utils-2.12.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.9/97e46b94d70f47892145e09d685461245584d596/slf4j-api-2.0.9-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.9/7cf2726fdcfbc8610f9a71fb3ed639871f315340/slf4j-api-2.0.9.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.9/da874a973c797fa1e233fffd2a07d9d38e76e7aa/slf4j-api-2.0.9-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/html-formatter/20.2.1/8ea8a5ade58fed1350577e821d9a31fd15faf18d/html-formatter-20.2.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/html-formatter/20.2.1/85ef2c7df6e52cbeda62fb8db7998a3904834701/html-formatter-20.2.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/html-formatter/20.2.1/5d2f3bb1049b4af6c38bf4a53f6228b19d3eac28/html-formatter-20.2.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/junit-xml-formatter/0.1.0/d276ea0c4e1a5e3ef0691bb02018fcf3688a8d1/junit-xml-formatter-0.1.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/junit-xml-formatter/0.1.0/963b79f6e165c13470ef52779308ecd89b673afb/junit-xml-formatter-0.1.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/junit-xml-formatter/0.1.0/103e9d1990ccb4f13d12cd065bb488e4b1f30b89/junit-xml-formatter-0.1.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/gherkin/26.0.3/b5a73915d813dc14cd0263aa1277719c2cd77f8/gherkin-26.0.3-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/gherkin/26.0.3/71b918ec7427213543e3cb9b0255ac0a9e952d11/gherkin-26.0.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/gherkin/26.0.3/5afdd8135d0547c9c44a0566041b682a0c6d59ff/gherkin-26.0.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/messages/21.0.1/42b8c33347a583ea5cde13e45b3307c7c9fda5fc/messages-21.0.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/messages/21.0.1/e64e9867fdffba0ab7e4c14fb4f2fc47dd806305/messages-21.0.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/messages/21.0.1/e587c4cd8736f947f363c235858b9e1c7736fb11/messages-21.0.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/tag-expressions/5.0.1/a704a60ad6b1aab328c473b02a2e543480060e45/tag-expressions-5.0.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/tag-expressions/5.0.1/67c8b072034bb66dfc6759a0ace095423be7599a/tag-expressions-5.0.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/tag-expressions/5.0.1/c07e42cb88378a791a7a5aec5a1b07fe0a5edb45/tag-expressions-5.0.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/ci-environment/9.1.0/ddfc938d3755d0a7116a06ebb3eff113272955ed/ci-environment-9.1.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/ci-environment/9.1.0/cda2cd1d83ac9d44993daed3bd9a7e3f26a55873/ci-environment-9.1.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.cucumber/ci-environment/9.1.0/b64b27969779365d938aa5f6368586deb5995fc6/ci-environment-9.1.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/1dc37250fbc78e23a65a67fbbaf71d2e9cbc3c0b/hamcrest-core-1.3-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/ad09811315f1d4f5756986575b0ea16b99cd686f/hamcrest-core-1.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.13/d6e6365dac44108fb2cc0684daea0d40bc6609f5/httpcore-4.4.13-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.13/853b96d3afbb7bf8cc303fe27ee96836a10c1834/httpcore-4.4.13.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.13/3a29e9db25fb24a7f8beeccbf8b2876d26c31c99/httpcore-4.4.13-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.17.0/63cf61522da956c3db58ffdbcde99a603bf6f6d/commons-codec-1.17.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.17.0/dbe8eef6e14460e73da07f7b11bf994d6626355/commons-codec-1.17.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.17.0/799f386c7ade2b3e61e72ebe8e03bf2d41995467/commons-codec-1.17.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service/1.0.1/373f2b2c234b3d46bfe49a112cfe053b2c3b1beb/auto-service-1.0.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service/1.0.1/c9779f7372192a96c957a3df1faeeabd07881085/auto-service-1.0.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service/1.0.1/3acf67be1d46d0306fb1466d7b1c8f4ecf989004/auto-service-1.0.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/uri-template/0.10/bc9bdd55ee8bfe44e7ba1904735322e654e85d8/uri-template-0.10-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/uri-template/0.10/6e8cf7b04f5ed679c76f15e0b19918906d84dbc4/uri-template-0.10.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/uri-template/0.10/bb0ecca624d580b0814658f8d1023813884f0db8/uri-template-0.10-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/1.2/4fe76e8a3f5aaafa743d23bac4347803ecda3d70/auto-common-1.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/1.2/ca270191fd7d2a7297da7c8f29184206df10c67d/auto-common-1.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/1.2/df6fd3394c59d505e588afad8caf042c37b39914/auto-common-1.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.1-jre/c388a68bc2b17a314dfa7c769d858ada0fc32dcf/guava-31.1-jre-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.1-jre/60458f877d055d0c9114d9e1a2efb737b4bc282c/guava-31.1-jre.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.1-jre/12269249d0762d57d955a7ce9d72701c8c3d6292/guava-31.1-jre-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/jackson-coreutils-equivalence/1.0/e09b5d3ffb181238f52ddde9bcf180d5419c3803/jackson-coreutils-equivalence-1.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/jackson-coreutils-equivalence/1.0/8b928cf1f95dc5fe6b1648f5da93befab031da19/jackson-coreutils-equivalence-1.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/jackson-coreutils-equivalence/1.0/27f408497f6eef9f2f666099a366d24848d03bb0/jackson-coreutils-equivalence-1.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.sun.mail/mailapi/1.6.2/9ec2f24c5e9c9d87603bdd877cfa99f322f5b984/mailapi-1.6.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.sun.mail/mailapi/1.6.2/208b6439dfbe6713c384ebf54ecd62cd4423cc50/mailapi-1.6.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.sun.mail/mailapi/1.6.2/ffbdca24ec9f8b89028a9cd59f8e9c6e15cda761/mailapi-1.6.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.10.5/820534b99e18949ee89e739c95b6f5ccf0ad8810/joda-time-2.10.5-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.10.5/7f1d89817cd20a32444d5ab4160f035ab9b864e7/joda-time-2.10.5.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.10.5/6de48b62c0d2e7f121f17cf292104c79359c332/joda-time-2.10.5-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.googlecode.libphonenumber/libphonenumber/8.11.1/c7b7a5ffd70a59619a6dd02fe07b39e54d159aef/libphonenumber-8.11.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.googlecode.libphonenumber/libphonenumber/8.11.1/6bb6115fd5a0bf00964afec358496faea66b7db5/libphonenumber-8.11.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.googlecode.libphonenumber/libphonenumber/8.11.1/fb588b5101d1004ad6ba22e2a69654f8c5d94cfb/libphonenumber-8.11.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/msg-simple/1.2/5a00fed4c4ebf94569e8e13256c98b5cd6f4c69b/msg-simple-1.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/msg-simple/1.2/a06afa2d5d75c98e54ab370107930978fc3f9937/msg-simple-1.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/msg-simple/1.2/b7dc1acf7438b96ca01e43a6657710c8b116d80a/msg-simple-1.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/btf/1.3/fa5853cafdc25ac00731726888fb01ded4ad0f82/btf-1.3-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/btf/1.3/6cf5405e214cbc83337a107cdef8401fb6aa6383/btf-1.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/btf/1.3/2ff264d8ceceb7567d70519f8fccc1167162d705/btf-1.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/b19b5927c2c25b6c70f093767041e641ae0b1b35/jsr305-3.0.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/7cb5b4e91eb0741882c8fefb2fd0338eff9857c/jsr305-3.0.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/net.sf.jopt-simple/jopt-simple/5.0.4/950831646d014c9162999019a3cb17d5fc01ac0d/jopt-simple-5.0.4-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/net.sf.jopt-simple/jopt-simple/5.0.4/4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c/jopt-simple-5.0.4.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/net.sf.jopt-simple/jopt-simple/5.0.4/28ec088adeaedff5f9310ef29db91a90de14c392/jopt-simple-5.0.4-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service-annotations/1.0.1/81d155712ad79e1914732d23cd255d88143676aa/auto-service-annotations-1.0.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service-annotations/1.0.1/ac86dacc0eb9285ea9d42eee6aad8629ca3a7432/auto-service-annotations-1.0.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service-annotations/1.0.1/381041a60e4042c97c2a286c9f99106496ff4153/auto-service-annotations-1.0.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler-proxy/4.1.60.Final/c37cf8be1593b9088f62944725d6d933541ca5ff/netty-handler-proxy-4.1.60.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler-proxy/4.1.60.Final/2352f12826400e5db64b36fd951508ce9a61c196/netty-handler-proxy-4.1.60.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler-proxy/4.1.60.Final/867d03cea5a1aea1ae953b40426f380a593dd370/netty-handler-proxy-4.1.60.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.1.91.Final/b08ca9cc76d672a1ad7f277ae66536440c3989e3/netty-codec-http-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.1.91.Final/4519d2ff470941f0086214b19c9acf992868112f/netty-codec-http-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.1.91.Final/1e22deb81524cb5de29d1672c7b274b42665bcec/netty-codec-http-4.1.91.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.91.Final/31fe54bbc1e05dade8b38a39146a924da4176444/netty-transport-native-epoll-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.91.Final/29ab7a317bdc97659e7614a66e213fc0087101db/netty-transport-native-epoll-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.91.Final/31fe54bbc1e05dade8b38a39146a924da4176444/netty-transport-native-epoll-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.91.Final/27a50e2fc89efdc136d38eed719254b136ec9ebd/netty-transport-native-epoll-4.1.91.Final-linux-x86_64.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-epoll/4.1.91.Final/81c12384805a51fb4748ad5b559a6c69f1514075/netty-transport-classes-epoll-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-epoll/4.1.91.Final/afd5f7899a61b8f7447b6a2ee06e9b56c9bdacc3/netty-transport-classes-epoll-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-epoll/4.1.91.Final/f45fd5c60ca247e8a51d1191e214c61526c2e47e/netty-transport-classes-epoll-4.1.91.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.1.91.Final/b1c14232018f801f5b3d8a7a06a0c9ff1be48bd9/netty-transport-native-kqueue-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.1.91.Final/a553e0a0b25f2ba6d401a6d29aae8a34b2914098/netty-transport-native-kqueue-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.1.91.Final/b1c14232018f801f5b3d8a7a06a0c9ff1be48bd9/netty-transport-native-kqueue-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.1.91.Final/28d931c038b48a2149cf7905b7efecb485efd8aa/netty-transport-native-kqueue-4.1.91.Final-osx-x86_64.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-kqueue/4.1.91.Final/88fe960d9fc9834a5e4c47737ab9938262c48694/netty-transport-classes-kqueue-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-kqueue/4.1.91.Final/35bf9dd51bcb97debb9296f1f48cc265c32d3ce5/netty-transport-classes-kqueue-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-kqueue/4.1.91.Final/5102c17ead30287391fe8f2ed379d33c20b44ccf/netty-transport-classes-kqueue-4.1.91.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.typesafe.netty/netty-reactive-streams/2.0.4/dea768fe806e1352d7b3c05fa94b6391f7468238/netty-reactive-streams-2.0.4-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.typesafe.netty/netty-reactive-streams/2.0.4/f77c8eaa7d5e2f2160b6d21ba385cf726f164b2/netty-reactive-streams-2.0.4.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.typesafe.netty/netty-reactive-streams/2.0.4/b7e9bd2b5cac1d0bc7bcfd836807fddcbc81c746/netty-reactive-streams-2.0.4-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.91.Final/ac12dfa4bed60035ea500d8c2a024e6af752d619/netty-handler-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.91.Final/444cf41e4fe28c47ffebba5e77b9458a12f938a1/netty-handler-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.91.Final/aa7833cd5611d39b273fd53154aaab596c93e236/netty-handler-4.1.91.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.1.91.Final/9c3c73a9b4124fb1a6d6c398d7799f0ff1c34a15/netty-transport-native-unix-common-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.1.91.Final/80990b5885b8b67be096d7090cba18f05c67120e/netty-transport-native-unix-common-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.1.91.Final/5fbb4978894b8ce4dcf172da53eb27bee4fdecbe/netty-transport-native-unix-common-4.1.91.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-socks/4.1.60.Final/501e67ec2706879f5530743d94c4651f507fff5b/netty-codec-socks-4.1.60.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-socks/4.1.60.Final/6f4573281df659265bd709fd10471c3e00ef6c70/netty-codec-socks-4.1.60.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-socks/4.1.60.Final/6877cdd7dc3e479941405004a5680fbf167aca66/netty-codec-socks-4.1.60.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.91.Final/c991d4d88233de5d518adad30e041a4b8c31fbab/netty-codec-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.91.Final/3044b8e325e33f72c96ac1ea51dda85bef090cc0/netty-codec-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.91.Final/229103fb90bc7b065039f179944e47ac20adcb92/netty-codec-4.1.91.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.1.91.Final/73a361668d8b1efa9239a4b8e91ba1d2fdd0236b/netty-transport-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.1.91.Final/c2f6bd7143194ca842b535546a405c06aa993934/netty-transport-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.1.91.Final/98326bbb06a62fde9f140e4bcabf4048640d9d7e/netty-transport-4.1.91.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.91.Final/419577af997f9ab422c7e37edbe0d9ad2e85bfc4/netty-buffer-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.91.Final/d8f180291c3501e931968ca7e40ae0323c4eacee/netty-buffer-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.91.Final/3fbbf567331c3b9a65e80ab427da179e9ef92f16/netty-buffer-4.1.91.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.91.Final/72e15fd144a6b1b01e9cb8621437eb6d7dfe1a3f/netty-resolver-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.91.Final/4725d117d4b71ef0e743aa79062489b45472b26/netty-resolver-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.91.Final/c7243a556ff68a86796b468353ef726e245be642/netty-resolver-4.1.91.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.91.Final/445c45b69f8c4858aefc4467f5938d466b0fab3c/netty-common-4.1.91.Final-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.91.Final/93e5056462a242718e7689d81180d125c79d7723/netty-common-4.1.91.Final.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.91.Final/75319accb2f9d4c2ec8720983374bdbe89e71314/netty-common-4.1.91.Final-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-exporter-logging/1.25.0/7776b487c99d2475df31b12174defaad030c99a1/opentelemetry-exporter-logging-1.25.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-exporter-logging/1.25.0/4bfb0327c02f857a773a7b5525b446e73524acd4/opentelemetry-exporter-logging-1.25.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-exporter-logging/1.25.0/70405a7a34a0f23cea6d0f6219aa15d95dc06fe/opentelemetry-exporter-logging-1.25.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.25.0-alpha/cfe957998be49c9e44e17bfb28d9651271a3a1f0/opentelemetry-sdk-extension-autoconfigure-1.25.0-alpha-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.25.0-alpha/fc11dd1518abe5caae651ad5fb9293ee33a30f34/opentelemetry-sdk-extension-autoconfigure-1.25.0-alpha.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.25.0-alpha/f64ec953137b161455c00e19b9f172d04d43fd7b/opentelemetry-sdk-extension-autoconfigure-1.25.0-alpha-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.25.0/d633aa904128b7c7e16eccdaf9702eba163dff89/opentelemetry-sdk-extension-autoconfigure-spi-1.25.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.25.0/6eb13b64a31be1603e6a7694d0b5a21d321b0a13/opentelemetry-sdk-extension-autoconfigure-spi-1.25.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.25.0/7193b92014ad3fc19abb5e23887dce7306004c4c/opentelemetry-sdk-extension-autoconfigure-spi-1.25.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk/1.25.0/8e2f44f973ac492bd96d71d37e1d311578d19a25/opentelemetry-sdk-1.25.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk/1.25.0/27c3b7a8ada4db8ad38d95367ed69829ce8bcb0/opentelemetry-sdk-1.25.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk/1.25.0/b8090001745b55460c32ffb4cbcfcf7cadc04015/opentelemetry-sdk-1.25.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-trace/1.25.0/2a6612960696b47c9bc22d80dfb4f1e0f9d9f8df/opentelemetry-sdk-trace-1.25.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-trace/1.25.0/a9d4bbe9186976b4ab323bd66114896ef71141a7/opentelemetry-sdk-trace-1.25.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-trace/1.25.0/9704d39df248788462468c4132bb3bec124cb550/opentelemetry-sdk-trace-1.25.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-metrics/1.25.0/745a9ec7d131ee9ebaaf71ac5dc804afb472e174/opentelemetry-sdk-metrics-1.25.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-metrics/1.25.0/456a33fc2ba3e7323f869623fe8cd59655ead345/opentelemetry-sdk-metrics-1.25.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-metrics/1.25.0/651f7ddadacc0cdb2511e055dd7716422bc167cd/opentelemetry-sdk-metrics-1.25.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-logs/1.25.0-alpha/7bfb01547a7ab63d871897e86737d38cd3d1bcfb/opentelemetry-sdk-logs-1.25.0-alpha-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-logs/1.25.0-alpha/89c6bc4968f327603130b7992ee518299e359a05/opentelemetry-sdk-logs-1.25.0-alpha.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-logs/1.25.0-alpha/a8fb726f909ea835182a8156190d1a23566e5723/opentelemetry-sdk-logs-1.25.0-alpha-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-common/1.25.0/b4ef6781fdf167627435be174f1289917d61f982/opentelemetry-sdk-common-1.25.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-common/1.25.0/7728ac7a7606dfae3994701d65dbf4b95fe6eef9/opentelemetry-sdk-common-1.25.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-common/1.25.0/9d3efdebb5482694d0b95629d73f6c2517b533dc/opentelemetry-sdk-common-1.25.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-semconv/1.25.0-alpha/c0df3ed6747a3fc8e93295663f2910e38a918877/opentelemetry-semconv-1.25.0-alpha-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-semconv/1.25.0-alpha/8b64d93091d11acd546b81f6f5f221c986b2728a/opentelemetry-semconv-1.25.0-alpha.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-semconv/1.25.0-alpha/eeea7260be133ab68e033656c70c3d0e60c0a8c0/opentelemetry-semconv-1.25.0-alpha-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api-logs/1.25.0-alpha/54ed18f13f9f9d8d9b00ab8857d2d733a14bac38/opentelemetry-api-logs-1.25.0-alpha-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api-logs/1.25.0-alpha/daf0c51355e5e065ba75362183ac1a2ce0245a02/opentelemetry-api-logs-1.25.0-alpha.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api-logs/1.25.0-alpha/2ffb94183d9860d6051066f268119a956594b4e3/opentelemetry-api-logs-1.25.0-alpha-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api-events/1.25.0-alpha/63c28a348e75df94c0526854291512f4f417394e/opentelemetry-api-events-1.25.0-alpha-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api-events/1.25.0-alpha/44e7f49ef59dc6c440aec559038adbb31d0068eb/opentelemetry-api-events-1.25.0-alpha.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api-events/1.25.0-alpha/e24644c599fa866b338093cad1208970826e0f6/opentelemetry-api-events-1.25.0-alpha-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api/1.25.0/d92c7bda60044123dde6052c48a087cc1bd9b3e/opentelemetry-api-1.25.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api/1.25.0/d30030ae2634bbbce1003f9404d964c9a7085833/opentelemetry-api-1.25.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api/1.25.0/711f5709a2dc726aa5f43386525d883c11ccdb5f/opentelemetry-api-1.25.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-context/1.25.0/c2fd574676d2a9b899826cf083037ffba4bb863b/opentelemetry-context-1.25.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-context/1.25.0/84e2188b9fb8aebb91915c79cc4d38567fc903a6/opentelemetry-context-1.25.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-context/1.25.0/48d5e525a1e54ee487bf761f5042ec5aa3ef7d07/opentelemetry-context-1.25.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.ous/jtoml/2.0.0/559938eedcd66eef8a655550a940b13807eee645/jtoml-2.0.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.ous/jtoml/2.0.0/2085505b2b173e14b2a7702edd703ce185fd6206/jtoml-2.0.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/io.ous/jtoml/2.0.0/ef2e979aa1e15cacd7e1a5fc1ae2f001c87e83a8/jtoml-2.0.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-exec/1.3/efd2543e352e55ce5a685eed6db8af028b737905/commons-exec-1.3-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-exec/1.3/8dfb9facd0830a27b1b5f29f84593f0aeee7773b/commons-exec-1.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-exec/1.3/e4cd47daebd31ac59410ec62e7e5ff835f16e28a/commons-exec-1.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.27.0/ddd5b55fab865b04b0b1f0ce66eea0d07a16a4c8/error_prone_annotations-2.27.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.27.0/91b2c29d8a6148b5e2e4930f070d4840e2e48e34/error_prone_annotations-2.27.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.27.0/f147c0d0de285f63732ab4dca8fce6c970f9b47f/error_prone_annotations-2.27.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport/3.4.0/10e24aca3619e4ffc1e6bea92f1c286bdbd45890/docker-java-transport-3.4.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport/3.4.0/c058705684d782effc4b2edfdef1a87544ba4af8/docker-java-transport-3.4.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport/3.4.0/49527374b37c028ce1381887c3d9fb9925c6233f/docker-java-transport-3.4.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.13.0/e55ddc56d092866b6d59822f825c253960a6e504/jna-5.13.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.13.0/1200e7ebeedbe0d10062093f32925a912020e747/jna-5.13.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.13.0/cd60037ef72b29c9388ca87e080afc8af706f3f4/jna-5.13.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.16.1/e0dbaef3c79b647e9c510b40a8366b6765cff249/commons-io-2.16.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.16.1/377d592e740dc77124e0901291dbfaa6810a200e/commons-io-2.16.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.16.1/f78cbef5cbb122392b041ef0b9e6aa09520c8e65/commons-io-2.16.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.core5/httpcore5-h2/5.2/87e5eed16e0cdf7ccb8e434b6de7bca243d858d3/httpcore5-h2-5.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.core5/httpcore5-h2/5.2/698bd8c759ccc7fd7398f3179ff45d0e5a7ccc16/httpcore5-h2-5.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.core5/httpcore5-h2/5.2/d3599671a3bf142ed5f0943c7380e268b7569f10/httpcore5-h2-5.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.core5/httpcore5/5.2/9c701e330a33690077c7788251f9b061ee7cec28/httpcore5-5.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.core5/httpcore5/5.2/ab7d251b8dfa3f2878f1eefbcca0e1fc0ebeba27/httpcore5-5.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.core5/httpcore5/5.2/38159182d3b10d7d2c4c5b6289e10d7abce736d4/httpcore5-5.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/dk.brics.automaton/automaton/1.11-8/6bc89a2a9c9c5524aa275b572c0fd3699ff7a5be/automaton-1.11-8-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/dk.brics.automaton/automaton/1.11-8/6ebfa65eb431ff4b715a23be7a750cbc4cc96d0f/automaton-1.11-8.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/dk.brics.automaton/automaton/1.11-8/4a4c33d6a1b746a58f9610e9231a7bbda92827ac/automaton-1.11-8-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/jackson-coreutils/2.0/5351d655f042a3e714fe4041c39e3b0ebb07f451/jackson-coreutils-2.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/jackson-coreutils/2.0/6374371261b91b829d10f21256b2feefdf8f0a78/jackson-coreutils-2.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.github.java-json-tools/jackson-coreutils/2.0/ac40e8e9a5a6a036bc590878fc82921d6a97edae/jackson-coreutils-2.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.mozilla/rhino/1.7.7.2/263073fb1e879bfa9a521d3245c063b799bc83d1/rhino-1.7.7.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.mozilla/rhino/1.7.7.2/a7c4a9ba8b6922374580d71060ef71eafa994256/rhino-1.7.7.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.mozilla/rhino/1.7.7.2/a8a50370e47bd859053f385947b8d8a13add1160/rhino-1.7.7.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1d064e61aad6c51cc77f9b59dc2cccc78e792f5a/failureaccess-1.0.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1dcf1de382a0bf95a3d8b0849546c88bac1292c9/failureaccess-1.0.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/a9aadb2d577ff54ba3115ee7357cbe65bd2a470f/failureaccess-1.0.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/b421526c5f297295adef1c886e5246c39d4ac629/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/10dacb8b36398debceca36cd0db5f3316967f80e/checker-qual-3.12.0-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5/checker-qual-3.12.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/fd7626f12ccbe6f5557a00cd13c7d399789723cf/checker-qual-3.12.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/d26c56180205cbb50447c3eca98ecb617cf9f58b/j2objc-annotations-1.3-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/ba035118bc8bac37d7eff77700720999acd9986d/j2objc-annotations-1.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/c221c5edcc5bed0b4c030c5dfc3b44739386a8d9/j2objc-annotations-1.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/dev.failsafe/failsafe/3.3.1/81cb52cbde62be0a021b01c816377692191c37d0/failsafe-3.3.1-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/dev.failsafe/failsafe/3.3.1/cca46c10dd22fb0beb7e0c1e468604430355a4ab/failsafe-3.3.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/dev.failsafe/failsafe/3.3.1/51503c43d05cdf060ddd8de13e9c73da5416c842/failsafe-3.3.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.3/e6ffdff8c438d959376c91d94b319457354a84c5/reactive-streams-1.0.3-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.3/d9fb7a7926ffa635b3dcaa5049fb2bfa25b3e7d0/reactive-streams-1.0.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.3/a0b30dc9ef9568da72ee6ab2382bf2ce9cfc6270/reactive-streams-1.0.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.sun.activation/jakarta.activation/1.2.2/fa3c25fb842cbe9eaa126a007475297f8bf35abe/jakarta.activation-1.2.2-sources.jar" kind="lib" path="C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.sun.activation/jakarta.activation/1.2.2/74548703f9851017ce2f556066659438019e7eb5/jakarta.activation-1.2.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/com.sun.activation/jakarta.activation/1.2.2/273ce13a7698fa781e08b8696b0482f2eb02dd49/jakarta.activation-1.2.2-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+</classpath>

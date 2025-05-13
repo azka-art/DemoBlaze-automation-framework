@@ -10,9 +10,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 
-/**
- * Manages WebDriver instances for UI testing
- */
 public class DriverManager {
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     
@@ -20,11 +17,6 @@ public class DriverManager {
         // Private constructor to prevent instantiation
     }
     
-    /**
-     * Gets the current WebDriver instance or creates a new one if none exists
-     *
-     * @return WebDriver instance
-     */
     public static WebDriver getDriver() {
         if (driver.get() == null) {
             setupDriver();
@@ -32,9 +24,6 @@ public class DriverManager {
         return driver.get();
     }
     
-    /**
-     * Sets up a new WebDriver instance based on configuration
-     */
     private static void setupDriver() {
         String browser = ConfigManager.get("browser").toLowerCase();
         boolean headless = Boolean.parseBoolean(ConfigManager.get("headless"));
@@ -55,29 +44,31 @@ public class DriverManager {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 if (headless) {
-                    chromeOptions.addArguments("--headless");
-                chromeOptions.addArguments("--headless=new");
+                    chromeOptions.addArguments("--headless=new");
                 }
                 chromeOptions.addArguments("--no-sandbox");
                 chromeOptions.addArguments("--disable-dev-shm-usage");
-                chromeOptions.addArguments("--disable-gpu");
-                chromeOptions.addArguments("--window-size=1920,1080");
+                chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+                chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                chromeOptions.setExperimentalOption("useAutomationExtension", false);
+                chromeOptions.addArguments("--disable-dev-shm-usage");
+                chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+                chromeOptions.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36");
+                chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                chromeOptions.setExperimentalOption("useAutomationExtension", false);
                 webDriver = new ChromeDriver(chromeOptions);
                 break;
         }
         
         int timeout = Integer.parseInt(ConfigManager.get("timeout"));
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(timeout));
         webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));
         webDriver.manage().window().maximize();
         
         driver.set(webDriver);
     }
     
-    /**
-     * Quits the WebDriver and removes the instance
-     */
     public static void quitDriver() {
         if (driver.get() != null) {
             driver.get().quit();
@@ -85,7 +76,3 @@ public class DriverManager {
         }
     }
 }
-
-
-
-
