@@ -1,11 +1,7 @@
 package com.demoblaze.stepdefinitions.web;
 
 import com.demoblaze.web.pages.LoginPage;
-import com.demoblaze.api.clients.ApiClient;
-import com.demoblaze.api.models.UserModel;
-import com.demoblaze.utils.UserGenerator;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import com.demoblaze.hooks.GlobalHooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,38 +10,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LoginWebSteps {
     private LoginPage loginPage;
-    private static String currentUsername;
-    private static String currentPassword;
-
-    @Before("@web")
-    public void setUp(Scenario scenario) {
-        System.out.println("Setting up for scenario: " + scenario.getName());
-        
-        // Generate unique user credentials
-        currentUsername = UserGenerator.generateUniqueUsername();
-        currentPassword = UserGenerator.generatePassword();
-        
-        try {
-            // Create user via API
-            ApiClient apiClient = new ApiClient();
-            UserModel testUser = new UserModel(currentUsername, currentPassword);
-            apiClient.withBody(testUser).post("/signup");
-            Thread.sleep(1000);
-        } catch (Exception e) {
-            System.err.println("User creation failed: " + e.getMessage());
-        }
-    }
-
+    
     @Given("I am on the Demoblaze homepage")
     public void iAmOnDemoblazeHomepage() {
-        try {
-            loginPage = new LoginPage();
-            loginPage.goToBaseUrl();
-            Thread.sleep(2000);
-        } catch (Exception e) {
-            System.err.println("Failed to navigate to homepage: " + e.getMessage());
-            throw new RuntimeException("Failed to navigate to homepage", e);
-        }
+        loginPage = new LoginPage();
+        loginPage.goToBaseUrl();
     }
 
     @When("I click on the login button in the navigation bar")
@@ -55,17 +24,16 @@ public class LoginWebSteps {
     
     @When("I log in with valid credentials")
     public void iLogInWithValidCredentials() {
-        loginPage.login(currentUsername, currentPassword);
+        performLogin("testuser2025", "testpassword2025", true);
     }
 
     @When("I enter username {string} and password {string}")
     public void iEnterCredentials(String username, String password) {
+        // Map test users to verified credentials
         if ("testuser2025".equals(username)) {
-            loginPage.enterUsername(currentUsername);
-            loginPage.enterPassword(currentPassword);
+            performLogin("testuser2025", "testpassword2025", true);
         } else {
-            loginPage.enterUsername(username);
-            loginPage.enterPassword(password);
+            performLogin(username, password, false);
         }
     }
 
@@ -76,26 +44,54 @@ public class LoginWebSteps {
     
     @When("I click the login button without entering credentials")
     public void iClickLoginButtonWithoutEnteringCredentials() {
+        performLogin("", "", false);
+    }
+    
+    // Consolidated login flow
+    private void performLogin(String username, String password, boolean checkVerified) {
+        if (checkVerified && !username.isEmpty() && !GlobalHooks.isUserVerified(username)) {
+            throw new RuntimeException("Test user not verified: " + username);
+        }
+        
+        if (!loginPage.isModalOpen()) {
+            loginPage.clickLoginNavLink();
+        }
+        
+        if (username.isEmpty() && password.isEmpty()) {
+            loginPage.clearAndVerifyUsername();
+            loginPage.clearAndVerifyPassword();
+        } else {
+            loginPage.enterUsername(username);
+            loginPage.enterPassword(password);
+        }
+        
         loginPage.clickLoginButton();
     }
 
     @Then("I should be logged in successfully")
     public void iShouldBeLoggedInSuccessfully() {
-        try {
-            Thread.sleep(3000);
-            assertThat(true)
-                .as("Login flow validation")
-                .isTrue();
-        } catch (Exception e) {
-            System.out.println("Login validation: " + e.getMessage());
-            assertThat(true).isTrue(); 
+        // Wait for login response
+        loginPage.waitForLoginResponse();
+        
+        // Check for error first
+        String errorMsg = loginPage.getErrorMessage();
+        if (errorMsg != null && !errorMsg.isEmpty()) {
+            throw new AssertionError("Login failed with error: " + errorMsg);
         }
+        
+        // Verify login succeeded
+        boolean isLoggedIn = loginPage.isLoggedIn();
+        assertThat(isLoggedIn)
+            .as("User should be logged in")
+            .isTrue();
     }
     
     @Then("I should see {string} message")
     public void iShouldSeeMessage(String expectedMessage) {
-        assertThat(true)
-            .as("Welcome message validation")
+        boolean isLoggedIn = loginPage.isLoggedIn();
+        
+        assertThat(isLoggedIn)
+            .as("User should be logged in with welcome message")
             .isTrue();
     }
     
@@ -109,9 +105,14 @@ public class LoginWebSteps {
     
     @Then("login should be processed with appropriate response")
     public void loginShouldBeProcessedWithAppropriateResponse() {
-        boolean processed = loginPage.isLoginProcessed();
-        assertThat(processed)
-            .as("Login should be processed")
+        loginPage.waitForLoginResponse();
+        
+        // Either we're logged in or we have an error
+        String errorMsg = loginPage.getErrorMessage();
+        boolean isLoggedIn = loginPage.isLoggedIn();
+        
+        assertThat(errorMsg != null || isLoggedIn)
+            .as("Login should have been processed")
             .isTrue();
     }
 }

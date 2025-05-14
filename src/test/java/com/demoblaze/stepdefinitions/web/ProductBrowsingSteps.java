@@ -52,8 +52,22 @@ public class ProductBrowsingSteps {
         productDetailPage = new ProductDetailPage();
     }
     
+    @When("I click on a product named {string}")
+    public void i_click_on_a_product_named(String productName) {
+        // Wait for page to load properly
+        try {
+            Thread.sleep(2000);
+            homePage = new HomePage();
+            homePage.clickProductByName(productName);
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to click on product: " + productName, e);
+        }
+    }
+    
     @Then("I should see the product details page")
     public void iShouldSeeTheProductDetailsPage() {
+        productDetailPage = new ProductDetailPage();
         String productName = productDetailPage.getProductName();
         assertThat(productName)
             .as("Product details page should be displayed")
@@ -115,6 +129,39 @@ public class ProductBrowsingSteps {
         assertThat(onHomePage)
             .as("Should still be on homepage (product not found)")
             .isTrue();
+    }
+    
+    @When("I click the {string} button")
+    public void i_click_the_button(String buttonName) {
+        System.out.println("Clicking button: " + buttonName);
+        switch(buttonName.toLowerCase()) {
+            case "next":
+                homePage = new HomePage();
+                homePage.clickNextButton();
+                break;
+            case "previous":
+                homePage = new HomePage();
+                homePage.clickPrevButton();
+                break;
+            case "add to cart":
+                productDetailPage = new ProductDetailPage();
+                productDetailPage.clickAddToCart();
+                break;
+            case "place order":
+                cartPage = new CartPage();
+                cartPage.clickPlaceOrder();
+                break;
+            case "purchase":
+                if (cartPage == null) cartPage = new CartPage();
+                cartPage.clickPurchase();
+                break;
+            case "ok":
+                if (cartPage == null) cartPage = new CartPage();
+                cartPage.clickOkButton();
+                break;
+            default:
+                break;
+        }
     }
     
     @When("I click {string} button")

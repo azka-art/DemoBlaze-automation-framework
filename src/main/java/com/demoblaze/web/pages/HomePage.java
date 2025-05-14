@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.JavascriptExecutor;
 import java.util.List;
 
 public class HomePage extends BasePage {
@@ -105,5 +106,25 @@ public class HomePage extends BasePage {
     
     public void navigateToCart() {
         clickElement(cartNavLink);
+    }
+    
+    // Add the missing waitForPageLoad method
+    public void waitForPageLoad() {
+        try {
+            // Wait for page to be fully loaded
+            wait.until(driver -> ((JavascriptExecutor) driver)
+                .executeScript("return document.readyState").equals("complete"));
+                
+            // Wait for products to be visible
+            wait.until(ExpectedConditions.or(
+                ExpectedConditions.presenceOfElementLocated(By.className("card")),
+                ExpectedConditions.presenceOfElementLocated(By.id("tbodyid")),
+                ExpectedConditions.presenceOfElementLocated(By.cssSelector(".col-lg-9"))
+            ));
+            
+            System.out.println("Page loaded successfully");
+        } catch (Exception e) {
+            System.err.println("Error waiting for page load: " + e.getMessage());
+        }
     }
 }

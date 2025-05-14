@@ -44,7 +44,16 @@ public class ConfigManager {
         return systemProperty != null ? systemProperty : properties.getProperty(key);
     }
     
+    public String getProperty(String key, String defaultValue) {
+        String value = getProperty(key);
+        return value != null ? value : defaultValue;
+    }
+    
     public static String get(String key) {
         return getInstance().getProperty(key);
+    }
+    
+    public static String get(String key, String defaultValue) {
+        return getInstance().getProperty(key, defaultValue);
     }
 }

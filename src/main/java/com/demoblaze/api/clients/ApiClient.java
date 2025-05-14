@@ -6,94 +6,76 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-/**
- * Client class for making API requests to the Demoblaze API
- */
 public class ApiClient {
-    private RequestSpecification request;
     private Response response;
+    private Object requestBody;
+    private String baseUrl;
+    private static int requestCounter = 0;
     
-    /**
-     * Initializes a new API client with default headers
-     */
     public ApiClient() {
-        setupRequestSpec();
+        this.baseUrl = ConfigManager.get("api.base.url");
+        System.out.println("ApiClient initialized with base URL: " + baseUrl);
     }
     
-    /**
-     * Sets up the base request specification with common headers
-     */
-    private void setupRequestSpec() {
-        request = RestAssured.given()
-            .baseUri(ConfigManager.get("api.base.url"))
+    private RequestSpecification createRequestSpec() {
+        requestCounter++;
+        System.out.println("\n=== API Request #" + requestCounter + " ===");
+        
+        return RestAssured.given()
+            .baseUri(baseUrl)
             .contentType(ContentType.JSON)
             .accept(ContentType.JSON)
             .header("User-Agent", "Mozilla/5.0")
-            .log().all(); // Log all request details
+            .log().all();
     }
     
-    /**
-     * Adds a custom header to the request
-     * 
-     * @param name Header name
-     * @param value Header value
-     * @return This ApiClient instance for method chaining
-     */
-    public ApiClient withHeader(String name, String value) {
-        request.header(name, value);
-        return this;
-    }
-    
-    /**
-     * Sets the request body
-     * 
-     * @param body The object to be serialized as the request body
-     * @return This ApiClient instance for method chaining
-     */
     public ApiClient withBody(Object body) {
-        request.body(body);
+        this.requestBody = body;
         return this;
     }
     
-    /**
-     * Executes a POST request to the specified endpoint
-     * 
-     * @param endpoint The API endpoint path
-     * @return The Response object
-     */
     public Response post(String endpoint) {
         try {
+            RequestSpecification request = createRequestSpec();
+            
+            if (requestBody != null) {
+                request.body(requestBody);
+            }
+            
+            System.out.println("POST to: " + baseUrl + endpoint);
             response = request.post(endpoint);
-            response.then().log().all(); // Log all response details
+            
+            System.out.println("Response Status: " + response.getStatusCode());
+            System.out.println("Response Body: " + response.getBody().asString());
+            System.out.println("=== End Request #" + requestCounter + " ===\n");
+            
             return response;
+            
         } catch (Exception e) {
-            System.err.println("Error making POST request to " + endpoint + ": " + e.getMessage());
-            throw e;
+            System.err.println("API request failed: " + e.getMessage());
+            throw new RuntimeException("API request failed", e);
         }
     }
     
-    /**
-     * Executes a GET request to the specified endpoint
-     * 
-     * @param endpoint The API endpoint path
-     * @return The Response object
-     */
     public Response get(String endpoint) {
         try {
+            RequestSpecification request = createRequestSpec();
+            
+            System.out.println("GET from: " + baseUrl + endpoint);
             response = request.get(endpoint);
-            response.then().log().all(); // Log all response details
+            
+            System.out.println("Response Status: " + response.getStatusCode());
+            System.out.println("Response Body: " + response.getBody().asString());
+            System.out.println("=== End Request #" + requestCounter + " ===\n");
+            
             return response;
+            
         } catch (Exception e) {
-            System.err.println("Error making GET request to " + endpoint + ": " + e.getMessage());
-            throw e;
+            System.err.println("API request failed: " + e.getMessage());
+            throw new RuntimeException("API request failed", e);
         }
     }
     
-    /**
-     * Returns the current response
-     * 
-     * @return The current Response object
-     */
     public Response getResponse() {
         return response;
     }

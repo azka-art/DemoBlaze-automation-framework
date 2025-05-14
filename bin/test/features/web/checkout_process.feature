@@ -3,9 +3,11 @@ Feature: Demoblaze Checkout Process
   @web @e2e
   Scenario: Complete checkout process
     Given I am on the Demoblaze homepage
-    When I log in with valid credentials
-    And I click on a product named "Samsung galaxy s6"
-    And I click the "Add to cart" button
+    When I log in with valid credentials for checkout
+    Then I should be logged in successfully
+    When I click on a product named "Samsung galaxy s6"
+    Then I should see the product details page
+    When I click the "Add to cart" button
     And I accept the product added popup
     And I navigate to the cart page
     Then I should see the product in the cart

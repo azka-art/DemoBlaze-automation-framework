@@ -1,54 +1,61 @@
 package com.demoblaze.stepdefinitions.web;
 
 import com.demoblaze.web.pages.HomePage;
+import com.demoblaze.web.pages.LoginPage;
 import com.demoblaze.web.pages.ProductDetailPage;
 import com.demoblaze.web.pages.CartPage;
+import com.demoblaze.hooks.GlobalHooks;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.time.Duration;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CheckoutSteps {
     private HomePage homePage = new HomePage();
+    private LoginPage loginPage;
     private ProductDetailPage productDetailPage;
     private CartPage cartPage;
     private Faker faker = new Faker();
     private String currentProductName;
     
-    @When("I click on a product named {string}")
-    public void i_click_on_a_product_named(String productName) {
-        currentProductName = productName;
-        homePage.clickProductByName(productName);
-    }
+    // Use the pre-verified test user
+    private static final String CHECKOUT_USERNAME = "testuser2025";
+    private static final String CHECKOUT_PASSWORD = "testpassword2025";
     
-    @When("I click the {string} button")
-    public void i_click_the_button(String buttonName) {
-        System.out.println("Clicking button: " + buttonName);
-        switch(buttonName.toLowerCase()) {
-            case "next":
-                homePage.clickNextButton();
-                break;
-            case "previous":
-                homePage.clickPrevButton();
-                break;
-            case "add to cart":
-                productDetailPage = new ProductDetailPage();
-                productDetailPage.clickAddToCart();
-                break;
-            case "place order":
-                cartPage = new CartPage();
-                cartPage.clickPlaceOrder();
-                break;
-            case "purchase":
-                cartPage.clickPurchase();
-                break;
-            case "ok":
-                cartPage.clickOkButton();
-                break;
-            default:
-                // Handle other buttons
-                break;
+    @When("I log in with valid credentials for checkout")
+    public void i_log_in_with_valid_credentials_for_checkout() {
+        // Ensure user is verified before attempting login
+        if (!GlobalHooks.isUserVerified(CHECKOUT_USERNAME)) {
+            throw new RuntimeException("Checkout user not verified: " + CHECKOUT_USERNAME);
         }
+        
+        loginPage = new LoginPage();
+        loginPage.clickLoginNavLink();
+        
+        System.out.println("Logging in with pre-verified user: " + CHECKOUT_USERNAME);
+        loginPage.enterUsername(CHECKOUT_USERNAME);
+        loginPage.enterPassword(CHECKOUT_PASSWORD);
+        loginPage.clickLoginButton();
+        
+        // Wait for login response (success or error)
+        loginPage.waitForLoginResponse();
+        
+        // Check for errors
+        String errorMsg = loginPage.getErrorMessage();
+        if (errorMsg != null && !errorMsg.isEmpty()) {
+            throw new RuntimeException("Login failed: " + errorMsg);
+        }
+        
+        // Verify login was successful
+        boolean isLoggedIn = loginPage.isLoggedIn();
+        if (!isLoggedIn) {
+            throw new RuntimeException("Login failed - user not logged in");
+        }
+        
+        System.out.println("Login successful");
     }
     
     @When("I accept the product added popup")
@@ -57,12 +64,13 @@ public class CheckoutSteps {
             productDetailPage = new ProductDetailPage();
             productDetailPage.acceptProductAddedAlert();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error accepting popup: " + e.getMessage());
         }
     }
     
     @When("I navigate to the cart page")
     public void i_navigate_to_the_cart_page() {
+        homePage = new HomePage();
         homePage.navigateToCart();
     }
     
@@ -99,14 +107,9 @@ public class CheckoutSteps {
     
     @Then("I should return to the homepage")
     public void i_should_return_to_the_homepage() {
-        try {
-            Thread.sleep(3000);
-            homePage = new HomePage();
-            boolean onHomePage = homePage.areProductsDisplayed();
-            assertThat(onHomePage).isTrue();
-        } catch (Exception e) {
-            System.err.println("Error checking homepage: " + e.getMessage());
-            assertThat(true).isTrue();
-        }
+        homePage = new HomePage();
+        homePage.waitForPageLoad();
+        boolean onHomePage = homePage.areProductsDisplayed();
+        assertThat(onHomePage).isTrue();
     }
 }
