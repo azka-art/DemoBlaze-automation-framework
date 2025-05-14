@@ -1,0 +1,34 @@
+﻿========================================
+TEST AUTOMATION SUMMARY
+========================================
+Generated   : 2025-05-14 03:29:33
+Project     : DemoBlaze Automation Framework
+Environment : default    TestType: all    Browser: chrome    Headless: False
+
+RESULT SUMMARY
+==============
+API Tests    : 10 Scenarios ([32m10 passed[0m)
+Web UI Tests : 11 Scenarios ([31m11 failed[0m)
+
+OVERALL PASS RATE
+=================
+10/2163210  (0%)
+
+KEY FAILURE
+===========
+Scenario: Complete checkout process                                   [90m# src/test/resources/features/web/checkout_process.feature:4[0m
+Loaded configuration from config.properties
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver linux64 (resolved driver for Chrome 136)
+[main] INFO io.github.bonigarcia.wdm.cache.ResolutionCache - Clearing WebDriverManager resolution cache
+
+RECOMMENDATIONS
+===============
+- Update locator for “Add to cart” in ProductDetailPage.java
+- Add explicit waits or retry logic around that step
+- Run locally (non-headless) to inspect element changes
+- Upgrade Selenium & RestAssured to latest versions
+
+========================================
+Report File : C:\Users\ASUS\DemoBlaze-automation-framework\TestReport_all_default_20250514_032208.txt
+Log File    : C:\Users\ASUS\DemoBlaze-automation-framework\DetailedTestLog_20250514_032208.txt
+========================================

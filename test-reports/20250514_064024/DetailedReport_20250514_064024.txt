@@ -1,0 +1,1763 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20250514064024
+Username: DESKTOP-EE4NV9N\ASUS
+RunAs User: DESKTOP-EE4NV9N\ASUS
+Configuration Name: 
+Machine: DESKTOP-EE4NV9N (Microsoft Windows NT 10.0.22621.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "c:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+Process ID: 24332
+PSVersion: 5.1.22621.4249
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.4249
+BuildVersion: 10.0.22621.4249
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is test-reports\20250514_064024\DetailedReport_20250514_064024.txt
+========================================
+DEMOBLAZE TEST AUTOMATION REPORT
+========================================
+Generated: 2025-05-14 06:40:24
+Test Type: all
+========================================
+
+
+Running api tests...
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :jar UP-TO-DATE
+> Task :assemble UP-TO-DATE
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses UP-TO-DATE
+
+> Task :apiTests
+
+@api @api @smoke
+Scenario: Successful login with valid credentials [90m# src/test/resources/features/api/login.feature:8[0m
+Loaded configuration from config.properties
+  [32mGiven [0m[32mthe API base URL is configured[0m            [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179627813",
+    "password": "testpass123"
+}
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Cloud-Trace-Context: 346882ef2f02f7f2198aaa8ed0b9a1fe
+Date: Tue, 13 May 2025 23:40:29 GMT
+Server: Google Frontend
+Content-Length: 3
+
+""
+  [32mGiven [0m[32mI have valid user credentials[0m             [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iHaveValidUserCredentials()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179627813",
+    "password": "testpass123"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 5758b8514482cb7a08257b0a5d71f91f
+date: Tue, 13 May 2025 23:40:30 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+"Auth_token: dGVzdHVzZXJfMTc0NzE3OTYyNzgxMzE3NDc3Nzk="
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 5758b8514482cb7a08257b0a5d71f91f
+date: Tue, 13 May 2025 23:40:30 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+"Auth_token: dGVzdHVzZXJfMTc0NzE3OTYyNzgxMzE3NDc3Nzk="
+  [32mWhen [0m[32mI send a login request to the API[0m          [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iSendLoginRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+Response body: "Auth_token: dGVzdHVzZXJfMTc0NzE3OTYyNzgxMzE3NDc3Nzk="
+
+  [32mAnd [0m[32mthe API response should contain auth token[0m  [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIResponseShouldContainAuthToken()[0m
+
+@api @api @negative
+Scenario: Login with invalid password                                [90m# src/test/resources/features/api/login.feature:15[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                               [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have user credentials with wrong password[0m                  [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iHaveUserCredentialsWithWrongPassword()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "anyuser",
+    "password": "wrongpassword"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 1dd7c6cb272d41500ecc3e5a42ee6f69
+date: Tue, 13 May 2025 23:40:30 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "Wrong password."
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 1dd7c6cb272d41500ecc3e5a42ee6f69
+date: Tue, 13 May 2025 23:40:30 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "Wrong password."
+}
+  [32mWhen [0m[32mI send a login request to the API[0m                             [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iSendLoginRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m                    [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain error message [0m[32m[1m"Wrong password"[0m [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIResponseShouldContainErrorMessage(java.lang.String)[0m
+
+@api @api @negative
+Scenario: Login with non-existent user                                    [90m# src/test/resources/features/api/login.feature:22[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                                    [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have non-existent user credentials[0m                              [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iHaveNonExistentUserCredentials()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "lucien.johns1747179630329",
+    "password": "nsxzkkmlr"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 55a920ea7af3b22e4fd2e8290919557d;o=1
+date: Tue, 13 May 2025 23:40:31 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "User does not exist."
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 55a920ea7af3b22e4fd2e8290919557d;o=1
+date: Tue, 13 May 2025 23:40:31 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "User does not exist."
+}
+  [32mWhen [0m[32mI send a login request to the API[0m                                  [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iSendLoginRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m                         [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain error message [0m[32m[1m"User does not exist"[0m [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIResponseShouldContainErrorMessage(java.lang.String)[0m
+
+@api @api @negative
+Scenario: Login with empty credentials              [90m# src/test/resources/features/api/login.feature:29[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m              [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have empty user credentials[0m               [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iHaveEmptyUserCredentials()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "",
+    "password": ""
+}
+HTTP/1.1 500 Internal Server Error
+content-type: text/html
+x-cloud-trace-context: 67c15de8cda3ea360aeabd3d8bfbfa67
+date: Tue, 13 May 2025 23:40:31 GMT
+server: Google Frontend
+Content-Length: 290
+
+<html>
+  <head>
+    <title>500 Internal Server Error</title>
+  </head>
+  <body>
+    <h1>Internal Server Error</h1>
+    <p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+  </body>
+</html>
+HTTP/1.1 500 Internal Server Error
+content-type: text/html
+x-cloud-trace-context: 67c15de8cda3ea360aeabd3d8bfbfa67
+date: Tue, 13 May 2025 23:40:31 GMT
+server: Google Frontend
+Content-Length: 290
+
+<html>
+  <head>
+    <title>500 Internal Server Error</title>
+  </head>
+  <body>
+    <h1>Internal Server Error</h1>
+    <p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+  </body>
+</html>
+  [32mWhen [0m[32mI send a login request to the API[0m            [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iSendLoginRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m500[0m   [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain error message[0m [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseShouldContainErrorMessage()[0m
+
+@api @api @boundary
+Scenario: Login with special characters in username     [90m# src/test/resources/features/api/login.feature:36[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                  [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have user credentials with special characters[0m [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iHaveUserCredentialsWithSpecialCharacters()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "user@#$%",
+    "password": "pass!@#"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 1575bfb7423f23f3950478604d05a43d
+date: Tue, 13 May 2025 23:40:32 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "User does not exist."
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: 1575bfb7423f23f3950478604d05a43d
+date: Tue, 13 May 2025 23:40:32 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "User does not exist."
+}
+  [32mWhen [0m[32mI send a login request to the API[0m                [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.iSendLoginRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m       [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+
+@api @api @smoke
+Scenario: Successful signup with new user             [90m# src/test/resources/features/api/signup.feature:8[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have new user signup credentials[0m            [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iHaveNewUserSignupCredentials()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "noble.dickens1747179631754",
+    "password": "l82lnefylw"
+}
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Cloud-Trace-Context: 43f0919aa442d3fcb13b0474cb19939f
+Date: Tue, 13 May 2025 23:40:32 GMT
+Server: Google Frontend
+Content-Length: 3
+
+""
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Cloud-Trace-Context: 43f0919aa442d3fcb13b0474cb19939f
+Date: Tue, 13 May 2025 23:40:32 GMT
+Server: Google Frontend
+Content-Length: 3
+
+""
+  [32mWhen [0m[32mI send a signup request to the API[0m             [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iSendSignupRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m     [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain success message[0m [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.theAPIResponseShouldContainSuccessMessage()[0m
+
+@api @api @negative
+Scenario: Signup with existing username                                        [90m# src/test/resources/features/api/signup.feature:15[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                                         [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have existing user credentials for signup[0m                            [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iHaveExistingUserCredentialsForSignup()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser2025",
+    "password": "testpassword2025"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: e252c891c46c7189497febc73b2ce279
+date: Tue, 13 May 2025 23:40:32 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "This user already exist."
+}
+HTTP/1.1 200 OK
+content-type: application/json
+vary: Accept-Encoding
+content-encoding: gzip
+x-cloud-trace-context: e252c891c46c7189497febc73b2ce279
+date: Tue, 13 May 2025 23:40:32 GMT
+server: Google Frontend
+Transfer-Encoding: chunked
+
+{
+    "errorMessage": "This user already exist."
+}
+  [32mWhen [0m[32mI send a signup request to the API[0m                                      [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iSendSignupRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m                              [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain error message [0m[32m[1m"This user already exist."[0m [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIResponseShouldContainErrorMessage(java.lang.String)[0m
+
+@api @api @negative
+Scenario: Signup with empty username                  [90m# src/test/resources/features/api/signup.feature:22[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have signup credentials with empty username[0m [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iHaveSignupCredentialsWithEmptyUsername()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "",
+    "password": "btqwlhcfztpi"
+}
+HTTP/1.1 500 Internal Server Error
+content-type: text/html
+x-cloud-trace-context: 836d99f786f5045bfbfe98def7d0d555
+date: Tue, 13 May 2025 23:40:33 GMT
+server: Google Frontend
+Content-Length: 290
+
+<html>
+  <head>
+    <title>500 Internal Server Error</title>
+  </head>
+  <body>
+    <h1>Internal Server Error</h1>
+    <p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+  </body>
+</html>
+HTTP/1.1 500 Internal Server Error
+content-type: text/html
+x-cloud-trace-context: 836d99f786f5045bfbfe98def7d0d555
+date: Tue, 13 May 2025 23:40:33 GMT
+server: Google Frontend
+Content-Length: 290
+
+<html>
+  <head>
+    <title>500 Internal Server Error</title>
+  </head>
+  <body>
+    <h1>Internal Server Error</h1>
+    <p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+  </body>
+</html>
+  [32mWhen [0m[32mI send a signup request to the API[0m             [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iSendSignupRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m500[0m     [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain error message[0m   [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseShouldContainErrorMessage()[0m
+
+@api @api @negative
+Scenario: Signup with empty password                  [90m# src/test/resources/features/api/signup.feature:29[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m                [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have signup credentials with empty password[0m [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iHaveSignupCredentialsWithEmptyPassword()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "letisha.will",
+    "password": ""
+}
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Cloud-Trace-Context: 7fb92a034346509ffb1ec72d425769b3
+Date: Tue, 13 May 2025 23:40:33 GMT
+Server: Google Frontend
+Content-Length: 3
+
+""
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Cloud-Trace-Context: 7fb92a034346509ffb1ec72d425769b3
+Date: Tue, 13 May 2025 23:40:33 GMT
+Server: Google Frontend
+Content-Length: 3
+
+""
+  [32mWhen [0m[32mI send a signup request to the API[0m             [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iSendSignupRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m     [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+  [32mAnd [0m[32mthe API response should contain success message[0m [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.theAPIResponseShouldContainSuccessMessage()[0m
+
+@api @api @boundary
+Scenario: Signup with very long username             [90m# src/test/resources/features/api/signup.feature:36[0m
+  [32mGiven [0m[32mthe API base URL is configured[0m               [90m# com.demoblaze.stepdefinitions.api.LoginApiSteps.theAPIBaseURLIsConfigured()[0m
+  [32mGiven [0m[32mI have signup credentials with long username[0m [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iHaveSignupCredentialsWithLongUsername()[0m
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "gys358ncvjjapdyu4i1huo3tpfa58rmf1roybmqw0r5oc1cdhdnhyeclagevlh042dxfhg9s2ul64i9uj4rgjunrhamlty9hqdq2",
+    "password": "669ofu2wpg"
+}
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Cloud-Trace-Context: 0beebb345ee629e8613bf2a4c2f86699
+Date: Tue, 13 May 2025 23:40:33 GMT
+Server: Google Frontend
+Content-Length: 3
+
+""
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Cloud-Trace-Context: 0beebb345ee629e8613bf2a4c2f86699
+Date: Tue, 13 May 2025 23:40:33 GMT
+Server: Google Frontend
+Content-Length: 3
+
+""
+  [32mWhen [0m[32mI send a signup request to the API[0m            [90m# com.demoblaze.stepdefinitions.api.SignupApiSteps.iSendSignupRequestToAPI()[0m
+  [32mThen [0m[32mthe API response status code should be [0m[32m[1m200[0m    [90m# com.demoblaze.stepdefinitions.api.CommonApiSteps.theAPIResponseStatusCodeShouldBe(int)[0m
+
+10 Scenarios ([32m10 passed[0m)
+48 Steps ([32m48 passed[0m)
+0m6.500s
+
+
+gradlew.bat : 
+[32m[1m?????????????????????????????????????????????????????????????????????????????????????[0m
+At C:\Users\ASUS\DemoBlaze-automation-framework\EnhancedTestReport.ps1:122 char:27
++ ...           $output = & ./gradlew apiTests --console=plain 2>&1 | Out-S ...
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([32m[1m??????...???????????[0m:String) [], RemoteExce 
+   ption
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[32m[1m?[0m Share your Cucumber Report with your team at 
+[36m[1m[4mhttps://reports.cucumber.io[0m          [32m[1m?[0m
+[32m[1m?[0m Activate publishing with one of the following:                                    
+[32m[1m?[0m
+[32m[1m?[0m                                                                                   
+[32m[1m?[0m
+[32m[1m?[0m src/test/resources/cucumber.properties:          
+[36mcucumber.publish.enabled[0m=[36mtrue[0m    [32m[1m?[0m
+[32m[1m?[0m src/test/resources/junit-platform.properties:    
+[36mcucumber.publish.enabled[0m=[36mtrue[0m    [32m[1m?[0m
+[32m[1m?[0m Environment variable:                            
+[36mCUCUMBER_PUBLISH_ENABLED[0m=[36mtrue[0m    [32m[1m?[0m
+[32m[1m?[0m JUnit:                                           [36m@CucumberOptions[0m(publish = 
+[36mtrue[0m) [32m[1m?[0m
+[32m[1m?[0m                                                                                   
+[32m[1m?[0m
+[32m[1m?[0m More information at [36mhttps://cucumber.io/docs/cucumber/environment-variables/[0m  
+    [32m[1m?[0m
+[32m[1m?[0m                                                                                   
+[32m[1m?[0m
+[32m[1m?[0m Disable this message with one of the following:                                   
+[32m[1m?[0m
+[32m[1m?[0m                                                                                   
+[32m[1m?[0m
+[32m[1m?[0m src/test/resources/cucumber.properties:          
+[36mcucumber.publish.quiet[0m=[36mtrue[0m      [32m[1m?[0m
+[32m[1m?[0m src/test/resources/junit-platform.properties:    
+[36mcucumber.publish.quiet[0m=[36mtrue[0m      [32m[1m?[0m
+[32m[1m?????????????????????????????????????????????????????????????????????????????????????[0m
+
+BUILD SUCCESSFUL in 8s
+6 actionable tasks: 1 executed, 5 up-to-date
+api Test Results: 10 scenarios, 10 passed, 0 failed
+
+Running web tests...
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :jar UP-TO-DATE
+> Task :assemble UP-TO-DATE
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses UP-TO-DATE
+
+> Task :webTests
+
+@web @e2e
+Scenario: Complete checkout process                                   [90m# src/test/resources/features/web/checkout_process.feature:4[0m
+Setting up for scenario: Complete checkout process
+Loaded configuration from config.properties
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179636282_9",
+    "password": "Test@e#gBLG&%"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: 16a4f62cefa09c09e465a6468d6504e9
+date: Tue, 13 May 2025 23:40:38 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+gradlew.bat : [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting 
+webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+At C:\Users\ASUS\DemoBlaze-automation-framework\EnhancedTestReport.ps1:125 char:27
++ ...           $output = & ./gradlew webTests --console=plain 2>&1 | Out-S ...
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([main] INFO io....hromedriver.exe:String) [], RemoteExce 
+   ption
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 25487
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 25487.
+May 14, 2025 6:40:40 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:40:40 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                                [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI log in with valid credentials[0m                                [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iLogInWithValidCredentials()[0m
+Error clicking product: unexpected alert open: {Alert text : Wrong password.}
+  (Session info: chrome=136.0.7103.93): Wrong password.
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+  [32mAnd [0m[32mI click on a product named [0m[32m[1m"Samsung galaxy s6"[0m                  [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_on_a_product_named(java.lang.String)[0m
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a5d08e6ab99010bc44ef2507eee30af3, findElement {using=xpath, 
+value=//a[contains(text(),'Samsung galaxy s6')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: 
+{chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\ASUS\AppData\Local...}, 
+fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49790}, 
+networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), 
+se:cdp: ws://localhost:49790/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, 
+strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, 
+unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, 
+webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: 
+true, webauthn:virtualAuthenticators: true}
+Session ID: a5d08e6ab99010bc44ef2507eee30af3
+Clicking button: Add to cart
+  [31mAnd [0m[31mI click the [0m[31m[1m"Add to cart"[0m[31m button[0m                                [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+      [31mjava.lang.RuntimeException: Could not click add to cart button
+	at com.demoblaze.web.pages.ProductDetailPage.clickAddToCart(ProductDetailPage.java:50)
+	at com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(CheckoutSteps.java:36)
+	at Γ£╜.I click the "Add to cart" button(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/checkout_process.feature:8)
+Caused by: java.lang.RuntimeException: Add to cart button not found
+	at com.demoblaze.web.pages.ProductDetailPage.clickAddToCart(ProductDetailPage.java:46)
+	at com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(CheckoutSteps.java:36)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$6(Runtime.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$7(Runtime.java:132)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.cucumber.core.runtime.Runtime$SameThreadExecutorService.execute(Runtime.java:253)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+	at io.cucumber.core.runtime.Runtime.lambda$runFeatures$3(Runtime.java:114)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.SliceOps$1$1.accept(SliceOps.java:200)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1685)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at io.cucumber.core.runtime.Runtime.runFeatures(Runtime.java:115)
+	at io.cucumber.core.runtime.Runtime.lambda$run$0(Runtime.java:84)
+	at io.cucumber.core.runtime.Runtime.execute(Runtime.java:99)
+	at io.cucumber.core.runtime.Runtime.run(Runtime.java:82)
+	at io.cucumber.core.cli.Main.run(Main.java:87)
+	at io.cucumber.core.cli.Main.main(Main.java:30)
+[0m
+  [36mAnd [0m[36mI accept the product added popup[0m                                [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_accept_the_product_added_popup()[0m
+  [36mAnd [0m[36mI navigate to the cart page[0m                                     [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_navigate_to_the_cart_page()[0m
+  [36mThen [0m[36mI should see the product in the cart[0m                           [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_should_see_the_product_in_the_cart()[0m
+  [36mWhen [0m[36mI click the [0m[36m[1m"Place Order"[0m[36m button[0m                               [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+  [36mAnd [0m[36mI fill in the order form with valid details[0m                     [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_fill_in_the_order_form_with_valid_details()[0m
+  [36mAnd [0m[36mI click the [0m[36m[1m"Purchase"[0m[36m button[0m                                   [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+  [36mThen [0m[36mI should see the purchase confirmation[0m                         [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_should_see_the_purchase_confirmation()[0m
+  [36mAnd [0m[36mI should see the success message [0m[36m[1m"Thank you for your purchase!"[0m [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_should_see_the_success_message(java.lang.String)[0m
+  [36mWhen [0m[36mI click the [0m[36m[1m"OK"[0m[36m button[0m                                        [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+  [36mThen [0m[36mI should return to the homepage[0m                                [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_should_return_to_the_homepage()[0m
+
+    Embedding failure-screenshot [image/png 302117 bytes]
+
+[AsyncHttpClient-1-4] WARN org.asynchttpclient.netty.handler.WebSocketHandler - onError
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:256)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+May 14, 2025 6:41:37 AM org.openqa.selenium.remote.http.WebSocket$Listener onError
+WARNING: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:401)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:434)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:256)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 19093
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 19093.
+May 14, 2025 6:41:38 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:41:38 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+
+    Embedding failure-screenshot [image/png 6406 bytes]
+
+
+@web @smoke
+Scenario: Successful login with valid credentials                     [90m# src/test/resources/features/web/login_web.feature:4[0m
+Setting up for scenario: Successful login with valid credentials
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179698621_2",
+    "password": "Test@3&@d$i9Mq#"
+}
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Cloud-Trace-Context: 4b7123b44970417a132d0fb34eda61ef
+Date: Tue, 13 May 2025 23:41:39 GMT
+Server: Google Frontend
+Content-Length: 3
+
+""
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 31981
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 31981.
+May 14, 2025 6:41:40 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:41:40 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                                [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on the login button in the navigation bar[0m              [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickOnLoginButtonInNav()[0m
+  [32mAnd [0m[32mI enter username [0m[32m[1m"testuser2025"[0m[32m and password [0m[32m[1m"testpassword2025"[0m [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iEnterCredentials(java.lang.String,java.lang.String)[0m
+  [32mAnd [0m[32mI click the login button[0m                                        [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickLoginButton()[0m
+  [32mThen [0m[32mI should be logged in successfully[0m                             [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iShouldBeLoggedInSuccessfully()[0m
+  [32mAnd [0m[32mI should see [0m[32m[1m"Welcome testuser2025"[0m[32m message[0m                     [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iShouldSeeMessage(java.lang.String)[0m
+
+@web @negative
+Scenario: Login with invalid password                              [90m# src/test/resources/features/web/login_web.feature:13[0m
+Setting up for scenario: Login with invalid password
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179717670_7",
+    "password": "Test@^D8*c^PFR^"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: f33de807bb594a42274c5ec9f2cfdace
+date: Tue, 13 May 2025 23:41:58 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 24925
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 24925.
+May 14, 2025 6:41:59 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:41:59 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                             [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on the login button in the navigation bar[0m           [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickOnLoginButtonInNav()[0m
+  [32mAnd [0m[32mI enter username [0m[32m[1m"testuser2025"[0m[32m and password [0m[32m[1m"wrongpassword"[0m [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iEnterCredentials(java.lang.String,java.lang.String)[0m
+  [32mAnd [0m[32mI click the login button[0m                                     [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickLoginButton()[0m
+  [32mThen [0m[32mI should see error message [0m[32m[1m"Wrong password."[0m                [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iShouldSeeErrorMessage(java.lang.String)[0m
+
+@web @negative
+Scenario: Login with non-existent user                              [90m# src/test/resources/features/web/login_web.feature:21[0m
+Setting up for scenario: Login with non-existent user
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179733601_1",
+    "password": "Test@rC2&m*ECw"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: 798f26c67e63e0fca18c42c388125877
+date: Tue, 13 May 2025 23:42:14 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 6274
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 6274.
+May 14, 2025 6:42:15 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:42:15 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                              [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on the login button in the navigation bar[0m            [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickOnLoginButtonInNav()[0m
+  [32mAnd [0m[32mI enter username [0m[32m[1m"nonexistentuser"[0m[32m and password [0m[32m[1m"password123"[0m [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iEnterCredentials(java.lang.String,java.lang.String)[0m
+  [32mAnd [0m[32mI click the login button[0m                                      [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickLoginButton()[0m
+  [32mThen [0m[32mI should see error message [0m[32m[1m"User does not exist."[0m            [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iShouldSeeErrorMessage(java.lang.String)[0m
+
+@web @negative
+Scenario: Login with empty credentials                                     [90m# src/test/resources/features/web/login_web.feature:29[0m
+Setting up for scenario: Login with empty credentials
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179749686_4",
+    "password": "Test@QDy53U5CC#"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: 3175db24aa0782cafc069bf916551057
+date: Tue, 13 May 2025 23:42:30 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 20447
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 20447.
+May 14, 2025 6:42:31 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:42:31 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                                     [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on the login button in the navigation bar[0m                   [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickOnLoginButtonInNav()[0m
+  [32mAnd [0m[32mI click the login button without entering credentials[0m                [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickLoginButtonWithoutEnteringCredentials()[0m
+  [32mThen [0m[32mI should see error message [0m[32m[1m"Please fill out Username and Password."[0m [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iShouldSeeErrorMessage(java.lang.String)[0m
+
+@web @boundary
+Scenario: Login with special characters                    [90m# src/test/resources/features/web/login_web.feature:36[0m
+Setting up for scenario: Login with special characters
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179765736_5",
+    "password": "Test@#IA76VU@2"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: 0b4e16d99980c3a6d9e0d2555a7b1972
+date: Tue, 13 May 2025 23:42:46 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 14877
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 14877.
+May 14, 2025 6:42:47 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:42:47 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                     [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on the login button in the navigation bar[0m   [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickOnLoginButtonInNav()[0m
+  [32mAnd [0m[32mI enter username [0m[32m[1m"user@#$%"[0m[32m and password [0m[32m[1m"pass!@#"[0m   [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iEnterCredentials(java.lang.String,java.lang.String)[0m
+  [32mAnd [0m[32mI click the login button[0m                             [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iClickLoginButton()[0m
+  [32mThen [0m[32mlogin should be processed with appropriate response[0m [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.loginShouldBeProcessedWithAppropriateResponse()[0m
+
+@web @smoke
+Scenario: Browse products by categories                    [90m# src/test/resources/features/web/product_browsing.feature:4[0m
+Setting up for scenario: Browse products by categories
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179782040_7",
+    "password": "Test@bi052ARHj"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: 9a0559913276d2b4d6fd5845f87a2a86
+date: Tue, 13 May 2025 23:43:02 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 42105
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 42105.
+May 14, 2025 6:43:04 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:43:04 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m                     [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on [0m[32m[1m"Phones"[0m[32m category[0m                        [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnCategory(java.lang.String)[0m
+  [32mThen [0m[32mI should see products filtered by [0m[32m[1mPhones[0m[32m category[0m   [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeProductsFilteredByCategory(java.lang.String)[0m
+  [32mWhen [0m[32mI click on [0m[32m[1m"Laptops"[0m[32m category[0m                       [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnCategory(java.lang.String)[0m
+  [32mThen [0m[32mI should see products filtered by [0m[32m[1mLaptops[0m[32m category[0m  [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeProductsFilteredByCategory(java.lang.String)[0m
+  [32mWhen [0m[32mI click on [0m[32m[1m"Monitors"[0m[32m category[0m                      [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnCategory(java.lang.String)[0m
+  [32mThen [0m[32mI should see products filtered by [0m[32m[1mMonitors[0m[32m category[0m [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeProductsFilteredByCategory(java.lang.String)[0m
+
+@web @functional
+Scenario: View product details                      [90m# src/test/resources/features/web/product_browsing.feature:14[0m
+Setting up for scenario: View product details
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179812275_8",
+    "password": "Test@2^%CUP*H"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: cb61766ce9c0ddf82d1626bbe7f2ed93
+date: Tue, 13 May 2025 23:43:32 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 23802
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 23802.
+May 14, 2025 6:43:34 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:43:34 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m              [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+  [32mWhen [0m[32mI click on [0m[32m[1m"Phones"[0m[32m category[0m                 [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnCategory(java.lang.String)[0m
+  [32mAnd [0m[32mI click on product [0m[32m[1m"Samsung galaxy s6"[0m        [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnProduct(java.lang.String)[0m
+  [32mThen [0m[32mI should see the product details page[0m        [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeTheProductDetailsPage()[0m
+  [32mAnd [0m[32mI should see product name [0m[32m[1m"Samsung galaxy s6"[0m [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeProductName(java.lang.String)[0m
+  [32mAnd [0m[32mI should see product price[0m                    [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeProductPrice()[0m
+
+@web @functional
+Scenario: Navigate between pages            [90m# src/test/resources/features/web/product_browsing.feature:23[0m
+Setting up for scenario: Navigate between pages
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179828398_8",
+    "password": "Test@*qWCa8Y77Ce"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: 07aba0dcbee0108c9876e02d88bd423d
+date: Tue, 13 May 2025 23:43:49 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 17516
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 17516.
+May 14, 2025 6:43:50 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:43:50 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+  [32mGiven [0m[32mI am on the Demoblaze homepage[0m      [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+Clicking button: Next
+  [32mWhen [0m[32mI click the [0m[32m[1m"Next"[0m[32m button[0m            [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+  [32mThen [0m[32mI should see different products[0m      [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeDifferentProducts()[0m
+Clicking button: Previous
+  [32mWhen [0m[32mI click the [0m[32m[1m"Previous"[0m[32m button[0m        [90m# com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(java.lang.String)[0m
+  [32mThen [0m[32mI should see the first page products[0m [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeTheFirstPageProducts()[0m
+
+@web @functional
+Scenario: Search for non-existent product            [90m# src/test/resources/features/web/product_browsing.feature:31[0m
+Setting up for scenario: Search for non-existent product
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179844671_5",
+    "password": "Test@!GKS@*W!9"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: ae9db3a95945b920732f2ee8a3f0c003
+date: Tue, 13 May 2025 23:44:05 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 30620
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 30620.
+May 14, 2025 6:44:06 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:44:06 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+Error loading base URL: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=136.0.7103.93)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d763163e3d5cfa1fd9c0f60e0c5f4bb4, get {url=https://www.demoblaze.com}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: 
+{chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\ASUS\AppData\Local...}, 
+fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50086}, 
+networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), 
+se:cdp: ws://localhost:50086/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, 
+strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, 
+unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, 
+webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: 
+true, webauthn:virtualAuthenticators: true}
+Session ID: d763163e3d5cfa1fd9c0f60e0c5f4bb4
+Failed to navigate to homepage: Failed to load base URL
+  [31mGiven [0m[31mI am on the Demoblaze homepage[0m               [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+      [31mjava.lang.RuntimeException: Failed to navigate to homepage
+	at com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage(LoginWebSteps.java:47)
+	at Γ£╜.I am on the Demoblaze homepage(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:32)
+Caused by: java.lang.RuntimeException: Failed to load base URL
+	at com.demoblaze.web.pages.BasePage.goToBaseUrl(BasePage.java:40)
+	at com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage(LoginWebSteps.java:43)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$6(Runtime.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$7(Runtime.java:132)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.cucumber.core.runtime.Runtime$SameThreadExecutorService.execute(Runtime.java:253)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+	at io.cucumber.core.runtime.Runtime.lambda$runFeatures$3(Runtime.java:114)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.SliceOps$1$1.accept(SliceOps.java:200)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1685)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at io.cucumber.core.runtime.Runtime.runFeatures(Runtime.java:115)
+	at io.cucumber.core.runtime.Runtime.lambda$run$0(Runtime.java:84)
+	at io.cucumber.core.runtime.Runtime.execute(Runtime.java:99)
+	at io.cucumber.core.runtime.Runtime.run(Runtime.java:82)
+	at io.cucumber.core.cli.Main.run(Main.java:87)
+	at io.cucumber.core.cli.Main.main(Main.java:30)
+Caused by: org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=136.0.7103.93)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d763163e3d5cfa1fd9c0f60e0c5f4bb4, get {url=https://www.demoblaze.com}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\ASUS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50086}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50086/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d763163e3d5cfa1fd9c0f60e0c5f4bb4
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:193)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:183)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:297)
+	at com.demoblaze.web.pages.BasePage.goToBaseUrl(BasePage.java:36)
+	... 41 more
+[0m
+  [36mWhen [0m[36mI try to find product [0m[36m[1m"NonExistentProduct123"[0m [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iTryToFindProduct(java.lang.String)[0m
+  [36mThen [0m[36mI should not find any matching products[0m       [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldNotFindAnyMatchingProducts()[0m
+
+    Embedding failure-screenshot [image/png 50023 bytes]
+
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 45217
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 45217.
+May 14, 2025 6:44:50 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:44:50 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+
+    Embedding failure-screenshot [image/png 6406 bytes]
+
+
+@web @e2e
+Scenario: Add product to cart                     [90m# src/test/resources/features/web/product_browsing.feature:37[0m
+Setting up for scenario: Add product to cart
+Request method:	POST
+Request URI:	https://api.demoblaze.com/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				User-Agent=Mozilla/5.0
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "testuser_1747179890596_1",
+    "password": "Test@*&x8yUuV"
+}
+HTTP/1.1 200 OK
+content-type: application/json
+x-cloud-trace-context: e3396fb1db649130ee329e5cf9f0870a;o=1
+date: Tue, 13 May 2025 23:44:51 GMT
+server: Google Frontend
+Content-Length: 3
+
+""
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 48430
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 48430.
+May 14, 2025 6:44:52 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:44:52 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+Error loading base URL: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=136.0.7103.93)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1c2382f6ccf4d2441105621268d2b98f, get {url=https://www.demoblaze.com}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: 
+{chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\ASUS\AppData\Local...}, 
+fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50156}, 
+networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), 
+se:cdp: ws://localhost:50156/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, 
+strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, 
+unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, 
+webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: 
+true, webauthn:virtualAuthenticators: true}
+Session ID: 1c2382f6ccf4d2441105621268d2b98f
+Failed to navigate to homepage: Failed to load base URL
+  [31mGiven [0m[31mI am on the Demoblaze homepage[0m            [90m# com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage()[0m
+      [31mjava.lang.RuntimeException: Failed to navigate to homepage
+	at com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage(LoginWebSteps.java:47)
+	at Γ£╜.I am on the Demoblaze homepage(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:38)
+Caused by: java.lang.RuntimeException: Failed to load base URL
+	at com.demoblaze.web.pages.BasePage.goToBaseUrl(BasePage.java:40)
+	at com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage(LoginWebSteps.java:43)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$6(Runtime.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$7(Runtime.java:132)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.cucumber.core.runtime.Runtime$SameThreadExecutorService.execute(Runtime.java:253)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+	at io.cucumber.core.runtime.Runtime.lambda$runFeatures$3(Runtime.java:114)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.SliceOps$1$1.accept(SliceOps.java:200)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1685)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at io.cucumber.core.runtime.Runtime.runFeatures(Runtime.java:115)
+	at io.cucumber.core.runtime.Runtime.lambda$run$0(Runtime.java:84)
+	at io.cucumber.core.runtime.Runtime.execute(Runtime.java:99)
+	at io.cucumber.core.runtime.Runtime.run(Runtime.java:82)
+	at io.cucumber.core.cli.Main.run(Main.java:87)
+	at io.cucumber.core.cli.Main.main(Main.java:30)
+Caused by: org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=136.0.7103.93)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1c2382f6ccf4d2441105621268d2b98f, get {url=https://www.demoblaze.com}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\ASUS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50156}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50156/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1c2382f6ccf4d2441105621268d2b98f
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:193)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:183)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:297)
+	at com.demoblaze.web.pages.BasePage.goToBaseUrl(BasePage.java:36)
+	... 41 more
+[0m
+  [36mWhen [0m[36mI click on product [0m[36m[1m"Nokia lumia 1520"[0m      [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickOnProduct(java.lang.String)[0m
+  [36mAnd [0m[36mI click [0m[36m[1m"Add to cart"[0m[36m button[0m                [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iClickButton(java.lang.String)[0m
+  [36mAnd [0m[36mI accept the product added confirmation[0m     [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iAcceptTheProductAddedConfirmation()[0m
+  [36mAnd [0m[36mI navigate to cart[0m                          [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iNavigateToCart()[0m
+  [36mThen [0m[36mI should see [0m[36m[1m"Nokia lumia 1520"[0m[36m in my cart[0m [90m# com.demoblaze.stepdefinitions.web.ProductBrowsingSteps.iShouldSeeInMyCart(java.lang.String)[0m
+
+    Embedding failure-screenshot [image/png 50023 bytes]
+
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as 
+C:\Users\ASUS\.cache\selenium\chromedriver\win64\136.0.7103.92\chromedriver.exe
+Starting ChromeDriver 136.0.7103.92 
+(cb81a4cc5087a8303a6c8827ee2b80b71d26e334-refs/branch-heads/7103@{#1840}) on port 24980
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping 
+ChromeDriver safe.
+ChromeDriver was started successfully on port 24980.
+May 14, 2025 6:45:14 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 136
+May 14, 2025 6:45:14 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a 
+specific version of the CDP using something similar to 
+`org.seleniumhq.selenium:selenium-devtools-v86:4.9.0` where the version ("v86") matches the version 
+of the chromium-based browser you're using and the version number of the artifact is the same as 
+Selenium's.
+
+    Embedding failure-screenshot [image/png 6406 bytes]
+
+
+[31mFailed scenarios:[0m
+file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/checkout_process.feature:4 # Complete checkout process
+file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:31 # Search for non-existent product
+file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:37 # Add product to cart
+
+11 Scenarios ([31m3 failed[0m, [32m8 passed[0m)
+66 Steps ([31m3 failed[0m, [36m17 skipped[0m, [32m46 passed[0m)
+4m39.235s
+
+
+java.lang.RuntimeException: Could not click add to cart button
+	at com.demoblaze.web.pages.ProductDetailPage.clickAddToCart(ProductDetailPage.java:50)
+	at com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(CheckoutSteps.java:36)
+	at ?.I click the "Add to cart" button(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/checkout_process.feature:8)
+Caused by: java.lang.RuntimeException: Add to cart button not found
+	at com.demoblaze.web.pages.ProductDetailPage.clickAddToCart(ProductDetailPage.java:46)
+	at com.demoblaze.stepdefinitions.web.CheckoutSteps.i_click_the_button(CheckoutSteps.java:36)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$6(Runtime.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$7(Runtime.java:132)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.cucumber.core.runtime.Runtime$SameThreadExecutorService.execute(Runtime.java:253)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+	at io.cucumber.core.runtime.Runtime.lambda$runFeatures$3(Runtime.java:114)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.SliceOps$1$1.accept(SliceOps.java:200)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1685)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at io.cucumber.core.runtime.Runtime.runFeatures(Runtime.java:115)
+	at io.cucumber.core.runtime.Runtime.lambda$run$0(Runtime.java:84)
+	at io.cucumber.core.runtime.Runtime.execute(Runtime.java:99)
+	at io.cucumber.core.runtime.Runtime.run(Runtime.java:82)
+	at io.cucumber.core.cli.Main.run(Main.java:87)
+	at io.cucumber.core.cli.Main.main(Main.java:30)
+
+java.lang.RuntimeException: Failed to navigate to homepage
+	at com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage(LoginWebSteps.java:47)
+	at ?.I am on the Demoblaze homepage(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:32)
+Caused by: java.lang.RuntimeException: Failed to load base URL
+	at com.demoblaze.web.pages.BasePage.goToBaseUrl(BasePage.java:40)
+	at com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage(LoginWebSteps.java:43)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$6(Runtime.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$7(Runtime.java:132)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.cucumber.core.runtime.Runtime$SameThreadExecutorService.execute(Runtime.java:253)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+	at io.cucumber.core.runtime.Runtime.lambda$runFeatures$3(Runtime.java:114)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.SliceOps$1$1.accept(SliceOps.java:200)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1685)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at io.cucumber.core.runtime.Runtime.runFeatures(Runtime.java:115)
+	at io.cucumber.core.runtime.Runtime.lambda$run$0(Runtime.java:84)
+	at io.cucumber.core.runtime.Runtime.execute(Runtime.java:99)
+	at io.cucumber.core.runtime.Runtime.run(Runtime.java:82)
+	at io.cucumber.core.cli.Main.run(Main.java:87)
+	at io.cucumber.core.cli.Main.main(Main.java:30)
+Caused by: org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=136.0.7103.93)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d763163e3d5cfa1fd9c0f60e0c5f4bb4, get {url=https://www.demoblaze.com}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\ASUS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50086}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50086/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d763163e3d5cfa1fd9c0f60e0c5f4bb4
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:193)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:183)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:297)
+	at com.demoblaze.web.pages.BasePage.goToBaseUrl(BasePage.java:36)
+	... 41 more
+
+java.lang.RuntimeException: Failed to navigate to homepage
+	at com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage(LoginWebSteps.java:47)
+	at ?.I am on the Demoblaze homepage(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:38)
+Caused by: java.lang.RuntimeException: Failed to load base URL
+	at com.demoblaze.web.pages.BasePage.goToBaseUrl(BasePage.java:40)
+	at com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage(LoginWebSteps.java:43)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$6(Runtime.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.Runtime.lambda$executePickle$7(Runtime.java:132)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at io.cucumber.core.runtime.Runtime$SameThreadExecutorService.execute(Runtime.java:253)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+	at io.cucumber.core.runtime.Runtime.lambda$runFeatures$3(Runtime.java:114)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.SliceOps$1$1.accept(SliceOps.java:200)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1685)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at io.cucumber.core.runtime.Runtime.runFeatures(Runtime.java:115)
+	at io.cucumber.core.runtime.Runtime.lambda$run$0(Runtime.java:84)
+	at io.cucumber.core.runtime.Runtime.execute(Runtime.java:99)
+	at io.cucumber.core.runtime.Runtime.run(Runtime.java:82)
+	at io.cucumber.core.cli.Main.run(Main.java:87)
+	at io.cucumber.core.cli.Main.main(Main.java:30)
+Caused by: org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_TIMED_OUT
+  (Session info: chrome=136.0.7103.93)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1c2382f6ccf4d2441105621268d2b98f, get {url=https://www.demoblaze.com}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 136.0.7103.93, chrome: {chromedriverVersion: 136.0.7103.92 (cb81a4cc5087..., userDataDir: C:\Users\ASUS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50156}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50156/devtoo..., se:cdpVersion: 136.0.7103.93, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1c2382f6ccf4d2441105621268d2b98f
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:193)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:183)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:297)
+	at com.demoblaze.web.pages.BasePage.goToBaseUrl(BasePage.java:36)
+	... 41 more
+
+
+[32m[1m?????????????????????????????????????????????????????????????????????????????????????[0m
+[32m[1m?[0m Share your Cucumber Report with your team at 
+[36m[1m[4mhttps://reports.cucumber.io[0m          [32m[1m?[0m
+[32m[1m?[0m Activate publishing with one of the following:                                    
+[32m[1m?[0m
+[32m[1m?[0m                                                                                   
+[32m[1m?[0m
+[32m[1m?[0m src/test/resources/cucumber.properties:          
+[36mcucumber.publish.enabled[0m=[36mtrue[0m    [32m[1m?[0m
+[32m[1m?[0m src/test/resources/junit-platform.properties:    
+[36mcucumber.publish.enabled[0m=[36mtrue[0m    [32m[1m?[0m
+[32m[1m?[0m Environment variable:                            
+[36mCUCUMBER_PUBLISH_ENABLED[0m=[36mtrue[0m    [32m[1m?[0m
+[32m[1m?[0m JUnit:                                           [36m@CucumberOptions[0m(publish = 
+[36mtrue[0m) [32m[1m?[0m
+[32m[1m?[0m                                                                                   
+[32m[1m?[0m
+[32m[1m?[0m More information at [36mhttps://cucumber.io/docs/cucumber/environment-variables/[0m  
+    [32m[1m?[0m
+[32m[1m?[0m                                                                                   
+[32m[1m?[0m
+[32m[1m?[0m Disable this message with one of the following:                                   
+[32m[1m?[0m
+[32m[1m?[0m                                                                                   
+[32m[1m?[0m
+[32m[1m?[0m src/test/resources/cucumber.properties:          
+[36mcucumber.publish.quiet[0m=[36mtrue[0m      [32m[1m?[0m
+[32m[1m?[0m src/test/resources/junit-platform.properties:    
+[36mcucumber.publish.quiet[0m=[36mtrue[0m      [32m[1m?[0m
+[32m[1m?????????????????????????????????????????????????????????????????????????????????????[0m
+
+> Task :webTests FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':webTests'.
+> Process 'command 'C:\Program Files\Eclipse Adoptium\jdk-21.0.6.7-hotspot\bin\java.exe'' finished 
+with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 4m 42s
+6 actionable tasks: 1 executed, 5 up-to-date
+web Test Results: 11 scenarios, 8 passed, 3 failed
+Copied: build\reports\cucumber\api\index.html -> test-reports\20250514_064024\cucumber-api-report.html
+Copied: build\reports\cucumber\web\index.html -> test-reports\20250514_064024\cucumber-web-report.html
+Copied: build\reports\cucumber\api\cucumber.json -> test-reports\20250514_064024\cucumber-api.json
+Copied: build\reports\cucumber\web\cucumber.json -> test-reports\20250514_064024\cucumber-web.json
+**********************
+Windows PowerShell transcript end
+End time: 20250514064516
+**********************

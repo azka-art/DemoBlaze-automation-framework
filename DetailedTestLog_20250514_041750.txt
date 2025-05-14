@@ -1,0 +1,50 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20250514041750
+Username: DESKTOP-EE4NV9N\ASUS
+RunAs User: DESKTOP-EE4NV9N\ASUS
+Configuration Name: 
+Machine: DESKTOP-EE4NV9N (Microsoft Windows NT 10.0.22621.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "c:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+Process ID: 24332
+PSVersion: 5.1.22621.4249
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.4249
+BuildVersion: 10.0.22621.4249
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\ASUS\DemoBlaze-automation-framework\DetailedTestLog_20250514_041750.txt
+[INFO] Test Report
+Date: 2025-05-14 04:17
+Env: default | Type: all | Browser: chrome | Headless: False
+Collecting system info...
+OS: Windows_NT\nMachine: DESKTOP-EE4NV9N\nPS: 5.1.22621.4249\nJava: openjdk version "21.0.6" 2025-01-21 LTS\nGradle: Gradle 8.13
+Scanning project structure...
+API Features: 2\nWeb Features: 3\nTest Classes: 12
+Running build process...
+> Task :clean
+
+BUILD SUCCESSFUL in 1s
+1 actionable task: 1 executed
+> Task :compileJava FROM-CACHE
+> Task :processResources
+> Task :classes
+> Task :compileTestJava FROM-CACHE
+
+BUILD SUCCESSFUL in 1s
+3 actionable tasks: 1 executed, 2 from cache
+Executing tests...
+Parsing test results...
+ Results:\n11 Scenarios ([31m11 failed[0m)\n	at com.demoblaze.stepdefinitions.web.LoginWebSteps.iAmOnDemoblazeHomepage(LoginWebSteps.java:49)\n Results:\n10 Scenarios ([32m10 passed[0m)\n48 Steps ([32m48 passed[0m)\n
+Checking failures...
+ Failures:\nfile:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/checkout_process.feature:4 # Complete checkout process\nfile:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/login_web.feature:4 # Successful login with valid credentials\nfile:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/login_web.feature:13 # Login with invalid password\nfile:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/login_web.feature:21 # Login with non-existent user\nfile:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/login_web.feature:29 # Login with empty credentials\nfile:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/login_web.feature:36 # Login with special characters\nfile:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:4 # Browse products by categories\nfile:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:14 # View product details\nfile:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:23 # Navigate between pages\nfile:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:31 # Search for non-existent product\n
+Generating summary...
+Coverage:
+Total: 21 | Passed: 10 | Failed: 11 | Skipped: 0 | Rate: 47.62%
+**********************
+Windows PowerShell transcript end
+End time: 20250514041824
+**********************

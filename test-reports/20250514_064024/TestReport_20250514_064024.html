@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DemoBlaze Test Report - 20250514_064024</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { color: #333; text-align: center; }
+        h2 { color: #555; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .summary { display: flex; justify-content: space-around; margin: 20px 0; }
+        .summary-item { text-align: center; padding: 20px; flex: 1; }
+        .passed { color: #28a745; }
+        .failed { color: #dc3545; }
+        .skipped { color: #ffc107; }
+        .total { color: #007bff; }
+        .metric { font-size: 36px; font-weight: bold; }
+        .label { font-size: 14px; color: #666; }
+        .section { margin: 30px 0; padding: 20px; background-color: #f8f9fa; border-radius: 5px; }
+        .failed-list { background-color: #f8d7da; padding: 15px; border-radius: 5px; margin-top: 10px; }
+        .timestamp { text-align: center; color: #666; font-size: 14px; }
+        .duration { text-align: center; color: #666; font-size: 16px; margin: 10px 0; }
+        .test-type { display: inline-block; padding: 5px 15px; background-color: #007bff; color: white; border-radius: 20px; margin: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #007bff; color: white; }
+        .chart-container { width: 300px; height: 300px; margin: 20px auto; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>DemoBlaze Test Automation Report</h1>
+        <p class="timestamp">Generated: 2025-05-14 06:45:16</p>
+        <p class="duration">Duration: 291.57 seconds</p>
+        
+        <div style="text-align: center;">
+            <span class="test-type">Test Type: all</span>
+        </div>
+        
+        <div class="summary">
+            <div class="summary-item total">
+                <div class="metric">21</div>
+                <div class="label">Total Scenarios</div>
+            </div>
+            <div class="summary-item passed">
+                <div class="metric">18</div>
+                <div class="label">Passed</div>
+            </div>
+            <div class="summary-item failed">
+                <div class="metric">3</div>
+                <div class="label">Failed</div>
+            </div>
+            <div class="summary-item skipped">
+                <div class="metric">0</div>
+                <div class="label">Skipped</div>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <h2>Pass Rate: 85.71%</h2>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="resultsChart"></canvas>
+        </div>
+        
+        <div class='section'>
+                <h2>API Test Results</h2>
+                <table>
+                    <tr><th>Metric</th><th>Value</th></tr>
+                    <tr><td>Total Scenarios</td><td>10</td></tr>
+                    <tr><td>Passed</td><td class='passed'>10</td></tr>
+                    <tr><td>Failed</td><td class='failed'>0</td></tr>
+                    <tr><td>Skipped</td><td class='skipped'>0</td></tr>
+                </table>
+                
+            </div>
+        
+        <div class='section'>
+                <h2>Web Test Results</h2>
+                <table>
+                    <tr><th>Metric</th><th>Value</th></tr>
+                    <tr><td>Total Scenarios</td><td>11</td></tr>
+                    <tr><td>Passed</td><td class='passed'>8</td></tr>
+                    <tr><td>Failed</td><td class='failed'>3</td></tr>
+                    <tr><td>Skipped</td><td class='skipped'>0</td></tr>
+                </table>
+                <div class="failed-list">
+                        <h3>Failed Web Scenarios</h3>
+                        <ul><li>at Γ£╜.I am on the Demoblaze homepage(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:32)</li> <li>at Γ£╜.I am on the Demoblaze homepage(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:38)</li> <li>file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/checkout_process.feature:4 # Complete checkout process</li> <li>file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:31 # Search for non-existent product</li> <li>file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:37 # Add product to cart</li> <li>at ?.I am on the Demoblaze homepage(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:32)</li> <li>at ?.I am on the Demoblaze homepage(file:///C:/Users/ASUS/DemoBlaze-automation-framework/src/test/resources/features/web/product_browsing.feature:38)</li></ul>
+                    </div>
+            </div>
+    </div>
+    
+    <script>
+        const ctx = document.getElementById('resultsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Passed', 'Failed', 'Skipped'],
+                datasets: [{
+                    data: [18, 3, 0],
+                    backgroundColor: ['#28a745', '#dc3545', '#ffc107']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Test Results Distribution'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

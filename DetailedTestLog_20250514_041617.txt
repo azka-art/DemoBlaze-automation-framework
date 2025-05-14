@@ -1,0 +1,39 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20250514041617
+Username: DESKTOP-EE4NV9N\ASUS
+RunAs User: DESKTOP-EE4NV9N\ASUS
+Configuration Name: 
+Machine: DESKTOP-EE4NV9N (Microsoft Windows NT 10.0.22621.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "c:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+Process ID: 24332
+PSVersion: 5.1.22621.4249
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.4249
+BuildVersion: 10.0.22621.4249
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is DetailedTestLog_20250514_041617.txt
+Collecting System Information...
+Checking Project Structure...
+Cleaning and Building Project...
+Running: ./gradlew clean
+Running: ./gradlew compileJava compileTestJava
+Running Tests...
+Executing All Tests...
+Parsing Test Results...
+Collecting Failure Information...
+Generating Test Coverage Summary...
+Calculating Performance Metrics...
+Generating Recommendations...
+Checking File Status...
+
+Report saved to: TestReport_all_default_20250514_041617.txt
+Detailed log saved to: DetailedTestLog_20250514_041617.txt
+**********************
+Windows PowerShell transcript end
+End time: 20250514041710
+**********************
