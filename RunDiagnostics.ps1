@@ -1,6 +1,13 @@
 ﻿# Run this to test basic setup
 Write-Host "Testing basic setup..." -ForegroundColor Yellow
 
+# Add the missing function
+function Write-FileWithoutBOM {
+    param([string]$Path, [string]$Content)
+    $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+    [System.IO.File]::WriteAllText($Path, $Content, $utf8NoBom)
+}
+
 # Test 1: Check if config file exists
 if (Test-Path "src/main/resources/config.properties") {
     Write-Host "✓ Config file exists" -ForegroundColor Green
@@ -46,6 +53,10 @@ public class DriverTest {
     }
 }
 "@
+
+# Create test directory if it doesn't exist
+New-Item -ItemType Directory -Path "src/test/java/com/demoblaze/test" -Force | Out-Null
+
 Write-FileWithoutBOM -Path "src/test/java/com/demoblaze/test/DriverTest.java" -Content $driverTest
 
 Write-Host "`nRun './gradlew webTests --debug' for more detailed output" -ForegroundColor Yellow

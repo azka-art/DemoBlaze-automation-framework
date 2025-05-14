@@ -1,4 +1,4 @@
-{
+﻿{
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.import.gradle.enabled": true,
@@ -8,6 +8,6 @@
     "java.configuration.runtimes": [],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "${userHome}/.gradle/caches/modules-2/files-2.1/**/*.jar"
+        "/.gradle/caches/modules-2/files-2.1/**/*.jar"
     ]
 }

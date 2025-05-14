@@ -1,0 +1,50 @@
+{
+    "Summary":  {
+                    "TotalScenarios":  0,
+                    "StartTime":  {
+                                      "value":  "\/Date(1747228351260)\/",
+                                      "DisplayHint":  2,
+                                      "DateTime":  "Wednesday, May 14, 2025 8:12:31 PM"
+                                  },
+                    "FailedScenarios":  0,
+                    "RetrySuccesses":  0,
+                    "PassedScenarios":  0,
+                    "Duration":  {
+                                     "Ticks":  183933664,
+                                     "Days":  0,
+                                     "Hours":  0,
+                                     "Milliseconds":  393,
+                                     "Minutes":  0,
+                                     "Seconds":  18,
+                                     "TotalDays":  0.00021288618518518519,
+                                     "TotalHours":  0.0051092684444444441,
+                                     "TotalMilliseconds":  18393.366400000003,
+                                     "TotalMinutes":  0.30655610666666666,
+                                     "TotalSeconds":  18.393366399999998
+                                 },
+                    "EndTime":  {
+                                    "value":  "\/Date(1747228369653)\/",
+                                    "DisplayHint":  2,
+                                    "DateTime":  "Wednesday, May 14, 2025 8:12:49 PM"
+                                },
+                    "FinalPassRate":  0
+                },
+    "API":  {
+                "Output":  "Starting a Gradle Daemon, 1 busy and 2 incompatible Daemons could not be reused, use --status for details\r\n\r\n\u003e Task :compileJava FAILED\r\ngradlew.bat : C:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDet\r\nailPage.java:1: error: illegal character: \u0027\\ufeff\u0027\r\nAt C:\\Users\\ASUS\\DemoBlaze-automation-framework\\GenerateFinalReport.ps1:108 char:31\r\n+ ...           $output = \u0026 ./gradlew apiTests --console=plain 2\u003e\u00261 | Out-S ...\r\n+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (C:\\Users\\ASUS\\D...acter: \u0027\\ufeff\u0027:String) [], RemoteException\r\n    + FullyQualifiedErrorId : NativeCommandError\r\n \r\n?package com.demoblaze.web.pages;\r\n^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:1\r\n: error: class, interface, or enum expected\r\n?package com.demoblaze.web.pages;\r\n         ^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:3\r\n: error: class, interface, or enum expected\r\nimport org.openqa.selenium.*;\r\n^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:4\r\n: error: class, interface, or enum expected\r\nimport org.openqa.selenium.support.FindBy;\r\n^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:5\r\n: error: class, interface, or enum expected\r\nimport org.openqa.selenium.support.ui.ExpectedConditions;\r\n^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:6\r\n: error: class, interface, or enum expected\r\nimport org.openqa.selenium.support.ui.WebDriverWait;\r\n^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:7\r\n: error: class, interface, or enum expected\r\nimport java.time.Duration;\r\n^\r\n7 errors\r\n\r\nFAILURE: Build failed with an exception.\r\n\r\n* What went wrong:\r\nExecution failed for task \u0027:compileJava\u0027.\r\n\u003e Compilation failed; see the compiler error output for details.\r\n\r\n* Try:\r\n\u003e Run with --info option to get more log output.\r\n\u003e Run with --scan to get full insights.\r\n\r\nBUILD FAILED in 14s\r\n1 actionable task: 1 executed\r\n",
+                "TotalScenarios":  0,
+                "Failed":  0,
+                "Passed":  0
+            },
+    "Web":  {
+                "Passed":  0,
+                "Output":  "\r\n\u003e Task :compileJava FAILED\r\ngradlew.bat : C:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDet\r\nailPage.java:1: error: illegal character: \u0027\\ufeff\u0027\r\nAt C:\\Users\\ASUS\\DemoBlaze-automation-framework\\GenerateFinalReport.ps1:111 char:31\r\n+ ...           $output = \u0026 ./gradlew webTests --console=plain 2\u003e\u00261 | Out-S ...\r\n+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (C:\\Users\\ASUS\\D...acter: \u0027\\ufeff\u0027:String) [], RemoteException\r\n    + FullyQualifiedErrorId : NativeCommandError\r\n \r\n?package com.demoblaze.web.pages;\r\n^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:1\r\n: error: class, interface, or enum expected\r\n?package com.demoblaze.web.pages;\r\n         ^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:3\r\n: error: class, interface, or enum expected\r\nimport org.openqa.selenium.*;\r\n^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:4\r\n: error: class, interface, or enum expected\r\nimport org.openqa.selenium.support.FindBy;\r\n^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:5\r\n: error: class, interface, or enum expected\r\nimport org.openqa.selenium.support.ui.ExpectedConditions;\r\n^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:6\r\n: error: class, interface, or enum expected\r\nimport org.openqa.selenium.support.ui.WebDriverWait;\r\n^\r\nC:\\Users\\ASUS\\DemoBlaze-automation-framework\\src\\main\\java\\com\\demoblaze\\web\\pages\\ProductDetailPage.java:7\r\n: error: class, interface, or enum expected\r\nimport java.time.Duration;\r\n^\r\n7 errors\r\n\r\nFAILURE: Build failed with an exception.\r\n\r\n* What went wrong:\r\nExecution failed for task \u0027:compileJava\u0027.\r\n\u003e Compilation failed; see the compiler error output for details.\r\n\r\n* Try:\r\n\u003e Run with --info option to get more log output.\r\n\u003e Run with --scan to get full insights.\r\n\r\nBUILD FAILED in 1s\r\n1 actionable task: 1 executed\r\n",
+                "Failed":  0,
+                "TotalScenarios":  0,
+                "InitialFailures":  [
+
+                                    ],
+                "RetryResults":  [
+
+                                 ]
+            }
+}

@@ -13,10 +13,6 @@ import java.time.Duration;
 public class DriverManager {
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     
-    private DriverManager() {
-        // Private constructor to prevent instantiation
-    }
-    
     public static synchronized WebDriver getDriver() {
         if (driver.get() == null) {
             setupDriver();
@@ -31,41 +27,34 @@ public class DriverManager {
         
         try {
             switch (browser) {
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    FirefoxOptions firefoxOptions = new FirefoxOptions();
-                    if (headless) {
-                        firefoxOptions.addArguments("--headless");
-                    }
-                    // Increase connection timeout
-                    firefoxOptions.setCapability("pageLoadStrategy", "eager");
-                    webDriver = new FirefoxDriver(firefoxOptions);
-                    break;
                 case "chrome":
                 default:
                     WebDriverManager.chromedriver().driverVersion("136.0.7103.92").setup();
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--remote-allow-origins=*");
-                    if (headless) {
-                        chromeOptions.addArguments("--headless=new");
-                    }
                     chromeOptions.addArguments("--no-sandbox");
                     chromeOptions.addArguments("--disable-dev-shm-usage");
                     chromeOptions.addArguments("--disable-gpu");
                     chromeOptions.addArguments("--window-size=1920,1080");
-                    // Add network timeout settings
-                    chromeOptions.addArguments("--disable-web-security");
-                    chromeOptions.addArguments("--allow-running-insecure-content");
-                    chromeOptions.setCapability("pageLoadStrategy", "eager");
+                    
+                    // Network and timeout settings
+                    chromeOptions.addArguments("--disable-network-throttling");
+                    chromeOptions.addArguments("--aggressive-cache-discard");
+                    chromeOptions.addArguments("--disable-background-timer-throttling");
+                    
+                    if (headless) {
+                        chromeOptions.addArguments("--headless=new");
+                    }
+                    
+                    chromeOptions.setCapability("pageLoadStrategy", "normal");
                     webDriver = new ChromeDriver(chromeOptions);
                     break;
             }
             
             if (webDriver != null) {
-                int timeout = Integer.parseInt(ConfigManager.get("timeout"));
-                // Increase timeouts for slow connections
-                webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-                webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(timeout));
+                // More generous timeouts for slow connections
+                webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
                 webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));
                 webDriver.manage().window().maximize();
                 
@@ -88,19 +77,6 @@ public class DriverManager {
             } finally {
                 driver.remove();
             }
-        }
-    }
-    
-    public static synchronized void forceQuitDriver() {
-        try {
-            WebDriver webDriver = driver.get();
-            if (webDriver != null) {
-                webDriver.quit();
-            }
-        } catch (Exception e) {
-            // Ignore exceptions during force quit
-        } finally {
-            driver.remove();
         }
     }
 }
