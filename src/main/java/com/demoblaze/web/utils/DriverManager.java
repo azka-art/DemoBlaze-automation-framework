@@ -21,50 +21,93 @@ public class DriverManager {
     }
     
     private static void setupDriver() {
-        String browser = ConfigManager.get("browser").toLowerCase();
-        boolean headless = Boolean.parseBoolean(ConfigManager.get("headless"));
-        WebDriver webDriver = null;
+        String browser = ConfigManager.get("browser", "chrome").toLowerCase();
+        boolean headless = Boolean.parseBoolean(ConfigManager.get("headless", "false"));
+        
+        System.out.println("🚀 Initializing WebDriver: " + browser + " (headless: " + headless + ")");
         
         try {
-            switch (browser) {
-                case "chrome":
-                default:
-                    WebDriverManager.chromedriver().driverVersion("136.0.7103.92").setup();
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.addArguments("--remote-allow-origins=*");
-                    chromeOptions.addArguments("--no-sandbox");
-                    chromeOptions.addArguments("--disable-dev-shm-usage");
-                    chromeOptions.addArguments("--disable-gpu");
-                    chromeOptions.addArguments("--window-size=1920,1080");
-                    
-                    // Network and timeout settings
-                    chromeOptions.addArguments("--disable-network-throttling");
-                    chromeOptions.addArguments("--aggressive-cache-discard");
-                    chromeOptions.addArguments("--disable-background-timer-throttling");
-                    
-                    if (headless) {
-                        chromeOptions.addArguments("--headless=new");
-                    }
-                    
-                    chromeOptions.setCapability("pageLoadStrategy", "normal");
-                    webDriver = new ChromeDriver(chromeOptions);
-                    break;
-            }
+            WebDriver webDriver = createWebDriver(browser, headless);
             
             if (webDriver != null) {
-                // More generous timeouts for slow connections
-                webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-                webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
-                webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));
-                webDriver.manage().window().maximize();
-                
+                configureTimeouts(webDriver);
                 driver.set(webDriver);
+                System.out.println("✅ WebDriver initialized successfully");
+            } else {
+                throw new RuntimeException("Failed to create WebDriver instance");
             }
+            
         } catch (Exception e) {
-            System.err.println("Error setting up driver: " + e.getMessage());
-            e.printStackTrace();
+            System.err.println("❌ WebDriver initialization failed: " + e.getMessage());
             throw new RuntimeException("Failed to initialize WebDriver", e);
         }
+    }
+    
+    private static WebDriver createWebDriver(String browser, boolean headless) {
+        switch (browser) {
+            case "chrome":
+                return createChromeDriver(headless);
+            case "firefox":
+                return createFirefoxDriver(headless);
+            default:
+                System.out.println("⚠️ Unknown browser '" + browser + "', defaulting to Chrome");
+                return createChromeDriver(headless);
+        }
+    }
+    
+    private static WebDriver createChromeDriver(boolean headless) {
+        try {
+            System.out.println("📦 Setting up Chrome WebDriver (auto-detect version)...");
+            WebDriverManager.chromedriver().setup();
+            
+            ChromeOptions options = new ChromeOptions();
+            
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--disable-extensions");
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--window-size=1920,1080");
+            
+            if (headless) {
+                options.addArguments("--headless=new");
+                System.out.println("🔇 Running in headless mode");
+            }
+            
+            return new ChromeDriver(options);
+            
+        } catch (Exception e) {
+            System.err.println("❌ Chrome setup failed: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    private static WebDriver createFirefoxDriver(boolean headless) {
+        try {
+            System.out.println("📦 Setting up Firefox WebDriver...");
+            WebDriverManager.firefoxdriver().setup();
+            
+            FirefoxOptions options = new FirefoxOptions();
+            
+            if (headless) {
+                options.addArguments("--headless");
+            }
+            
+            return new FirefoxDriver(options);
+            
+        } catch (Exception e) {
+            System.err.println("❌ Firefox setup failed: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    private static void configureTimeouts(WebDriver webDriver) {
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(45));
+        webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+        webDriver.manage().window().maximize();
+        
+        System.out.println("⏱️ Timeouts configured: implicit=10s, pageLoad=45s, script=30s");
     }
     
     public static synchronized void quitDriver() {
@@ -72,8 +115,9 @@ public class DriverManager {
         if (webDriver != null) {
             try {
                 webDriver.quit();
+                System.out.println("✅ WebDriver closed successfully");
             } catch (Exception e) {
-                System.err.println("Error quitting driver: " + e.getMessage());
+                System.err.println("⚠️ Error closing WebDriver: " + e.getMessage());
             } finally {
                 driver.remove();
             }

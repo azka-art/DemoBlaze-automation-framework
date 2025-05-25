@@ -17,117 +17,92 @@ public class ProductDetailPage extends BasePage {
     
     public void clickAddToCart() {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            System.out.println("🔍 Looking for Add to cart button...");
             
             // Wait for page to be fully loaded
             wait.until(driver -> ((JavascriptExecutor) driver)
                 .executeScript("return document.readyState").equals("complete"));
             
-            // Wait for product details to be visible
-            wait.until(ExpectedConditions.visibilityOf(productName));
-            
-            // Additional wait for dynamic content
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                System.err.println("Interrupted while waiting for page load");
-            }
-            
-            // Enhanced selectors for Add to cart button
-            By[] selectors = {
+            // Multiple selectors for Add to cart button
+            By[] addToCartSelectors = {
                 By.linkText("Add to cart"),
                 By.xpath("//a[text()='Add to cart']"),
                 By.xpath("//a[contains(text(),'Add to cart')]"),
                 By.cssSelector("a.btn.btn-success.btn-lg"),
-                By.xpath("//a[contains(@class,'btn-success') and contains(text(),'Add to cart')]"),
-                By.cssSelector("div.col-sm-12.col-md-6.col-lg-6 a.btn-success"),
-                By.xpath("//div[contains(@class,'col-sm')]//a[contains(@class,'btn-success')]"),
-                By.cssSelector("a[onclick*='addToCart']"),
-                By.xpath("//a[@onclick[contains(.,'addToCart')]]")
+                By.xpath("//a[contains(@class,'btn-success')]"),
+                By.xpath("//a[contains(@onclick,'addToCart')]"),
+                By.cssSelector("a[onclick*='addToCart']")
             };
             
-            WebElement button = null;
-            Exception lastException = null;
+            WebElement addToCartButton = null;
             
-            // Debug: Print page source to understand structure
-            System.out.println("Looking for Add to cart button...");
-            
-            // Try each selector with explicit wait
-            for (By selector : selectors) {
+            // Try each selector
+            for (int i = 0; i < addToCartSelectors.length; i++) {
                 try {
-                    System.out.println("Trying selector: " + selector);
-                    button = driver.findElement(selector);
-                    
-                    if (button != null && button.isDisplayed() && button.isEnabled()) {
-                        System.out.println("Found button with selector: " + selector);
-                        System.out.println("Button text: " + button.getText());
-                        System.out.println("Button class: " + button.getAttribute("class"));
-                        System.out.println("Button onclick: " + button.getAttribute("onclick"));
+                    System.out.println("Trying selector " + (i+1) + ": " + addToCartSelectors[i]);
+                    addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(addToCartSelectors[i]));
+                    if (addToCartButton != null && addToCartButton.isDisplayed()) {
+                        System.out.println("✅ Found Add to cart button with selector: " + addToCartSelectors[i]);
                         break;
                     }
                 } catch (Exception e) {
-                    lastException = e;
-                    System.out.println("Selector failed: " + selector + " - " + e.getMessage());
+                    System.out.println("❌ Selector " + (i+1) + " failed: " + e.getMessage());
                 }
             }
             
-            if (button == null) {
-                // Last resort: find all links and check text
-                List<WebElement> allLinks = driver.findElements(By.tagName("a"));
-                for (WebElement link : allLinks) {
-                    String linkText = link.getText();
-                    System.out.println("Found link: " + linkText);
-                    if (linkText.toLowerCase().contains("add to cart")) {
-                        button = link;
-                        System.out.println("Found button via text search: " + linkText);
-                        break;
+            // Fallback: search all buttons/links for "cart" text
+            if (addToCartButton == null) {
+                System.out.println("🔍 Fallback: searching all buttons for 'cart' text...");
+                List<WebElement> allButtons = driver.findElements(By.tagName("a"));
+                for (WebElement button : allButtons) {
+                    try {
+                        String buttonText = button.getText().toLowerCase();
+                        if (buttonText.contains("cart") && button.isDisplayed()) {
+                            addToCartButton = button;
+                            System.out.println("✅ Found button via text search: " + buttonText);
+                            break;
+                        }
+                    } catch (Exception e) {
+                        continue;
                     }
                 }
             }
             
-            if (button != null) {
-                // Scroll into view
+            if (addToCartButton != null) {
+                // Scroll into view and click
                 ((JavascriptExecutor) driver).executeScript(
-                    "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", button);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
+                    "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", addToCartButton);
+                Thread.sleep(1000);
                 
-                // Try regular click first
                 try {
-                    wait.until(ExpectedConditions.elementToBeClickable(button));
-                    button.click();
-                    System.out.println("Successfully clicked Add to cart button with regular click");
+                    addToCartButton.click();
+                    System.out.println("✅ Successfully clicked Add to cart button");
                 } catch (Exception e) {
                     System.out.println("Regular click failed, trying JavaScript click");
-                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", button);
-                    System.out.println("Successfully clicked Add to cart button with JavaScript click");
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartButton);
+                    System.out.println("✅ Successfully clicked with JavaScript");
                 }
-                
             } else {
-                // Debug information
-                System.err.println("Could not find Add to cart button. Page title: " + driver.getTitle());
-                System.err.println("Current URL: " + driver.getCurrentUrl());
-                throw new RuntimeException("Add to cart button not found after trying all selectors", lastException);
+                System.err.println("❌ Could not find Add to cart button anywhere");
+                throw new RuntimeException("Add to cart button not found");
             }
+            
         } catch (Exception e) {
+            System.err.println("❌ Error in clickAddToCart: " + e.getMessage());
             throw new RuntimeException("Could not click add to cart button", e);
         }
     }
     
     public void acceptProductAddedAlert() {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            Alert alert = alertWait.until(ExpectedConditions.alertIsPresent());
             String alertText = alert.getText();
-            System.out.println("Alert text: " + alertText);
+            System.out.println("✅ Alert text: " + alertText);
             alert.accept();
-            System.out.println("Alert accepted successfully");
+            System.out.println("✅ Alert accepted successfully");
         } catch (Exception e) {
-            System.err.println("No alert found or error accepting: " + e.getMessage());
+            System.err.println("⚠️ No alert found or error accepting: " + e.getMessage());
         }
     }
     

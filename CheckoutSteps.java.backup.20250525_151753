@@ -4,7 +4,7 @@ import com.demoblaze.web.pages.HomePage;
 import com.demoblaze.web.pages.LoginPage;
 import com.demoblaze.web.pages.ProductDetailPage;
 import com.demoblaze.web.pages.CartPage;
-import com.demoblaze.hooks.UnifiedHooks;
+import com.demoblaze.hooks.GlobalHooks;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -21,21 +21,21 @@ public class CheckoutSteps {
     private Faker faker = new Faker();
     private String currentProductName;
     
-    // Use the standard test user
-    private static final String CHECKOUT_USERNAME = "checkout_stable_user";
-    private static final String CHECKOUT_PASSWORD = "Test123";
+    // Use the pre-verified test user
+    private static final String CHECKOUT_USERNAME = "autotest_20250515142736";
+    private static final String CHECKOUT_PASSWORD = "Test123!";
     
     @When("I log in with valid credentials for checkout")
     public void i_log_in_with_valid_credentials_for_checkout() {
-        // Check if user is verified (non-blocking)
-        if (!UnifiedHooks.isUserVerified(CHECKOUT_USERNAME)) {
-            System.err.println("Ã¢Å¡Â Ã¯Â¸Â Checkout user not verified, but continuing: " + CHECKOUT_USERNAME);
+        // Ensure user is verified before attempting login
+        if (!GlobalHooks.isUserVerified(CHECKOUT_USERNAME)) {
+            throw new RuntimeException("Checkout user not verified: " + CHECKOUT_USERNAME);
         }
         
         loginPage = new LoginPage();
         loginPage.clickLoginNavLink();
         
-        System.out.println("Logging in with user: " + CHECKOUT_USERNAME);
+        System.out.println("Logging in with pre-verified user: " + CHECKOUT_USERNAME);
         loginPage.enterUsername(CHECKOUT_USERNAME);
         loginPage.enterPassword(CHECKOUT_PASSWORD);
         loginPage.clickLoginButton();

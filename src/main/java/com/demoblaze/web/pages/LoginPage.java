@@ -9,100 +9,112 @@ import java.util.regex.Pattern;
 
 public class LoginPage extends BasePage {
 
-    // Specific locators for better reliability
-    private By loginNavLinkLocator = By.id("login2");
+    // Multiple selectors for login button - more robust
+    private By[] loginNavLinkSelectors = {
+        By.id("login2"),
+        By.linkText("Log in"),
+        By.xpath("//a[contains(text(),'Log in')]"),
+        By.xpath("//a[@id='login2']"),
+        By.cssSelector("a#login2"),
+        By.xpath("//nav//a[contains(text(),'Log in')]")
+    };
+    
     private By loginModalLocator = By.id("logInModal");
-    private By modalDialogLocator = By.cssSelector("#logInModal .modal-dialog");
-    private By modalContentLocator = By.cssSelector("#logInModal .modal-content");
     private By usernameFieldLocator = By.id("loginusername");
     private By passwordFieldLocator = By.id("loginpassword");
     private By loginButtonLocator = By.xpath("//button[contains(@onclick,'logIn()')]");
     private By welcomeTextLocator = By.id("nameofuser");
-    private By inlineErrorLocator = By.cssSelector("#logInModal .text-danger, .modal-body .text-danger");
-    private By modalBackdropLocator = By.className("modal-backdrop");
     
     public void clickLoginNavLink() {
         try {
-            System.out.println("Waiting for login nav link to be clickable...");
+            System.out.println("🔍 Looking for login button with multiple selectors...");
             
-            // Wait for page to be ready and login link to be clickable
+            // Wait for page to be ready
             wait.until(driver -> ((JavascriptExecutor) driver)
                 .executeScript("return document.readyState").equals("complete"));
-                
-            WebElement loginLink = wait.until(ExpectedConditions.elementToBeClickable(loginNavLinkLocator));
-            System.out.println("Login link found and clickable");
             
-            // Try standard click first
-            try {
-                loginLink.click();
-            } catch (Exception e) {
-                System.out.println("Standard click failed, trying JavaScript click");
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", loginLink);
+            WebElement loginButton = null;
+            
+            // Try each selector until we find one that works
+            for (int i = 0; i < loginNavLinkSelectors.length; i++) {
+                try {
+                    System.out.println("Trying selector " + (i+1) + ": " + loginNavLinkSelectors[i]);
+                    loginButton = wait.until(ExpectedConditions.elementToBeClickable(loginNavLinkSelectors[i]));
+                    if (loginButton != null && loginButton.isDisplayed()) {
+                        System.out.println("✅ Found login button with selector: " + loginNavLinkSelectors[i]);
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("❌ Selector " + (i+1) + " failed: " + e.getMessage());
+                    if (i == loginNavLinkSelectors.length - 1) {
+                        // Last attempt - try to find any link with "log" in it
+                        try {
+                            List<WebElement> allLinks = driver.findElements(By.tagName("a"));
+                            for (WebElement link : allLinks) {
+                                String linkText = link.getText().toLowerCase();
+                                if (linkText.contains("log") && link.isDisplayed()) {
+                                    loginButton = link;
+                                    System.out.println("✅ Found login button by text search: " + linkText);
+                                    break;
+                                }
+                            }
+                        } catch (Exception ex) {
+                            System.err.println("Text search also failed: " + ex.getMessage());
+                        }
+                    }
+                }
             }
             
-            System.out.println("Clicked login link, waiting for modal...");
+            if (loginButton == null) {
+                throw new RuntimeException("Could not find login button with any selector");
+            }
             
-            // Wait for modal to be visible - multiple conditions
+            // Click the button
+            try {
+                loginButton.click();
+                System.out.println("✅ Clicked login button successfully");
+            } catch (Exception e) {
+                System.out.println("Regular click failed, trying JavaScript click");
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", loginButton);
+            }
+            
+            // Wait for modal to appear
             wait.until(ExpectedConditions.or(
-                ExpectedConditions.visibilityOfElementLocated(modalDialogLocator),
-                ExpectedConditions.visibilityOfElementLocated(modalContentLocator),
-                ExpectedConditions.attributeContains(loginModalLocator, "class", "show"),
-                ExpectedConditions.attributeContains(loginModalLocator, "style", "display: block")
+                ExpectedConditions.visibilityOfElementLocated(loginModalLocator),
+                ExpectedConditions.visibilityOfElementLocated(usernameFieldLocator)
             ));
             
-            // Additional wait for modal animation to complete
-            wait.until(ExpectedConditions.visibilityOfElementLocated(usernameFieldLocator));
-            wait.until(ExpectedConditions.elementToBeClickable(usernameFieldLocator));
+            System.out.println("✅ Login modal opened successfully");
             
-            System.out.println("Login modal is now open and ready");
         } catch (Exception e) {
-            System.err.println("Failed to open login modal: " + e.getMessage());
+            System.err.println("❌ Failed to open login modal: " + e.getMessage());
+            
+            // Debug: print current page source to understand what's available
+            System.out.println("🔍 Current page title: " + driver.getTitle());
+            System.out.println("🔍 Current URL: " + driver.getCurrentUrl());
+            
             throw new RuntimeException("Failed to open login modal", e);
         }
     }
 
     public void enterUsername(String username) {
         try {
-            // Verify modal is open first
-            if (!isModalOpen()) {
-                throw new RuntimeException("Login modal is not open - cannot enter username");
-            }
-            
             WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameFieldLocator));
-            wait.until(ExpectedConditions.elementToBeClickable(usernameField));
-            
-            // Clear field using multiple methods
             usernameField.clear();
-            usernameField.sendKeys(Keys.CONTROL + "a");
-            usernameField.sendKeys(Keys.DELETE);
-            
             usernameField.sendKeys(username);
             System.out.println("Entered username: " + username);
         } catch (Exception e) {
-            System.err.println("Error entering username: " + e.getMessage());
             throw new RuntimeException("Failed to enter username", e);
         }
     }
 
     public void enterPassword(String password) {
         try {
-            // Verify modal is open first
-            if (!isModalOpen()) {
-                throw new RuntimeException("Login modal is not open - cannot enter password");
-            }
-            
             WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordFieldLocator));
-            wait.until(ExpectedConditions.elementToBeClickable(passwordField));
-            
-            // Clear field using multiple methods
             passwordField.clear();
-            passwordField.sendKeys(Keys.CONTROL + "a");
-            passwordField.sendKeys(Keys.DELETE);
-            
             passwordField.sendKeys(password);
             System.out.println("Entered password");
         } catch (Exception e) {
-            System.err.println("Error entering password: " + e.getMessage());
             throw new RuntimeException("Failed to enter password", e);
         }
     }
@@ -110,10 +122,7 @@ public class LoginPage extends BasePage {
     public boolean isModalOpen() {
         try {
             WebElement modal = driver.findElement(loginModalLocator);
-            String displayStyle = modal.getCssValue("display");
-            String classAttribute = modal.getAttribute("class");
-            
-            return displayStyle.equals("block") || classAttribute.contains("show");
+            return modal.isDisplayed();
         } catch (Exception e) {
             return false;
         }
@@ -121,64 +130,31 @@ public class LoginPage extends BasePage {
 
     public void clickLoginButton() {
         try {
-            if (!isModalOpen()) {
-                throw new RuntimeException("Login modal is not open - cannot click login button");
-            }
-            
             WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(loginButtonLocator));
-            
-            // Scroll to button if needed
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginButton);
-            
-            try {
-                loginButton.click();
-            } catch (Exception e) {
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", loginButton);
-            }
+            loginButton.click();
         } catch (Exception e) {
-            System.err.println("Error clicking login button: " + e.getMessage());
             throw new RuntimeException("Failed to click login button", e);
         }
     }
     
     public void waitForLoginResponse() {
         try {
-            // Wait for response - either modal closes or error appears
+            // Wait for either success (welcome message) or error (alert)
             wait.until(ExpectedConditions.or(
-                ExpectedConditions.invisibilityOfElementLocated(modalBackdropLocator),
-                ExpectedConditions.presenceOfElementLocated(inlineErrorLocator),
-                ExpectedConditions.alertIsPresent(),
-                ExpectedConditions.textToBePresentInElementLocated(welcomeTextLocator, "Welcome")
+                ExpectedConditions.textToBePresentInElementLocated(welcomeTextLocator, "Welcome"),
+                ExpectedConditions.alertIsPresent()
             ));
         } catch (Exception e) {
             System.err.println("Timeout waiting for login response: " + e.getMessage());
         }
     }
 
-    public void login(String username, String password) {
-        clickLoginNavLink();
-        enterUsername(username);
-        enterPassword(password);
-        clickLoginButton();
-    }
-
     public boolean isLoggedIn() {
         try {
-            // Check if modal closed
-            List<WebElement> modalBackdrops = driver.findElements(modalBackdropLocator);
-            boolean modalClosed = modalBackdrops.isEmpty() || modalBackdrops.stream().noneMatch(WebElement::isDisplayed);
-            
-            if (!modalClosed) {
-                System.out.println("Login modal still visible - login failed");
-                return false;
-            }
-            
-            // Wait for welcome text and verify it matches expected pattern
             WebElement userBanner = wait.until(ExpectedConditions.presenceOfElementLocated(welcomeTextLocator));
             String text = userBanner.getText();
             System.out.println("Welcome text found: " + text);
             
-            // Check if text matches "Welcome username" pattern
             Pattern welcomePattern = Pattern.compile("Welcome\\s+\\w+");
             return welcomePattern.matcher(text).find();
         } catch (Exception e) {
@@ -190,30 +166,47 @@ public class LoginPage extends BasePage {
     public String getErrorMessage() {
         try {
             // First check for alerts
-            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(2));
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
             try {
                 Alert alert = shortWait.until(ExpectedConditions.alertIsPresent());
                 String errorText = alert.getText();
-                System.out.println("Alert error: " + errorText);
+                System.out.println("✅ Alert error found: " + errorText);
                 alert.accept();
                 return errorText;
-            } catch (TimeoutException e) {
-                // No alert, check inline errors
+            } catch (Exception e) {
+                System.out.println("No alert found, checking other error sources...");
             }
-            
-            // Check for inline error messages in modal
-            List<WebElement> errorElements = driver.findElements(inlineErrorLocator);
-            for (WebElement errorElement : errorElements) {
-                if (errorElement.isDisplayed()) {
-                    String errorText = errorElement.getText();
-                    System.out.println("Inline error: " + errorText);
-                    return errorText;
+
+            // Check for inline error messages
+            By[] errorSelectors = {
+                By.cssSelector(".text-danger"),
+                By.cssSelector(".alert-danger"),
+                By.cssSelector(".error"),
+                By.xpath("//*[contains(@class,'error')]"),
+                By.xpath("//*[contains(text(),'does not exist')]"),
+                By.xpath("//*[contains(text(),'Wrong password')]")
+            };
+
+            for (By selector : errorSelectors) {
+                try {
+                    List<WebElement> errorElements = driver.findElements(selector);
+                    for (WebElement errorElement : errorElements) {
+                        if (errorElement.isDisplayed() && !errorElement.getText().trim().isEmpty()) {    
+                            String errorText = errorElement.getText();
+                            System.out.println("✅ Inline error found: " + errorText);
+                            return errorText;
+                        }
+                    }
+                } catch (Exception e) {
+                    continue;
                 }
             }
-            
+
+            System.out.println("⚠️ No error message found");
             return "";
+
         } catch (Exception e) {
-            System.err.println("Error getting error message: " + e.getMessage());
+            System.err.println("❌ Error getting error message: " + e.getMessage());
             return "";
         }
     }
@@ -222,10 +215,6 @@ public class LoginPage extends BasePage {
         try {
             WebElement usernameField = driver.findElement(usernameFieldLocator);
             usernameField.clear();
-            usernameField.sendKeys("");
-            
-            // Verify field is empty
-            wait.until(ExpectedConditions.attributeToBe(usernameField, "value", ""));
         } catch (Exception e) {
             System.err.println("Error clearing username: " + e.getMessage());
         }
@@ -235,10 +224,6 @@ public class LoginPage extends BasePage {
         try {
             WebElement passwordField = driver.findElement(passwordFieldLocator);
             passwordField.clear();
-            passwordField.sendKeys("");
-            
-            // Verify field is empty
-            wait.until(ExpectedConditions.attributeToBe(passwordField, "value", ""));
         } catch (Exception e) {
             System.err.println("Error clearing password: " + e.getMessage());
         }

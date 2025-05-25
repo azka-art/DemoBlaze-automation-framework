@@ -3,6 +3,7 @@ package com.demoblaze.stepdefinitions.api;
 import com.demoblaze.api.clients.ApiClient;
 import com.demoblaze.api.models.UserModel;
 import com.github.javafaker.Faker;
+import com.demoblaze.config.ConfigManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -39,7 +40,7 @@ public class LoginApiSteps extends BaseApiSteps {
     
     @Given("I have user credentials with wrong password")
     public void iHaveUserCredentialsWithWrongPassword() {
-        userCredentials = new UserModel("anyuser", "wrongpassword");
+        userCredentials = new UserModel(ConfigManager.get("test.username", "testuser2025"), "wrongpassword");
     }
     
     @Given("I have non-existent user credentials")

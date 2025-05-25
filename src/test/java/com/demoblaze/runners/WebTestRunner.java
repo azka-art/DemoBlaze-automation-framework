@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     features = "src/test/resources/features/web",
-    glue = {"com.demoblaze.stepdefinitions.web"},
+    glue = {"com.demoblaze.stepdefinitions.web", "com.demoblaze.hooks"},
     plugin = {
         "pretty",
         "html:build/reports/cucumber/web/index.html",

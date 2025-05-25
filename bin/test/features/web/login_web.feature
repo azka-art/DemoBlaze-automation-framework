@@ -4,10 +4,10 @@ Feature: Demoblaze Web Login
   Scenario: Successful login with valid credentials
     Given I am on the Demoblaze homepage
     When I click on the login button in the navigation bar
-    And I enter username "testuser2025" and password "testpassword2025"
+    And I enter username "checkout_stable_user" and password "Test123"
     And I click the login button
     Then I should be logged in successfully
-    And I should see "Welcome testuser2025" message
+    And I should see "Welcome demotest_20250515_143128" message
 
   @web @negative
   Scenario: Login with invalid password

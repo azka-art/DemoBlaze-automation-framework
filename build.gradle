@@ -5,8 +5,8 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 
-group = 'com.demoblaze'
-version = '1.0-SNAPSHOT'
+group 'com.demoblaze'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -103,6 +103,7 @@ tasks.register('apiTests', JavaExec) {
             '--plugin', 'json:build/reports/cucumber/api/cucumber.json',
             '--plugin', 'io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm',
             '--glue', 'com.demoblaze.stepdefinitions.api',
+            '--glue', 'com.demoblaze.hooks',
             '--tags', '@api',
             'src/test/resources/features/api']
 }
@@ -119,6 +120,7 @@ tasks.register('webTests', JavaExec) {
             '--plugin', 'json:build/reports/cucumber/web/cucumber.json',
             '--plugin', 'io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm',
             '--glue', 'com.demoblaze.stepdefinitions.web',
+            '--glue', 'com.demoblaze.hooks',
             '--tags', '@web',
             'src/test/resources/features/web']
 }

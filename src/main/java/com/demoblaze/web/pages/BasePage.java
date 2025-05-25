@@ -11,117 +11,67 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
 
 import java.time.Duration;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected String baseUrl;
-    private static final int MAX_RETRIES = 10;
-    private static final int RETRY_DELAY = 3000;
     
     public BasePage() {
-        try {
-            this.driver = DriverManager.getDriver();
-            this.baseUrl = ConfigManager.get("web.base.url");
-            this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-            PageFactory.initElements(driver, this);
-        } catch (Exception e) {
-            System.err.println("Error initializing page: " + e.getMessage());
-            throw new RuntimeException("Failed to initialize page", e);
-        }
-    }
-    
-    private boolean isUrlReachable(String urlString) {
-        try {
-            URL url = new URL(urlString);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("HEAD");
-            connection.setConnectTimeout(10000);
-            connection.setReadTimeout(10000);
-            int responseCode = connection.getResponseCode();
-            connection.disconnect();
-            return responseCode >= 200 && responseCode < 400;
-        } catch (Exception e) {
-            System.err.println("URL not reachable: " + e.getMessage());
-            return false;
-        }
+        this.driver = DriverManager.getDriver();
+        this.baseUrl = ConfigManager.get("web.base.url");
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        PageFactory.initElements(driver, this);
+        System.out.println("ðŸ“„ BasePage initialized for: " + this.getClass().getSimpleName());
     }
     
     public void goToBaseUrl() {
-        // Pre-flight check
-        if (!isUrlReachable(baseUrl)) {
-            System.err.println("URL is not reachable: " + baseUrl);
-            throw new RuntimeException("Cannot reach base URL: " + baseUrl);
-        }
-        
-        int retries = 0;
-        Exception lastException = null;
-        
-        while (retries < MAX_RETRIES) {
+        try {
+            System.out.println("ðŸŒ Navigating to: " + baseUrl);
+            
+            driver.get(baseUrl);
+            
+            // Wait for page to be ready
+            wait.until(driver -> 
+                ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete")
+            );
+            
+            // Wait for basic page structure - be flexible
+            wait.until(ExpectedConditions.or(
+                ExpectedConditions.presenceOfElementLocated(By.tagName("body")),
+                ExpectedConditions.presenceOfElementLocated(By.tagName("nav")),
+                ExpectedConditions.presenceOfElementLocated(By.id("navbarExample"))
+            ));
+            
+            System.out.println("âœ… Page loaded successfully");
+            
+        } catch (Exception e) {
+            System.err.println("âŒ Failed to load page: " + e.getMessage());
+            
             try {
-                System.out.println("Loading URL: " + baseUrl + " (attempt " + (retries + 1) + ")");
+                System.out.println("ðŸ”„ Retrying navigation...");
+                Thread.sleep(2000);
+                driver.navigate().refresh();
                 
-                // Set page load timeout
-                driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+                wait.until(driver -> 
+                    ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete")
+                );
                 
-                // Navigate to URL
-                driver.get(baseUrl);
+                System.out.println("âœ… Page loaded on retry");
                 
-                // Wait for page to be loaded
-                wait.until(driver -> ((JavascriptExecutor) driver)
-                    .executeScript("return document.readyState").equals("complete"));
-                
-                // Wait for key elements to be present
-                wait.until(ExpectedConditions.or(
-                    ExpectedConditions.presenceOfElementLocated(By.id("nava")),
-                    ExpectedConditions.presenceOfElementLocated(By.tagName("nav")),
-                    ExpectedConditions.presenceOfElementLocated(By.className("navbar")),
-                    ExpectedConditions.presenceOfElementLocated(By.id("navbarExample"))
-                ));
-                
-                // Additional wait for dynamic content
-                wait.until(ExpectedConditions.or(
-                    ExpectedConditions.presenceOfElementLocated(By.className("card")),
-                    ExpectedConditions.presenceOfElementLocated(By.id("tbodyid"))
-                ));
-                
-                System.out.println("Successfully loaded URL: " + baseUrl);
-                return;
-                
-            } catch (Exception e) {
-                lastException = e;
-                retries++;
-                System.err.println("Failed to load URL (attempt " + retries + "): " + e.getMessage());
-                
-                if (retries < MAX_RETRIES) {
-                    try {
-                        Thread.sleep(RETRY_DELAY);
-                    } catch (InterruptedException ie) {
-                        Thread.currentThread().interrupt();
-                    }
-                    
-                    // Try to refresh or navigate again
-                    try {
-                        driver.navigate().refresh();
-                    } catch (Exception refreshError) {
-                        System.err.println("Refresh failed, trying new navigation");
-                    }
-                }
+            } catch (Exception retryError) {
+                System.err.println("âŒ Retry failed: " + retryError.getMessage());
+                throw new RuntimeException("Unable to load page: " + baseUrl, retryError);
             }
         }
-        
-        throw new RuntimeException("Failed to load base URL after " + MAX_RETRIES + " attempts", lastException);
     }
     
     protected void clickElement(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        
         try {
+            wait.until(ExpectedConditions.elementToBeClickable(element));
             element.click();
         } catch (Exception e) {
-            // Try JavaScript click if regular click fails
+            System.out.println("ðŸ–±ï¸ Using JavaScript click fallback");
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
         }
     }
